@@ -1,0 +1,171 @@
+---
+const servicios = [
+  {
+    id: "faciales",
+    titulo: "Faciales",
+    desc: "Tratamientos de limpieza profunda, hidratación intensiva, peeling y anti-edad adaptados a cada tipo de piel para un rostro luminoso.",
+    items: ["Limpieza facial profunda", "Hidratación intensiva", "Peeling químico", "Tratamiento antiedad", "Microdermoabrasión"],
+    color: "#D5C039",
+    icon: `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="16" cy="10" r="6"/><path d="M8 28c0-4.4 3.6-8 8-8s8 3.6 8 8"/><path d="M12 10c0 0 1 2 4 2s4-2 4-2"/></svg>`,
+  },
+  {
+    id: "corporales",
+    titulo: "Corporales",
+    desc: "Tratamientos reductores, modeladores y reafirmantes que cuidan tu cuerpo desde la cabeza a los pies con técnicas de última generación.",
+    items: ["Masaje modelador", "Tratamiento reductor", "Envoltura corporal", "Exfoliación integral", "Tratamiento anticelulitis"],
+    color: "#19C771",
+    icon: `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="16" cy="5" r="3"/><path d="M16 8v10M12 12h8M13 18l-3 9M19 18l3 9"/></svg>`,
+  },
+  {
+    id: "micropigmentacion",
+    titulo: "Micropigmentación",
+    desc: "Define y realza tus rasgos de forma permanente. Cejas naturales, labios perfectos y eyeliner que durará años con el mejor acabado.",
+    items: ["Micropigmentación de cejas", "Micropigmentación labial", "Eyeliner permanente", "Sombreado y degradado", "Retoques incluidos"],
+    color: "#D5C039",
+    icon: `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 28l4-4 14-14-4-4L4 20v8zm18-18l4-4 4 4-4 4-4-4z"/><path d="M8 24l4-4"/></svg>`,
+  },
+  {
+    id: "masajes",
+    titulo: "Masajes",
+    desc: "Rituales de bienestar que combinan técnicas ancestrales y modernas para relajar, descontracturar y recuperar tu equilibrio físico y mental.",
+    items: ["Drenaje linfático manual", "Masaje relajante", "Masaje deportivo", "Masaje con piedras calientes", "Reflexología podal"],
+    color: "#19C771",
+    icon: `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 16c0-5.5 4.5-10 10-10 2.5 0 4.8.9 6.5 2.4"/><path d="M26 16c0 5.5-4.5 10-10 10-2.5 0-4.8-.9-6.5-2.4"/><path d="M10 20c1.5 1.5 3.5 2 5.5 1.5"/><path d="M22 12c-1.5-1.5-3.5-2-5.5-1.5"/></svg>`,
+  },
+];
+---
+
+<section class="estetico-section" id="estetico">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Tratamientos Estéticos</span>
+      <h2 class="section-title">Estética que transforma</h2>
+      <p class="section-lead">
+        Descubre nuestra gama completa de tratamientos estéticos diseñados para
+        realzar tu belleza natural con técnicas probadas y materiales de máxima calidad.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      {servicios.map((s, i) => (
+        <article class="service-card" data-index={i}>
+          <div class="card-icon" style={`color: ${s.color};`} set:html={s.icon} />
+          <h3 class="card-title">{s.titulo}</h3>
+          <p class="card-desc">{s.desc}</p>
+          <ul class="card-list">
+            {s.items.map(item => (
+              <li>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill={s.color}><path d="M7 0C3.13 0 0 3.13 0 7s3.13 7 7 7 7-3.13 7-7S10.87 0 7 0zm-1 10.06L2.97 7.03l.98-.98 2.05 2.04 4.05-4.05.98.98L6 10.06z"/></svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <a href="#contacto" class="card-cta">
+            Pedir cita
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2.5 7h9M8 3.5l3.5 3.5-3.5 3.5"/></svg>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .estetico-section {
+    padding: 100px 0;
+    background: var(--off-white);
+    position: relative;
+  }
+
+  .estetico-section::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--green), var(--gold));
+    opacity: 0.6;
+  }
+
+  .section-header {
+    margin-bottom: 60px;
+    max-width: 640px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .service-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    border: 1px solid var(--gray-200);
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--green));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: transparent;
+  }
+
+  .service-card:hover::after { transform: scaleX(1); }
+
+  .card-icon {
+    margin-bottom: 20px;
+    line-height: 1;
+  }
+
+  .card-title {
+    font-family: var(--font-heading);
+    font-size: 1.35rem; font-weight: 600;
+    color: var(--dark); margin-bottom: 12px;
+  }
+
+  .card-desc {
+    font-size: 0.88rem; color: var(--text-muted);
+    line-height: 1.7; margin-bottom: 20px;
+  }
+
+  .card-list {
+    list-style: none; margin-bottom: 24px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+
+  .card-list li {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.83rem; color: var(--text-muted); font-weight: 500;
+  }
+
+  .card-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.85rem; font-weight: 700;
+    color: var(--dark);
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 2px;
+    transition: all 0.2s;
+  }
+
+  .card-cta:hover { color: var(--gold); gap: 10px; }
+
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .estetico-section { padding: 72px 0; }
+  }
+</style>

@@ -1,0 +1,234 @@
+---
+const aparatos = [
+  {
+    nombre: "Radiofrecuencia",
+    icono: "◎",
+    desc: "Estimula la producción de colágeno y elastina para tensar, rejuvenecer y reafirmar la piel facial y corporal de forma no invasiva.",
+    beneficios: ["Tensado de piel flácida", "Reducción de arrugas", "Remodelación facial", "Reafirmación corporal"],
+    indicacion: "Flacidez · Antiedad · Corporal",
+  },
+  {
+    nombre: "HIFU Ultrafocal",
+    icono: "⬡",
+    desc: "Ultrasonidos de alta intensidad focalizados que actúan en profundidad. El tratamiento más eficaz para el lifting sin cirugía.",
+    beneficios: ["Lifting facial sin bisturí", "Efectos hasta 18 meses", "Sin tiempo de recuperación", "Una sola sesión"],
+    indicacion: "Lifting · Tensado · Cuello",
+  },
+  {
+    nombre: "Criolipólisis",
+    icono: "❄",
+    desc: "Eliminación definitiva de grasa localizada mediante frío controlado. Las células adiposas se destruyen de forma selectiva y natural.",
+    beneficios: ["Eliminación grasa localizada", "Sin cirugía ni anestesia", "Resultados permanentes", "Sesión de 60 minutos"],
+    indicacion: "Abdomen · Flancos · Muslos",
+  },
+  {
+    nombre: "Presoterapia",
+    icono: "◈",
+    desc: "Drenaje linfático mecánico de precisión. Elimina toxinas, reduce la retención de líquidos y mejora la circulación y la celulitis.",
+    beneficios: ["Drenaje linfático profundo", "Reducción de retención", "Mejora circulación", "Piernas ligeras"],
+    indicacion: "Celulitis · Retención · Piernas",
+  },
+  {
+    nombre: "Láser Depilatorio",
+    icono: "✦",
+    desc: "Depilación láser de diodo de última generación para piel suave de forma permanente. Apto para todo tipo de pieles y zonas.",
+    beneficios: ["Reducción permanente vello", "Apto piel oscura y morena", "Indoloro y rápido", "Desde 6 sesiones"],
+    indicacion: "Todo tipo de piel · Permanente",
+  },
+  {
+    nombre: "Luz Pulsada IPL",
+    icono: "✺",
+    desc: "Fototerapia de amplio espectro para tratar manchas, rojeces, vasos sanguíneos visibles y fotoenvejecimiento con precisión clínica.",
+    beneficios: ["Manchas y melasma", "Rosácea y rojeces", "Vasos sanguíneos", "Fotoenvejecimiento"],
+    indicacion: "Manchas · Rojeces · Vascular",
+  },
+  {
+    nombre: "Drenaje Linfático",
+    icono: "❋",
+    desc: "Tecnología de presoterapia secuencial combinada con técnicas manuales para el drenaje más completo y eficaz del mercado.",
+    beneficios: ["Drenaje pre y post operatorio", "Edemas y linfedemas", "Detox corporal completo", "Efecto inmediato visible"],
+    indicacion: "Post-operatorio · Edemas · Detox",
+  },
+];
+---
+
+<section class="aparat-section" id="aparatologia">
+  <div class="container">
+    <div class="aparat-header">
+      <span class="section-tag">Aparatología Avanzada</span>
+      <h2 class="section-title">Tecnología de<br /><em>última generación</em></h2>
+      <p class="section-lead">
+        Equipos certificados de grado médico que combinamos con el conocimiento experto
+        de nuestro equipo para ofrecerte los tratamientos más eficaces del mercado.
+      </p>
+    </div>
+
+    <div class="aparat-grid">
+      {aparatos.map((a, i) => (
+        <article class="aparat-card" data-index={i}>
+          <div class="aparat-card-top">
+            <div class="aparat-icon">{a.icono}</div>
+            <span class="aparat-ind">{a.indicacion}</span>
+          </div>
+          <h3 class="aparat-nombre">{a.nombre}</h3>
+          <p class="aparat-desc">{a.desc}</p>
+          <ul class="aparat-beneficios">
+            {a.beneficios.map(b => (
+              <li>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="var(--gold)"><path d="M6 0C2.69 0 0 2.69 0 6s2.69 6 6 6 6-2.69 6-6S9.31 0 6 0zm-1 8.77L2.12 5.9l.88-.88L5 7.01l4.01-4 .88.87L5 8.77z"/></svg>
+                {b}
+              </li>
+            ))}
+          </ul>
+          <a href="#contacto" class="aparat-link">
+            Solicitar información
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6.5h9M8 3l3 3.5-3 3.5"/></svg>
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <!-- CTA band -->
+    <div class="aparat-cta-band">
+      <div class="band-left">
+        <h3>¿No sabes qué tratamiento necesitas?</h3>
+        <p>Agenda una valoración gratuita con nuestros especialistas. Te asesoramos sin compromiso.</p>
+      </div>
+      <a href="#contacto" class="btn btn-gold">Valoración gratuita</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .aparat-section {
+    padding: 100px 0;
+    background: var(--gray-100);
+    position: relative; overflow: hidden;
+  }
+
+  .aparat-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 0% 50%, rgba(213,192,57,0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 100% 0%, rgba(25,199,113,0.04) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .aparat-header { margin-bottom: 56px; }
+  .aparat-header .section-title em { font-style: italic; color: var(--gold); }
+
+  .aparat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+
+  .aparat-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    border: 1px solid var(--gray-200);
+    transition: all var(--transition);
+    display: flex; flex-direction: column;
+    gap: 0;
+  }
+
+  .aparat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(213,192,57,0.3);
+  }
+
+  .aparat-card-top {
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 16px;
+  }
+
+  .aparat-icon {
+    font-size: 1.6rem; color: var(--gold);
+    line-height: 1;
+  }
+
+  .aparat-ind {
+    font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-muted);
+    background: var(--gray-100);
+    padding: 4px 10px; border-radius: 50px;
+    line-height: 1.3; text-align: right;
+    max-width: 130px;
+  }
+
+  .aparat-nombre {
+    font-family: var(--font-heading);
+    font-size: 1.2rem; font-weight: 600;
+    color: var(--dark); margin-bottom: 10px;
+  }
+
+  .aparat-desc {
+    font-size: 0.82rem; color: var(--text-muted);
+    line-height: 1.68; margin-bottom: 18px;
+    flex: 1;
+  }
+
+  .aparat-beneficios {
+    list-style: none; margin-bottom: 20px;
+    display: flex; flex-direction: column; gap: 7px;
+  }
+
+  .aparat-beneficios li {
+    display: flex; align-items: center; gap: 7px;
+    font-size: 0.78rem; color: var(--text-muted); font-weight: 500;
+  }
+
+  .aparat-link {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 0.82rem; font-weight: 700; color: var(--dark);
+    border-bottom: 1.5px solid var(--gold); padding-bottom: 2px;
+    margin-top: auto; transition: all 0.2s;
+    width: fit-content;
+  }
+  .aparat-link:hover { color: var(--gold); gap: 9px; }
+
+  /* CTA band */
+  .aparat-cta-band {
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 32px;
+    background: var(--dark);
+    border-radius: var(--radius);
+    padding: 36px 44px;
+    position: relative; overflow: hidden;
+  }
+
+  .aparat-cta-band::before {
+    content: '';
+    position: absolute; top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(213,192,57,0.12), transparent 70%);
+    pointer-events: none;
+  }
+
+  .band-left h3 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem; color: var(--white); margin-bottom: 8px;
+  }
+  .band-left p { font-size: 0.9rem; color: rgba(255,255,255,0.6); }
+
+  @media (max-width: 1200px) {
+    .aparat-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 860px) {
+    .aparat-grid { grid-template-columns: repeat(2, 1fr); }
+    .aparat-cta-band { flex-direction: column; text-align: center; padding: 28px 24px; }
+    .band-left h3 { font-size: 1.2rem; }
+  }
+
+  @media (max-width: 540px) {
+    .aparat-grid { grid-template-columns: 1fr; }
+    .aparat-section { padding: 72px 0; }
+  }
+</style>

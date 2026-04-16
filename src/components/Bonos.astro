@@ -1,0 +1,261 @@
+---
+const bonos = [
+  {
+    nombre: "Bono Esencial",
+    tag: "Ideal para empezar",
+    precio: "249",
+    sesiones: "3",
+    desc: "El punto de partida perfecto para descubrir la diferencia Esmera. Tres sesiones de tratamiento estético a elegir.",
+    incluye: [
+      "3 sesiones a elegir (facial o corporal)",
+      "Consulta inicial personalizada",
+      "Protocolo de tratamiento adaptado",
+      "Seguimiento entre sesiones",
+      "Descuento 10% en productos",
+    ],
+    destacado: false,
+    color: "var(--dark)",
+    btnClass: "btn-outline",
+  },
+  {
+    nombre: "Bono Intensivo",
+    tag: "Más popular",
+    precio: "459",
+    sesiones: "6",
+    desc: "El bono más elegido por nuestras clientas. Seis sesiones de alta eficacia para resultados visibles y duraderos.",
+    incluye: [
+      "6 sesiones (combinables facial + corporal)",
+      "Diagnóstico de piel completo",
+      "Protocolo premium personalizado",
+      "Acceso a aparatología avanzada",
+      "Seguimiento mensual incluido",
+      "Descuento 15% en productos",
+    ],
+    destacado: true,
+    color: "var(--gold)",
+    btnClass: "btn-gold",
+  },
+  {
+    nombre: "Bono VIP",
+    tag: "Experiencia completa",
+    precio: "699",
+    sesiones: "10",
+    desc: "La experiencia Esmera al completo. Diez sesiones exclusivas con los tratamientos más avanzados y seguimiento prioritario.",
+    incluye: [
+      "10 sesiones premium a medida",
+      "Evaluación médica completa",
+      "Protocolo médico-estético combinado",
+      "Acceso a toda la aparatología",
+      "Seguimiento semanal personalizado",
+      "Descuento 20% en productos",
+      "Atención prioritaria garantizada",
+    ],
+    destacado: false,
+    color: "var(--dark)",
+    btnClass: "btn-outline",
+  },
+];
+---
+
+<section class="bonos-section" id="bonos">
+  <div class="container">
+    <div class="bonos-header">
+      <span class="section-tag">Bonos y Packs</span>
+      <h2 class="section-title">Invierte en ti.<br /><em>Ahorra en cada sesión.</em></h2>
+      <p class="section-lead">
+        Nuestros bonos están diseñados para que obtengas los mejores resultados
+        al mejor precio. Cuanto más completo el bono, mayor el ahorro.
+      </p>
+    </div>
+
+    <div class="bonos-grid">
+      {bonos.map((b) => (
+        <article class={`bono-card ${b.destacado ? 'bono-featured' : ''}`}>
+          {b.destacado && <div class="featured-ribbon">⭐ Más popular</div>}
+
+          <div class="bono-top">
+            <span class="bono-tag">{b.tag}</span>
+            <h3 class="bono-nombre">{b.nombre}</h3>
+            <div class="bono-precio">
+              <span class="precio-desde">desde</span>
+              <span class="precio-num">{b.precio}€</span>
+              <span class="precio-unit">/ {b.sesiones} sesiones</span>
+            </div>
+            <p class="bono-desc">{b.desc}</p>
+          </div>
+
+          <ul class="bono-incluye">
+            {b.incluye.map(item => (
+              <li>
+                <svg width="15" height="15" viewBox="0 0 15 15" fill={b.destacado ? 'var(--dark)' : 'var(--green)'}><path d="M7.5 0C3.36 0 0 3.36 0 7.5S3.36 15 7.5 15 15 11.64 15 7.5 11.64 0 7.5 0zm-1.5 10.77L2.47 7.24l1.06-1.06 2.47 2.47 5.47-5.47 1.06 1.06-6.53 6.53z"/></svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <a href="#contacto" class={`btn ${b.btnClass} bono-btn`}>
+            {b.destacado ? 'Contratar ahora' : 'Solicitar información'}
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <!-- Custom note -->
+    <p class="bonos-note">
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="var(--gold)"><path d="M7.5 0C3.36 0 0 3.36 0 7.5S3.36 15 7.5 15 15 11.64 15 7.5 11.64 0 7.5 0zM8.25 11.25h-1.5v-5.25h1.5v5.25zm0-6.75h-1.5v-1.5h1.5v1.5z"/></svg>
+      ¿Buscas algo a medida? Diseñamos bonos personalizados según tus objetivos y presupuesto.
+      <a href="#contacto">Consúltanos sin compromiso →</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .bonos-section {
+    padding: 100px 0;
+    background: var(--white);
+    position: relative;
+  }
+
+  .bonos-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(213,192,57,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .bonos-header { margin-bottom: 60px; }
+  .bonos-header .section-title em { font-style: italic; color: var(--gold); }
+
+  .bonos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px; align-items: stretch;
+    margin-bottom: 32px;
+  }
+
+  .bono-card {
+    background: var(--off-white);
+    border: 1.5px solid var(--gray-200);
+    border-radius: var(--radius);
+    padding: 36px 32px;
+    display: flex; flex-direction: column; gap: 0;
+    transition: all var(--transition);
+    position: relative; overflow: hidden;
+  }
+
+  .bono-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Featured card */
+  .bono-featured {
+    background: var(--dark);
+    border-color: var(--gold);
+    box-shadow: 0 8px 48px rgba(213,192,57,0.18);
+    transform: scale(1.02);
+  }
+
+  .bono-featured:hover {
+    transform: scale(1.02) translateY(-4px);
+    box-shadow: 0 16px 64px rgba(213,192,57,0.28);
+  }
+
+  .featured-ribbon {
+    position: absolute; top: 0; left: 0; right: 0;
+    background: var(--gold);
+    color: var(--dark);
+    text-align: center;
+    font-size: 0.75rem; font-weight: 800;
+    letter-spacing: 0.06em; padding: 7px;
+  }
+
+  .bono-top { padding-top: 24px; margin-bottom: 28px; }
+
+  .bono-tag {
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .bono-featured .bono-tag { color: rgba(255,255,255,0.5); }
+
+  .bono-nombre {
+    font-family: var(--font-heading);
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--dark); margin: 8px 0 16px;
+  }
+
+  .bono-featured .bono-nombre { color: var(--white); }
+
+  .bono-precio {
+    display: flex; align-items: baseline; gap: 4px;
+    margin-bottom: 16px;
+  }
+
+  .precio-desde {
+    font-size: 0.78rem; color: var(--text-muted);
+  }
+
+  .precio-num {
+    font-family: var(--font-heading);
+    font-size: 2.8rem; font-weight: 700;
+    color: var(--gold); line-height: 1;
+  }
+
+  .precio-unit {
+    font-size: 0.82rem; color: var(--text-muted); margin-left: 4px;
+  }
+
+  .bono-featured .precio-unit { color: rgba(255,255,255,0.45); }
+
+  .bono-desc {
+    font-size: 0.875rem; color: var(--text-muted); line-height: 1.65;
+  }
+
+  .bono-featured .bono-desc { color: rgba(255,255,255,0.65); }
+
+  .bono-incluye {
+    list-style: none; margin-bottom: 32px;
+    display: flex; flex-direction: column; gap: 10px;
+    flex: 1;
+  }
+
+  .bono-incluye li {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.85rem; color: var(--text-muted); font-weight: 500;
+  }
+
+  .bono-featured .bono-incluye li { color: rgba(255,255,255,0.75); }
+  .bono-featured .bono-incluye li svg { fill: var(--gold) !important; }
+
+  .bono-btn { width: 100%; justify-content: center; padding: 15px; margin-top: auto; }
+
+  .bono-featured .btn-gold { background: var(--gold); color: var(--dark); font-weight: 800; }
+
+  .bonos-note {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.875rem; color: var(--text-muted);
+    text-align: center; justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .bonos-note a {
+    color: var(--dark); font-weight: 600;
+    border-bottom: 1px solid var(--gold);
+    transition: color 0.2s;
+  }
+
+  .bonos-note a:hover { color: var(--gold); }
+
+  @media (max-width: 900px) {
+    .bonos-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .bono-featured { transform: none; }
+    .bono-featured:hover { transform: translateY(-4px); }
+  }
+
+  @media (max-width: 480px) {
+    .bono-card { padding: 28px 22px; }
+    .bonos-section { padding: 72px 0; }
+  }
+</style>
