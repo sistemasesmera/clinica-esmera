@@ -1,261 +1,243 @@
 ---
 const bonos = [
   {
+    romano: "I",
     nombre: "Bono Esencial",
-    tag: "Ideal para empezar",
     precio: "249",
-    sesiones: "3",
-    desc: "El punto de partida perfecto para descubrir la diferencia Esmera. Tres sesiones de tratamiento estético a elegir.",
+    sesiones: 3,
+    desc: "El punto de partida ideal para descubrir la diferencia Esmera. Tres sesiones de tratamiento estético a medida.",
     incluye: [
-      "3 sesiones a elegir (facial o corporal)",
+      "3 sesiones a elegir — facial o corporal",
       "Consulta inicial personalizada",
-      "Protocolo de tratamiento adaptado",
+      "Protocolo adaptado a tus objetivos",
       "Seguimiento entre sesiones",
-      "Descuento 10% en productos",
+      "10% en productos de la clínica",
     ],
     destacado: false,
-    color: "var(--dark)",
-    btnClass: "btn-outline",
   },
   {
+    romano: "II",
     nombre: "Bono Intensivo",
-    tag: "Más popular",
     precio: "459",
-    sesiones: "6",
-    desc: "El bono más elegido por nuestras clientas. Seis sesiones de alta eficacia para resultados visibles y duraderos.",
+    sesiones: 6,
+    desc: "Seis sesiones de alta eficacia, combinando tratamientos faciales y corporales, para resultados visibles y duraderos.",
     incluye: [
-      "6 sesiones (combinables facial + corporal)",
+      "6 sesiones combinables — facial + corporal",
       "Diagnóstico de piel completo",
       "Protocolo premium personalizado",
       "Acceso a aparatología avanzada",
       "Seguimiento mensual incluido",
-      "Descuento 15% en productos",
+      "15% en productos de la clínica",
     ],
     destacado: true,
-    color: "var(--gold)",
-    btnClass: "btn-gold",
   },
   {
+    romano: "III",
     nombre: "Bono VIP",
-    tag: "Experiencia completa",
     precio: "699",
-    sesiones: "10",
-    desc: "La experiencia Esmera al completo. Diez sesiones exclusivas con los tratamientos más avanzados y seguimiento prioritario.",
+    sesiones: 10,
+    desc: "La experiencia Esmera en su máxima expresión. Diez sesiones de los tratamientos más avanzados con seguimiento exclusivo.",
     incluye: [
       "10 sesiones premium a medida",
-      "Evaluación médica completa",
+      "Evaluación médico-estética completa",
       "Protocolo médico-estético combinado",
-      "Acceso a toda la aparatología",
+      "Acceso ilimitado a aparatología",
       "Seguimiento semanal personalizado",
-      "Descuento 20% en productos",
+      "20% en productos de la clínica",
       "Atención prioritaria garantizada",
     ],
     destacado: false,
-    color: "var(--dark)",
-    btnClass: "btn-outline",
   },
 ];
 ---
 
-<section class="bonos-section" id="bonos">
+<section class="bonos" id="bonos">
   <div class="container">
-    <div class="bonos-header">
-      <span class="section-tag">Bonos y Packs</span>
-      <h2 class="section-title">Invierte en ti.<br /><em>Ahorra en cada sesión.</em></h2>
-      <p class="section-lead">
+    <div class="bonos-hd">
+      <div class="eyebrow"><span>Bonos &amp; Packs</span></div>
+      <h2 class="sec-title">Invierte en ti.<br /><em>Ahorra en cada sesión.</em></h2>
+      <p class="sec-lead">
         Nuestros bonos están diseñados para que obtengas los mejores resultados
-        al mejor precio. Cuanto más completo el bono, mayor el ahorro.
+        al precio más ventajoso. Cuanto mayor el compromiso, mayor el ahorro.
       </p>
     </div>
 
     <div class="bonos-grid">
-      {bonos.map((b) => (
-        <article class={`bono-card ${b.destacado ? 'bono-featured' : ''}`}>
-          {b.destacado && <div class="featured-ribbon">⭐ Más popular</div>}
+      {bonos.map(b => (
+        <article class={`bono-card ${b.destacado ? 'bono-feat' : ''}`}>
+          {b.destacado && (
+            <div class="feat-label">Más solicitado</div>
+          )}
+          <div class="bono-romano">{b.romano}</div>
+          <div class="bono-gold-rule"></div>
+          <h3 class="bono-nombre">{b.nombre}</h3>
+          <p class="bono-desc">{b.desc}</p>
 
-          <div class="bono-top">
-            <span class="bono-tag">{b.tag}</span>
-            <h3 class="bono-nombre">{b.nombre}</h3>
-            <div class="bono-precio">
-              <span class="precio-desde">desde</span>
-              <span class="precio-num">{b.precio}€</span>
-              <span class="precio-unit">/ {b.sesiones} sesiones</span>
-            </div>
-            <p class="bono-desc">{b.desc}</p>
+          <div class="bono-precio">
+            <span class="bp-desde">desde</span>
+            <span class="bp-num">{b.precio}€</span>
+            <span class="bp-unit">/ {b.sesiones} sesiones</span>
           </div>
 
-          <ul class="bono-incluye">
+          <ul class="bono-lista">
             {b.incluye.map(item => (
               <li>
-                <svg width="15" height="15" viewBox="0 0 15 15" fill={b.destacado ? 'var(--dark)' : 'var(--green)'}><path d="M7.5 0C3.36 0 0 3.36 0 7.5S3.36 15 7.5 15 15 11.64 15 7.5 11.64 0 7.5 0zm-1.5 10.77L2.47 7.24l1.06-1.06 2.47 2.47 5.47-5.47 1.06 1.06-6.53 6.53z"/></svg>
+                <span class="bono-tick">—</span>
                 {item}
               </li>
             ))}
           </ul>
 
-          <a href="#contacto" class={`btn ${b.btnClass} bono-btn`}>
+          <a href="#contacto" class={`btn ${b.destacado ? 'btn-gold' : 'btn-ghost-dark'} bono-btn`}>
             {b.destacado ? 'Contratar ahora' : 'Solicitar información'}
           </a>
         </article>
       ))}
     </div>
 
-    <!-- Custom note -->
-    <p class="bonos-note">
-      <svg width="15" height="15" viewBox="0 0 15 15" fill="var(--gold)"><path d="M7.5 0C3.36 0 0 3.36 0 7.5S3.36 15 7.5 15 15 11.64 15 7.5 11.64 0 7.5 0zM8.25 11.25h-1.5v-5.25h1.5v5.25zm0-6.75h-1.5v-1.5h1.5v1.5z"/></svg>
+    <p class="bonos-custom">
+      <span class="bc-orn">✦</span>
       ¿Buscas algo a medida? Diseñamos bonos personalizados según tus objetivos y presupuesto.
-      <a href="#contacto">Consúltanos sin compromiso →</a>
+      <a href="#contacto" class="bc-link">Consúltanos →</a>
     </p>
   </div>
 </section>
 
 <style>
-  .bonos-section {
-    padding: 100px 0;
-    background: var(--white);
-    position: relative;
+  .bonos {
+    padding: 120px 0;
+    background: var(--ivory-mid);
   }
 
-  .bonos-section::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(213,192,57,0.04) 0%, transparent 60%);
-    pointer-events: none;
-  }
-
-  .bonos-header { margin-bottom: 60px; }
-  .bonos-header .section-title em { font-style: italic; color: var(--gold); }
+  .bonos-hd { margin-bottom: 72px; }
 
   .bonos-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px; align-items: stretch;
-    margin-bottom: 32px;
+    gap: 1px;
+    background: rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: var(--radius);
+    overflow: visible;
+    margin-bottom: 36px;
+    position: relative;
   }
 
   .bono-card {
-    background: var(--off-white);
-    border: 1.5px solid var(--gray-200);
+    background: var(--white);
+    padding: 44px 36px 40px;
+    display: flex; flex-direction: column;
+    position: relative;
+    transition: background var(--t);
+  }
+  .bono-card:hover { background: var(--ivory); }
+
+  /* Featured */
+  .bono-feat {
+    background: var(--dark) !important;
+    z-index: 2;
+    margin: -1px;
+    box-shadow: var(--shadow-mid);
     border-radius: var(--radius);
-    padding: 36px 32px;
-    display: flex; flex-direction: column; gap: 0;
-    transition: all var(--transition);
-    position: relative; overflow: hidden;
   }
+  .bono-feat:hover { background: var(--dark) !important; }
 
-  .bono-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-  }
-
-  /* Featured card */
-  .bono-featured {
-    background: var(--dark);
-    border-color: var(--gold);
-    box-shadow: 0 8px 48px rgba(213,192,57,0.18);
-    transform: scale(1.02);
-  }
-
-  .bono-featured:hover {
-    transform: scale(1.02) translateY(-4px);
-    box-shadow: 0 16px 64px rgba(213,192,57,0.28);
-  }
-
-  .featured-ribbon {
-    position: absolute; top: 0; left: 0; right: 0;
+  .feat-label {
+    position: absolute; top: -12px; left: 50%;
+    transform: translateX(-50%);
     background: var(--gold);
     color: var(--dark);
-    text-align: center;
-    font-size: 0.75rem; font-weight: 800;
-    letter-spacing: 0.06em; padding: 7px;
+    font-size: 0.65rem; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 5px 18px; border-radius: 2px;
+    white-space: nowrap;
   }
 
-  .bono-top { padding-top: 24px; margin-bottom: 28px; }
-
-  .bono-tag {
-    font-size: 0.7rem; font-weight: 700;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--text-muted);
+  .bono-romano {
+    font-family: var(--font-display);
+    font-style: italic; font-weight: 300;
+    font-size: 0.9rem; color: var(--gold);
+    letter-spacing: 0.1em; margin-bottom: 14px;
+    opacity: 0.8;
   }
 
-  .bono-featured .bono-tag { color: rgba(255,255,255,0.5); }
+  .bono-gold-rule {
+    width: 28px; height: 1px;
+    background: var(--gold); opacity: 0.35;
+    margin-bottom: 20px;
+  }
 
   .bono-nombre {
-    font-family: var(--font-heading);
-    font-size: 1.5rem; font-weight: 700;
-    color: var(--dark); margin: 8px 0 16px;
+    font-family: var(--font-display);
+    font-size: 1.5rem; font-weight: 400;
+    color: var(--dark); margin-bottom: 12px;
   }
-
-  .bono-featured .bono-nombre { color: var(--white); }
-
-  .bono-precio {
-    display: flex; align-items: baseline; gap: 4px;
-    margin-bottom: 16px;
-  }
-
-  .precio-desde {
-    font-size: 0.78rem; color: var(--text-muted);
-  }
-
-  .precio-num {
-    font-family: var(--font-heading);
-    font-size: 2.8rem; font-weight: 700;
-    color: var(--gold); line-height: 1;
-  }
-
-  .precio-unit {
-    font-size: 0.82rem; color: var(--text-muted); margin-left: 4px;
-  }
-
-  .bono-featured .precio-unit { color: rgba(255,255,255,0.45); }
+  .bono-feat .bono-nombre { color: rgba(255,255,255,0.9); }
 
   .bono-desc {
-    font-size: 0.875rem; color: var(--text-muted); line-height: 1.65;
+    font-size: 0.83rem; color: var(--text-muted);
+    line-height: 1.7; margin-bottom: 24px; font-weight: 300;
   }
+  .bono-feat .bono-desc { color: rgba(255,255,255,0.5); }
 
-  .bono-featured .bono-desc { color: rgba(255,255,255,0.65); }
+  .bono-precio {
+    display: flex; align-items: baseline; gap: 5px;
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .bono-feat .bono-precio { border-color: rgba(255,255,255,0.08); }
 
-  .bono-incluye {
-    list-style: none; margin-bottom: 32px;
+  .bp-desde { font-size: 0.72rem; color: var(--stone-light); font-weight: 300; }
+  .bp-num {
+    font-family: var(--font-display);
+    font-size: 2.6rem; font-weight: 300; font-style: italic;
+    color: var(--gold); line-height: 1; letter-spacing: -0.02em;
+  }
+  .bp-unit { font-size: 0.78rem; color: var(--stone-light); font-weight: 300; margin-left: 2px; }
+  .bono-feat .bp-unit { color: rgba(255,255,255,0.35); }
+
+  .bono-lista {
+    list-style: none; flex: 1;
     display: flex; flex-direction: column; gap: 10px;
-    flex: 1;
+    margin-bottom: 32px;
   }
 
-  .bono-incluye li {
+  .bono-lista li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 0.82rem; color: var(--text-soft); font-weight: 300; line-height: 1.4;
+  }
+  .bono-feat .bono-lista li { color: rgba(255,255,255,0.6); }
+
+  .bono-tick { color: var(--gold); opacity: 0.7; flex-shrink: 0; font-size: 0.75rem; margin-top: 1px; }
+
+  .bono-btn { width: 100%; justify-content: center; margin-top: auto; }
+
+  /* Custom note */
+  .bonos-custom {
     display: flex; align-items: center; gap: 10px;
-    font-size: 0.85rem; color: var(--text-muted); font-weight: 500;
+    justify-content: center; flex-wrap: wrap;
+    font-size: 0.83rem; color: var(--text-muted); font-weight: 300;
+    text-align: center;
   }
-
-  .bono-featured .bono-incluye li { color: rgba(255,255,255,0.75); }
-  .bono-featured .bono-incluye li svg { fill: var(--gold) !important; }
-
-  .bono-btn { width: 100%; justify-content: center; padding: 15px; margin-top: auto; }
-
-  .bono-featured .btn-gold { background: var(--gold); color: var(--dark); font-weight: 800; }
-
-  .bonos-note {
-    display: flex; align-items: center; gap: 10px;
-    font-size: 0.875rem; color: var(--text-muted);
-    text-align: center; justify-content: center;
-    flex-wrap: wrap;
+  .bc-orn { color: var(--gold); opacity: 0.5; }
+  .bc-link {
+    color: var(--dark); font-weight: 500;
+    border-bottom: 1px solid rgba(213,192,57,0.5);
+    padding-bottom: 1px; transition: all 0.2s;
   }
+  .bc-link:hover { color: var(--gold-warm); border-color: var(--gold); }
 
-  .bonos-note a {
-    color: var(--dark); font-weight: 600;
-    border-bottom: 1px solid var(--gold);
-    transition: color 0.2s;
-  }
-
-  .bonos-note a:hover { color: var(--gold); }
-
-  @media (max-width: 900px) {
-    .bonos-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
-    .bono-featured { transform: none; }
-    .bono-featured:hover { transform: translateY(-4px); }
+  @media (max-width: 860px) {
+    .bonos-grid {
+      grid-template-columns: 1fr;
+      max-width: 440px; margin-left: auto; margin-right: auto;
+    }
+    .bono-feat { margin: 0; }
+    .bonos { padding: 80px 0; }
   }
 
   @media (max-width: 480px) {
-    .bono-card { padding: 28px 22px; }
-    .bonos-section { padding: 72px 0; }
+    .bono-card { padding: 32px 24px; }
   }
 </style>

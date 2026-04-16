@@ -3,8 +3,8 @@
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
     <a href="#inicio" class="nav-logo">
-      <span class="logo-sub">CLÍNICA</span>
-      <span class="logo-main">ESMERA</span>
+      <span class="logo-word">Clínica</span>
+      <span class="logo-accent">Esmera</span>
     </a>
 
     <ul class="nav-links" id="navLinks">
@@ -13,7 +13,7 @@
       <li class="has-drop">
         <button class="nl drop-toggle" aria-expanded="false">
           Estético
-          <svg class="chevron" width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l3.5 3.5L9 4"/></svg>
+          <svg class="chev" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 3.5l3 3 3-3"/></svg>
         </button>
         <ul class="dropdown">
           <li><a href="#estetico">Faciales</a></li>
@@ -26,7 +26,7 @@
       <li class="has-drop">
         <button class="nl drop-toggle" aria-expanded="false">
           Médico Estético
-          <svg class="chevron" width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l3.5 3.5L9 4"/></svg>
+          <svg class="chev" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 3.5l3 3 3-3"/></svg>
         </button>
         <ul class="dropdown">
           <li><a href="#medico-estetico">Faciales</a></li>
@@ -37,9 +37,9 @@
       <li class="has-drop">
         <button class="nl drop-toggle" aria-expanded="false">
           Aparatología
-          <svg class="chevron" width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l3.5 3.5L9 4"/></svg>
+          <svg class="chev" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 3.5l3 3 3-3"/></svg>
         </button>
-        <ul class="dropdown dropdown-wide">
+        <ul class="dropdown">
           <li><a href="#aparatologia">Radiofrecuencia</a></li>
           <li><a href="#aparatologia">HIFU Ultrafocal</a></li>
           <li><a href="#aparatologia">Criolipólisis</a></li>
@@ -54,11 +54,11 @@
       <li><a href="#nosotros" class="nl">Nosotros</a></li>
 
       <li class="mobile-cta">
-        <a href="#contacto" class="btn btn-gold btn-sm">Pide Cita</a>
+        <a href="#contacto" class="btn btn-gold">Pide Cita</a>
       </li>
     </ul>
 
-    <a href="#contacto" class="btn btn-gold btn-cta-nav">Pide Cita</a>
+    <a href="#contacto" class="cta-desktop btn btn-gold">Pide Cita</a>
 
     <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -68,82 +68,93 @@
 
 <style>
   .navbar {
-    position: fixed;
-    top: 0; left: 0; right: 0;
+    position: fixed; top: 0; left: 0; right: 0;
     z-index: 1000;
-    background: rgba(255,255,255,0.97);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(213,192,57,0.18);
-    transition: box-shadow 0.3s;
+    background: rgba(250, 249, 245, 0.96);
+    backdrop-filter: blur(16px);
+    transition: box-shadow var(--t);
   }
-  .navbar.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.1); }
+
+  .navbar::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(213,192,57,0.35) 30%, rgba(213,192,57,0.35) 70%, transparent 100%);
+  }
+
+  .navbar.scrolled { box-shadow: 0 4px 32px rgba(44,44,44,0.07); }
 
   .nav-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-    height: 72px;
-    display: flex;
-    align-items: center;
-    gap: 0;
+    max-width: 1180px; margin: 0 auto;
+    padding: 0 32px; height: 72px;
+    display: flex; align-items: center; gap: 0;
   }
 
   /* Logo */
   .nav-logo {
-    display: flex; flex-direction: column;
-    line-height: 1; flex-shrink: 0; margin-right: 40px;
+    display: flex; align-items: baseline; gap: 5px;
+    flex-shrink: 0; margin-right: 48px;
   }
-  .logo-sub {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400; font-size: 0.6rem;
-    letter-spacing: 0.35em; color: #999;
+  .logo-word {
+    font-family: var(--font-body);
+    font-weight: 300; font-size: 0.82rem;
+    letter-spacing: 0.15em; color: var(--stone);
     text-transform: uppercase;
   }
-  .logo-main {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700; font-size: 1.45rem;
-    letter-spacing: 0.06em;
-    background: linear-gradient(135deg, #303030 40%, #D5C039 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .logo-accent {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.55rem; font-weight: 400;
+    color: var(--dark); letter-spacing: 0.04em;
   }
 
-  /* Nav links */
+  /* Links */
   .nav-links {
     display: flex; align-items: center;
-    gap: 2px; list-style: none; margin: 0 auto;
+    gap: 0; list-style: none; margin: 0 auto;
   }
 
   .nl {
     display: flex; align-items: center; gap: 5px;
-    padding: 8px 13px; font-size: 0.88rem; font-weight: 500;
-    color: var(--text); border-radius: 8px;
-    transition: all 0.2s; cursor: pointer;
-    background: none; border: none; font-family: var(--font-body);
-    white-space: nowrap;
+    padding: 8px 14px;
+    font-size: 0.78rem; font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--text-soft);
+    background: none; border: none;
+    font-family: var(--font-body);
+    cursor: pointer; white-space: nowrap;
+    transition: color var(--t);
+    position: relative;
   }
-  .nl:hover { color: var(--gold); background: var(--gold-bg); }
+  .nl::after {
+    content: '';
+    position: absolute; bottom: 4px; left: 14px; right: 14px;
+    height: 1px; background: var(--gold);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform var(--t) var(--ease);
+  }
+  .nl:hover { color: var(--dark); }
+  .nl:hover::after { transform: scaleX(1); }
 
-  .chevron { transition: transform 0.25s; flex-shrink: 0; }
+  .chev { transition: transform 0.25s var(--ease); flex-shrink: 0; }
 
   /* Dropdown */
   .has-drop { position: relative; }
-
-  .has-drop:hover .chevron,
-  .has-drop[data-open] .chevron { transform: rotate(180deg); }
+  .has-drop:hover .chev,
+  .has-drop[data-open] .chev { transform: rotate(180deg); }
 
   .dropdown {
-    position: absolute; top: calc(100% + 10px);
+    position: absolute; top: calc(100% + 8px);
     left: 50%; transform: translateX(-50%) translateY(6px);
-    min-width: 200px; background: white;
-    border-radius: 14px;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.13);
-    border: 1px solid rgba(213,192,57,0.15);
-    list-style: none; padding: 8px;
+    min-width: 210px;
+    background: var(--ivory);
+    border: 1px solid rgba(213,192,57,0.18);
+    border-radius: var(--radius);
+    list-style: none; padding: 10px 8px;
     opacity: 0; pointer-events: none;
-    transition: all 0.22s ease;
+    transition: all 0.22s var(--ease);
+    box-shadow: var(--shadow-mid);
   }
-  .dropdown-wide { min-width: 230px; }
 
   .has-drop:hover .dropdown,
   .has-drop[data-open] .dropdown {
@@ -152,80 +163,66 @@
   }
 
   .dropdown li a {
-    display: block; padding: 9px 14px;
-    font-size: 0.875rem; color: var(--text);
-    border-radius: 8px; transition: all 0.18s;
+    display: block; padding: 9px 16px;
+    font-size: 0.8rem; color: var(--text-soft);
+    font-weight: 400; letter-spacing: 0.04em;
+    transition: all 0.2s; border-radius: 2px;
   }
-  .dropdown li a:hover {
-    background: var(--gold-bg); color: var(--dark);
-    padding-left: 18px;
-  }
+  .dropdown li a:hover { color: var(--dark); background: var(--ivory-mid); }
 
-  /* CTA nav */
-  .btn-cta-nav {
-    flex-shrink: 0; margin-left: 16px;
-    padding: 10px 22px; font-size: 0.875rem;
-  }
+  /* CTA */
+  .cta-desktop { flex-shrink: 0; margin-left: 20px; }
 
-  .btn-sm { padding: 10px 20px; font-size: 0.875rem; }
-
-  .mobile-cta { display: none; }
+  .mobile-cta { display: none; padding: 12px 0; }
 
   /* Hamburger */
   .hamburger {
     display: none; flex-direction: column; gap: 5px;
-    background: none; border: none; cursor: pointer;
-    padding: 6px; margin-left: 12px;
+    background: none; border: none; cursor: pointer; padding: 6px;
+    margin-left: 10px;
   }
   .hamburger span {
-    display: block; width: 24px; height: 2px;
+    display: block; width: 22px; height: 1.5px;
     background: var(--dark); border-radius: 2px;
-    transition: all 0.3s ease;
+    transition: all 0.3s var(--ease);
   }
-  .hamburger[aria-expanded="true"] span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
+  .hamburger[aria-expanded="true"] span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
   .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; width: 0; }
-  .hamburger[aria-expanded="true"] span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-  }
+  .hamburger[aria-expanded="true"] span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
 
   @media (max-width: 960px) {
     .hamburger { display: flex; }
-    .btn-cta-nav { display: none; }
-    .mobile-cta { display: flex; padding: 8px 0; }
+    .cta-desktop { display: none; }
+    .mobile-cta { display: flex; }
 
     .nav-links {
       position: fixed; top: 72px; left: 0; right: 0;
-      background: white; flex-direction: column;
-      align-items: stretch; gap: 0;
-      padding: 12px 16px 24px;
-      border-bottom: 2px solid var(--gold);
+      background: var(--ivory);
+      flex-direction: column; align-items: stretch;
+      padding: 16px 20px 28px;
+      border-bottom: 1px solid rgba(213,192,57,0.2);
       max-height: calc(100vh - 72px); overflow-y: auto;
-      transform: translateY(-10px); opacity: 0;
-      pointer-events: none; transition: all 0.28s ease;
-      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+      transform: translateY(-8px); opacity: 0;
+      pointer-events: none;
+      transition: all 0.28s var(--ease);
+      box-shadow: var(--shadow-mid);
     }
-    .nav-links.open {
-      transform: translateY(0); opacity: 1; pointer-events: all;
-    }
+    .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: all; }
 
-    .nl { padding: 12px 14px; font-size: 0.95rem; justify-content: space-between; }
+    .nl { padding: 13px 8px; font-size: 0.88rem; justify-content: space-between; }
+    .nl::after { display: none; }
 
     .dropdown {
-      position: static; transform: none;
-      opacity: 1; pointer-events: none;
-      box-shadow: none; border: none;
-      background: var(--gold-bg); border-radius: 10px;
-      margin: 4px 0 8px; max-height: 0;
-      overflow: hidden; transition: max-height 0.3s ease, padding 0.3s;
+      position: static; transform: none; opacity: 1;
+      pointer-events: none; box-shadow: none;
+      background: var(--ivory-mid); border-radius: 2px;
+      border: none; margin: 4px 0 8px;
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s;
       padding: 0 8px;
     }
-    .has-drop[data-open] .dropdown {
-      pointer-events: all;
-      max-height: 400px; padding: 8px;
-    }
-    .dropdown li a { padding: 10px 14px; font-size: 0.9rem; }
+    .has-drop[data-open] .dropdown { pointer-events: all; max-height: 400px; padding: 8px; }
+    .dropdown li a { font-size: 0.85rem; padding: 10px 16px; }
   }
 </style>
 
@@ -243,22 +240,17 @@
     navLinks?.classList.toggle('open', !open);
   });
 
-  // Dropdown toggles (mobile click, desktop hover handled by CSS)
   document.querySelectorAll<HTMLElement>('.has-drop').forEach(item => {
-    const btn = item.querySelector<HTMLButtonElement>('.drop-toggle');
-    btn?.addEventListener('click', () => {
+    item.querySelector<HTMLButtonElement>('.drop-toggle')?.addEventListener('click', () => {
       if (window.innerWidth <= 960) {
-        const isOpen = item.hasAttribute('data-open');
-        // close all others
         document.querySelectorAll<HTMLElement>('.has-drop[data-open]').forEach(el => {
           if (el !== item) el.removeAttribute('data-open');
         });
-        item.toggleAttribute('data-open', !isOpen);
+        item.toggleAttribute('data-open');
       }
     });
   });
 
-  // Close menu on link click
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
       hamburger?.setAttribute('aria-expanded', 'false');

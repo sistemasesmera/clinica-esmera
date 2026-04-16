@@ -1,550 +1,419 @@
 ---
 const valores = [
-  {
-    icono: "◎",
-    titulo: "Resultados reales",
-    desc: "Medimos nuestro éxito por los resultados de cada cliente. Sin promesas vacías, solo transformaciones comprobadas.",
-  },
-  {
-    icono: "✦",
-    titulo: "Tecnología certificada",
-    desc: "Todos nuestros equipos son de grado médico con certificación CE y avalados por estudios clínicos internacionales.",
-  },
-  {
-    icono: "❋",
-    titulo: "Equipo especializado",
-    desc: "Médicos estéticos, esteticistas tituladas y profesionales en continua formación con las últimas técnicas del sector.",
-  },
-  {
-    icono: "◈",
-    titulo: "Trato personalizado",
-    desc: "Cada persona es única. Diseñamos protocolos exclusivos adaptados a tus objetivos, tu piel y tu estilo de vida.",
-  },
+  { titulo: "Resultados reales",       desc: "Sin promesas vacías. Medimos nuestro trabajo por las transformaciones verificables de cada cliente." },
+  { titulo: "Tecnología certificada",  desc: "Equipos de grado médico con marcado CE y eficacia avalada por estudios clínicos internacionales." },
+  { titulo: "Equipo especializado",    desc: "Médicos estéticos, esteticistas tituladas y personal en formación continua con las últimas técnicas." },
+  { titulo: "Trato personalizado",     desc: "Cada persona es única. Protocolos exclusivos adaptados a tus objetivos, tu piel y tu estilo de vida." },
 ];
 
 const reviews = [
   {
+    inicial: "M",
     nombre: "María L.",
-    texto: "Llevo tres meses con el protocolo de medicina estética y los resultados son increíbles. El equipo es muy profesional y el trato, excelente.",
-    stars: 5,
+    texto: "Llevo tres meses con el protocolo de medicina estética y los resultados son increíbles. El equipo es muy profesional y el trato, excelente en todo momento.",
     tratamiento: "Medicina Estética Facial",
   },
   {
+    inicial: "C",
     nombre: "Carlos M.",
-    texto: "Vine por la criolipólisis con dudas y salí encantado. Los resultados empezaron a verse desde el mes. 100% recomendable.",
-    stars: 5,
+    texto: "Vine por la criolipólisis con bastantes dudas y salí completamente convencido. Los resultados empezaron a verse desde el primer mes. 100% recomendable.",
     tratamiento: "Criolipólisis",
   },
   {
+    inicial: "A",
     nombre: "Ana P.",
-    texto: "La micropigmentación de cejas me cambió la vida. Quedaron naturalísimas. El proceso fue muy cómodo y el resultado, perfecto.",
-    stars: 5,
+    texto: "La micropigmentación de cejas me cambió la cara — en el buen sentido. Quedaron naturalísimas. El proceso fue cómodo y el resultado, exactamente lo que buscaba.",
     tratamiento: "Micropigmentación",
   },
 ];
 ---
 
-<section class="nosotros-section" id="nosotros">
+<section class="nosotros" id="nosotros">
   <div class="container">
-    <!-- About block -->
-    <div class="nosotros-grid">
+
+    <!-- About -->
+    <div class="nos-grid">
       <div class="nos-visual" aria-hidden="true">
-        <div class="nos-img-frame">
-          <div class="nos-img-inner">
-            <div class="nos-art">
-              <div class="nos-circle nc1"></div>
-              <div class="nos-circle nc2"></div>
-              <div class="nos-logo-over">
-                <span class="nlo-clinica">CLÍNICA</span>
-                <span class="nlo-esmera">ESMERA</span>
-                <div class="nlo-line"></div>
-                <span class="nlo-since">Desde 2014</span>
+        <div class="nos-frame">
+          <div class="nos-inner">
+            <div class="nos-comp">
+              <div class="nos-oval no1"></div>
+              <div class="nos-oval no2"></div>
+              <div class="nos-rule"></div>
+              <div class="nos-brand">
+                <span class="nb-clinica">C L Í N I C A</span>
+                <span class="nb-esmera">Esmera</span>
+                <div class="nb-sep"></div>
+                <span class="nb-since">Madrid · Est. 2014</span>
               </div>
             </div>
           </div>
-          <div class="nos-img-deco"></div>
+          <div class="nos-deco"></div>
           <div class="nos-badge">
-            <div class="nos-badge-num">+10</div>
-            <div class="nos-badge-text">años<br />de experiencia</div>
+            <span class="nbadge-n">+10</span>
+            <span class="nbadge-t">años de<br />experiencia</span>
           </div>
         </div>
       </div>
 
       <div class="nos-content">
-        <span class="section-tag">Quiénes Somos</span>
-        <h2 class="section-title">
-          Más de una década<br />
-          <em>transformando vidas</em>
-        </h2>
-        <p class="nos-texto">
-          Clínica Esmera nació en 2014 con una misión clara: democratizar la estética y la
-          medicina estética de alta calidad para que cualquier persona pueda acceder a
-          los mejores tratamientos con total confianza y seguridad.
+        <div class="eyebrow"><span>Quiénes Somos</span></div>
+        <h2 class="sec-title">Más de una década<br /><em>transformando vidas</em></h2>
+
+        <p class="nos-p">
+          Clínica Esmera nació en 2014 con una misión clara: hacer accesible la estética
+          y la medicina estética de primera calidad. Hoy somos un referente en Madrid,
+          con un equipo de más de quince profesionales entre médicos estéticos,
+          esteticistas especializadas y personal sanitario.
         </p>
-        <p class="nos-texto">
-          Hoy somos un referente en el sector, con un equipo de más de 15 profesionales
-          entre médicos estéticos, esteticistas especializadas y personal sanitario. Nuestro
-          compromiso es con los resultados reales, la máxima seguridad y la experiencia
-          más cuidada que puedas encontrar.
+        <p class="nos-p">
+          Nuestro compromiso es con los resultados reales, la máxima seguridad
+          y la experiencia más cuidada que puedas encontrar en la ciudad.
+          Cada tratamiento se diseña de forma individual, porque entendemos que
+          cada persona es diferente.
         </p>
 
-        <div class="nos-valores-grid">
+        <div class="nos-valores">
           {valores.map(v => (
             <div class="nos-valor">
-              <div class="nv-icon">{v.icono}</div>
+              <span class="nv-orn">—</span>
               <div>
-                <p class="nv-titulo">{v.titulo}</p>
-                <p class="nv-desc">{v.desc}</p>
+                <p class="nv-t">{v.titulo}</p>
+                <p class="nv-d">{v.desc}</p>
               </div>
             </div>
           ))}
         </div>
-
-        <a href="#contacto" class="btn btn-dark">
-          Conoce a nuestro equipo
-          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2.5 7.5h10M9 4l3.5 3.5L9 11"/></svg>
-        </a>
       </div>
     </div>
 
     <!-- Reviews -->
     <div class="reviews-block">
-      <div class="reviews-header">
-        <h3 class="reviews-title">Lo que dicen nuestros clientes</h3>
-        <div class="reviews-rating">
-          <div class="stars">★★★★★</div>
-          <span>4.9 de 5 · +500 reseñas verificadas</span>
-        </div>
+      <div class="rev-hd">
+        <h3 class="rev-title">Lo que dicen <em>nuestros clientes</em></h3>
+        <span class="rev-rating">
+          <span class="rev-stars">★★★★★</span>
+          4.9 · +500 reseñas verificadas
+        </span>
       </div>
-
-      <div class="reviews-grid">
+      <div class="rev-grid">
         {reviews.map(r => (
-          <div class="review-card">
-            <div class="review-stars">
-              {"★".repeat(r.stars)}
-            </div>
-            <p class="review-text">"{r.texto}"</p>
-            <div class="review-footer">
-              <div class="review-avatar">
-                {r.nombre.charAt(0)}
-              </div>
+          <div class="rev-card">
+            <p class="rev-stars-sm">★★★★★</p>
+            <p class="rev-text">"{r.texto}"</p>
+            <div class="rev-footer">
+              <div class="rev-av">{r.inicial}</div>
               <div>
-                <p class="review-name">{r.nombre}</p>
-                <p class="review-trat">{r.tratamiento}</p>
+                <p class="rev-name">{r.nombre}</p>
+                <p class="rev-trat">{r.tratamiento}</p>
               </div>
             </div>
           </div>
         ))}
       </div>
     </div>
+
   </div>
 </section>
 
-<!-- CTA final contact section -->
-<section class="cta-section" id="contacto">
-  <div class="container cta-inner">
+<!-- CTA + Contact -->
+<section class="cta-contact" id="contacto">
+  <div class="cta-inner-wrap">
+    <!-- Left: text -->
     <div class="cta-text">
-      <span class="section-tag" style="background: rgba(213,192,57,0.15); border-color: var(--gold); color: var(--gold);">
-        Pide tu cita
-      </span>
-      <h2 class="cta-title">¿Lista para<br /><em>tu transformación?</em></h2>
-      <p class="cta-desc">
-        Da el primer paso. Agenda tu consulta gratuita y descubre qué tratamiento
-        es el más adecuado para ti. Sin compromiso, sin letra pequeña.
+      <div class="cta-eyebrow">
+        <span class="eyebrow-line"></span>
+        <span class="eyebrow-text">Pide tu cita</span>
+      </div>
+      <h2 class="cta-heading">
+        ¿Lista para<br />
+        tu <em>transformación?</em>
+      </h2>
+      <p class="cta-lead">
+        Da el primer paso. Tu consulta inicial es completamente gratuita y
+        sin compromiso. En 24 horas nos ponemos en contacto contigo.
       </p>
-      <ul class="cta-features">
-        <li>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="var(--gold)"><path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8S12.42 0 8 0zm-1.2 11.4L3.2 7.8l1.1-1.1 2.5 2.5 4.9-4.9 1.1 1.1-6 6z"/></svg>
-          Primera consulta 100% gratuita
-        </li>
-        <li>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="var(--gold)"><path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8S12.42 0 8 0zm-1.2 11.4L3.2 7.8l1.1-1.1 2.5 2.5 4.9-4.9 1.1 1.1-6 6z"/></svg>
-          Diagnóstico personalizado
-        </li>
-        <li>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="var(--gold)"><path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8S12.42 0 8 0zm-1.2 11.4L3.2 7.8l1.1-1.1 2.5 2.5 4.9-4.9 1.1 1.1-6 6z"/></svg>
-          Sin compromiso de compra
-        </li>
-        <li>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="var(--gold)"><path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8S12.42 0 8 0zm-1.2 11.4L3.2 7.8l1.1-1.1 2.5 2.5 4.9-4.9 1.1 1.1-6 6z"/></svg>
-          Oferta de bienvenida activa
-        </li>
+      <ul class="cta-feats">
+        <li><span>—</span> Primera consulta gratuita</li>
+        <li><span>—</span> Diagnóstico personalizado</li>
+        <li><span>—</span> 40% en tu primer tratamiento</li>
+        <li><span>—</span> Sin compromiso de ningún tipo</li>
       </ul>
     </div>
 
+    <!-- Right: form -->
     <div class="cta-form-wrap">
-      <div class="cta-form">
-        <h3 class="form-title">Reserva tu consulta</h3>
-        <p class="form-subtitle">Gratuita · Sin compromiso · En 24h nos ponemos en contacto</p>
-        <form>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="nombre">Nombre *</label>
-              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
-            </div>
-            <div class="form-group">
-              <label for="apellidos">Apellidos *</label>
-              <input type="text" id="apellidos" name="apellidos" placeholder="Tus apellidos" required />
-            </div>
+      <form class="cta-form">
+        <h3 class="form-h">Reserva tu consulta</h3>
+        <p class="form-sub">Gratuita · Sin compromiso · Respuesta en 24 h</p>
+
+        <div class="form-row">
+          <div class="fg">
+            <label for="fn">Nombre *</label>
+            <input type="text" id="fn" name="nombre" placeholder="Tu nombre" required />
           </div>
-          <div class="form-group">
-            <label for="telefono">Teléfono *</label>
-            <input type="tel" id="telefono" name="telefono" placeholder="Tu número de teléfono" required />
+          <div class="fg">
+            <label for="fa">Apellidos *</label>
+            <input type="text" id="fa" name="apellidos" placeholder="Tus apellidos" required />
           </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="tu@email.com" />
-          </div>
-          <div class="form-group">
-            <label for="interes">¿Qué te interesa?</label>
-            <select id="interes" name="interes">
-              <option value="">Selecciona una opción</option>
-              <option>Tratamientos Estéticos Faciales</option>
-              <option>Tratamientos Estéticos Corporales</option>
-              <option>Micropigmentación</option>
-              <option>Masajes</option>
-              <option>Medicina Estética Facial</option>
-              <option>Medicina Estética Corporal</option>
-              <option>Aparatología</option>
-              <option>Bonos y Packs</option>
-              <option>No lo sé aún, necesito asesoramiento</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-gold form-submit">
-            Solicitar cita gratuita
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </button>
-          <p class="form-privacy">
-            Al enviar este formulario aceptas nuestra
-            <a href="#">política de privacidad</a>.
-            Tus datos están seguros con nosotros.
-          </p>
-        </form>
-      </div>
+        </div>
+
+        <div class="fg">
+          <label for="ft">Teléfono *</label>
+          <input type="tel" id="ft" name="telefono" placeholder="Tu número" required />
+        </div>
+
+        <div class="fg">
+          <label for="fe">Email</label>
+          <input type="email" id="fe" name="email" placeholder="tu@email.com" />
+        </div>
+
+        <div class="fg">
+          <label for="fi">¿Qué te interesa?</label>
+          <select id="fi" name="interes">
+            <option value="">Selecciona una opción</option>
+            <option>Tratamientos Estéticos Faciales</option>
+            <option>Tratamientos Estéticos Corporales</option>
+            <option>Micropigmentación</option>
+            <option>Masajes</option>
+            <option>Medicina Estética Facial</option>
+            <option>Medicina Estética Corporal</option>
+            <option>Aparatología</option>
+            <option>Bonos y Packs</option>
+            <option>Asesoramiento — aún no lo sé</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-gold form-submit">
+          Solicitar cita gratuita
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2.5 7h9M8 3.5l3.5 3.5-3.5 3.5"/></svg>
+        </button>
+
+        <p class="form-priv">
+          Al enviar aceptas nuestra <a href="#">política de privacidad</a>.
+        </p>
+      </form>
     </div>
   </div>
 </section>
 
 <style>
-  /* Nosotros */
-  .nosotros-section {
-    padding: 100px 0 0;
-    background: var(--off-white);
+  /* ── Nosotros ── */
+  .nosotros {
+    padding: 120px 0 0;
+    background: var(--ivory-mid);
   }
 
-  .nosotros-grid {
+  .nos-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 72px; align-items: center;
-    margin-bottom: 80px;
+    gap: 80px; align-items: center;
+    margin-bottom: 96px;
   }
 
   /* Visual */
   .nos-visual { display: flex; justify-content: center; }
+  .nos-frame { position: relative; width: 100%; max-width: 420px; }
 
-  .nos-img-frame { position: relative; width: 100%; max-width: 440px; }
-
-  .nos-img-inner {
-    border-radius: 28px; overflow: hidden;
+  .nos-inner {
+    border-radius: 2px; overflow: hidden;
     aspect-ratio: 4/5;
-    background: linear-gradient(145deg, rgba(213,192,57,0.12), rgba(25,199,113,0.07), rgba(48,48,48,0.85));
-    border: 1px solid rgba(213,192,57,0.18);
+    background: linear-gradient(150deg, rgba(213,192,57,0.1), rgba(44,44,44,0.7), rgba(213,192,57,0.07));
+    border: 1px solid rgba(213,192,57,0.15);
     position: relative;
   }
 
-  .nos-art {
-    position: absolute; inset: 0;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-  }
+  .nos-comp { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
 
-  .nos-circle {
+  .nos-oval {
     position: absolute; border-radius: 50%;
-    border: 1px solid rgba(213,192,57,0.2);
+    border: 1px solid rgba(213,192,57,0.12);
   }
-  .nc1 {
-    width: 300px; height: 300px;
+  .no1 {
+    width: 260px; height: 320px;
+    background: radial-gradient(ellipse at 40% 35%, rgba(213,192,57,0.09), transparent 60%);
     top: 5%; left: 50%; transform: translateX(-50%);
-    background: radial-gradient(circle at 40% 40%, rgba(213,192,57,0.1), transparent 65%);
   }
-  .nc2 {
-    width: 180px; height: 180px;
-    top: 15%; left: 50%; transform: translateX(-50%);
-    border-color: rgba(25,199,113,0.12);
-    background: radial-gradient(circle, rgba(25,199,113,0.08), transparent 65%);
+  .no2 {
+    width: 150px; height: 190px;
+    top: 12%; left: 50%; transform: translateX(-50%);
+    border-color: rgba(213,192,57,0.07);
   }
-
-  .nos-logo-over {
-    display: flex; flex-direction: column;
-    align-items: center; gap: 6px;
-    position: absolute; bottom: 22%;
-  }
-  .nlo-clinica {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.65rem; font-weight: 300;
-    letter-spacing: 0.45em; color: rgba(255,255,255,0.25);
-    text-transform: uppercase;
-  }
-  .nlo-esmera {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.6rem; font-weight: 700;
-    color: rgba(255,255,255,0.12); letter-spacing: 0.08em;
-  }
-  .nlo-line {
-    width: 48px; height: 1px;
-    background: rgba(213,192,57,0.3);
-  }
-  .nlo-since {
-    font-size: 0.7rem; font-weight: 500;
-    letter-spacing: 0.2em; color: rgba(213,192,57,0.4);
-    text-transform: uppercase;
+  .nos-rule {
+    position: absolute;
+    width: 55%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(213,192,57,0.25), transparent);
+    top: 44%;
   }
 
-  .nos-img-deco {
-    position: absolute; bottom: -16px; left: -16px;
-    width: 160px; height: 160px;
-    border: 1.5px solid rgba(213,192,57,0.2);
-    border-radius: 20px; z-index: -1;
-  }
+  .nos-brand { display: flex; flex-direction: column; align-items: center; gap: 6px; position: absolute; bottom: 22%; }
+  .nb-clinica { font-family: var(--font-body); font-size: 0.5rem; letter-spacing: 0.5em; color: rgba(255,255,255,0.15); text-transform: uppercase; }
+  .nb-esmera { font-family: var(--font-display); font-style: italic; font-size: 2.4rem; font-weight: 300; color: rgba(255,255,255,0.1); letter-spacing: 0.05em; }
+  .nb-sep { width: 36px; height: 1px; background: rgba(213,192,57,0.2); }
+  .nb-since { font-size: 0.58rem; letter-spacing: 0.3em; color: rgba(213,192,57,0.25); text-transform: uppercase; font-weight: 300; }
 
+  .nos-deco {
+    position: absolute; bottom: -14px; left: -14px;
+    width: 140px; height: 140px;
+    border: 1px solid rgba(213,192,57,0.18);
+    border-radius: 2px; z-index: -1;
+  }
   .nos-badge {
-    position: absolute; top: 24px; right: -20px;
-    background: var(--gold);
-    border-radius: 14px; padding: 14px 18px;
-    text-align: center;
-    box-shadow: 0 6px 24px rgba(213,192,57,0.35);
+    position: absolute; top: 20px; right: -18px;
+    background: var(--gold); padding: 14px 16px; border-radius: 2px;
+    text-align: center; box-shadow: 0 6px 24px rgba(213,192,57,0.3);
   }
-  .nos-badge-num {
-    font-family: var(--font-heading);
-    font-size: 1.8rem; font-weight: 700;
-    color: var(--dark); line-height: 1;
-  }
-  .nos-badge-text {
-    font-size: 0.7rem; font-weight: 600;
-    color: var(--dark-soft); line-height: 1.3; margin-top: 3px;
-  }
+  .nbadge-n { display: block; font-family: var(--font-display); font-style: italic; font-size: 1.7rem; font-weight: 300; color: var(--dark); line-height: 1; }
+  .nbadge-t { display: block; font-size: 0.65rem; font-weight: 500; color: rgba(44,44,44,0.7); letter-spacing: 0.04em; line-height: 1.4; margin-top: 4px; }
 
   /* Content */
-  .nos-content {}
+  .nos-p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 16px; font-weight: 300; }
 
-  .section-title em { font-style: italic; color: var(--gold); }
-
-  .nos-texto {
-    font-size: 0.95rem; color: var(--text-muted);
-    line-height: 1.75; margin-bottom: 16px;
-  }
-
-  .nos-valores-grid {
+  .nos-valores {
     display: grid; grid-template-columns: 1fr 1fr;
-    gap: 20px; margin: 28px 0 36px;
+    gap: 20px; margin: 32px 0 40px;
   }
-
-  .nos-valor {
-    display: flex; gap: 12px; align-items: flex-start;
-  }
-  .nv-icon {
-    font-size: 1.1rem; color: var(--gold);
-    flex-shrink: 0; margin-top: 2px;
-  }
-  .nv-titulo { font-weight: 700; font-size: 0.9rem; color: var(--dark); margin-bottom: 4px; }
-  .nv-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; }
+  .nos-valor { display: flex; gap: 12px; align-items: flex-start; }
+  .nv-orn { color: var(--gold); opacity: 0.6; flex-shrink: 0; margin-top: 2px; }
+  .nv-t { font-size: 0.85rem; font-weight: 600; color: var(--dark); margin-bottom: 4px; letter-spacing: 0.01em; }
+  .nv-d { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
 
   /* Reviews */
   .reviews-block {
-    padding: 56px 0;
-    border-top: 1px solid var(--gray-200);
+    padding: 72px 0;
+    border-top: 1px solid rgba(0,0,0,0.07);
   }
 
-  .reviews-header {
-    display: flex; align-items: center;
-    justify-content: space-between; margin-bottom: 40px;
-    flex-wrap: wrap; gap: 16px;
+  .rev-hd {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px; margin-bottom: 44px;
   }
-
-  .reviews-title {
-    font-family: var(--font-heading);
-    font-size: 1.6rem; font-weight: 600; color: var(--dark);
+  .rev-title {
+    font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; color: var(--dark);
   }
+  .rev-title em { font-style: italic; color: var(--text-soft); }
+  .rev-rating { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--text-muted); font-weight: 300; }
+  .rev-stars { color: var(--gold); font-size: 1rem; letter-spacing: 2px; }
 
-  .reviews-rating {
-    display: flex; align-items: center; gap: 10px;
-    font-size: 0.875rem; color: var(--text-muted); font-weight: 500;
-  }
+  .rev-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
 
-  .stars { color: var(--gold); font-size: 1.1rem; letter-spacing: 2px; }
-
-  .reviews-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-
-  .review-card {
-    background: var(--white);
-    border: 1px solid var(--gray-200);
+  .rev-card {
+    background: var(--white); padding: 28px 24px;
+    border: 1px solid rgba(0,0,0,0.05);
     border-radius: var(--radius);
-    padding: 28px 24px;
-    transition: all var(--transition);
+    transition: box-shadow var(--t);
   }
+  .rev-card:hover { box-shadow: var(--shadow-soft); }
 
-  .review-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow);
-    border-color: rgba(213,192,57,0.2);
-  }
+  .rev-stars-sm { color: var(--gold); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 14px; }
+  .rev-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 20px; font-style: italic; font-weight: 300; }
+  .rev-footer { display: flex; align-items: center; gap: 12px; }
+  .rev-av { width: 34px; height: 34px; border-radius: 50%; background: var(--gold); color: var(--dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; }
+  .rev-name { font-weight: 600; font-size: 0.82rem; color: var(--dark); }
+  .rev-trat { font-size: 0.72rem; color: var(--text-muted); font-weight: 300; }
 
-  .review-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 14px; }
-
-  .review-text {
-    font-size: 0.88rem; color: var(--text-muted);
-    line-height: 1.7; margin-bottom: 20px;
-    font-style: italic;
-  }
-
-  .review-footer { display: flex; align-items: center; gap: 12px; }
-
-  .review-avatar {
-    width: 38px; height: 38px; border-radius: 50%;
-    background: var(--gold); color: var(--dark);
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 800; font-size: 0.9rem; flex-shrink: 0;
-  }
-
-  .review-name { font-weight: 700; font-size: 0.875rem; color: var(--dark); }
-  .review-trat { font-size: 0.75rem; color: var(--text-muted); }
-
-  /* CTA Section */
-  .cta-section {
-    padding: 100px 0;
-    background: var(--dark);
+  /* ── CTA Contact ── */
+  .cta-contact {
+    background: var(--dark-rich);
+    padding: 0;
     position: relative; overflow: hidden;
   }
 
-  .cta-section::before {
+  .cta-contact::before {
     content: '';
     position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse at 0% 50%, rgba(213,192,57,0.08) 0%, transparent 50%),
-      radial-gradient(ellipse at 100% 0%, rgba(25,199,113,0.05) 0%, transparent 50%);
+    background: radial-gradient(ellipse at 10% 50%, rgba(213,192,57,0.07) 0%, transparent 50%);
     pointer-events: none;
   }
 
-  .cta-inner {
+  .cta-inner-wrap {
+    max-width: 1180px; margin: 0 auto;
+    padding: 0 32px;
     display: grid; grid-template-columns: 1fr 1fr;
-    gap: 72px; align-items: start;
+    gap: 80px; align-items: start;
     position: relative; z-index: 1;
   }
 
-  .cta-section .section-tag { margin-bottom: 18px; }
+  .cta-text { padding: 96px 0; }
 
-  .cta-title {
-    font-family: var(--font-heading);
-    font-size: clamp(2rem, 3.5vw, 2.8rem);
-    color: white; margin-bottom: 20px;
-  }
-  .cta-title em { font-style: italic; color: var(--gold); }
-
-  .cta-desc {
-    font-size: 1rem; color: rgba(255,255,255,0.65);
-    line-height: 1.72; margin-bottom: 32px;
-  }
-
-  .cta-features {
-    list-style: none;
-    display: flex; flex-direction: column; gap: 12px;
-  }
-
-  .cta-features li {
-    display: flex; align-items: center; gap: 10px;
-    font-size: 0.9rem; color: rgba(255,255,255,0.8); font-weight: 500;
-  }
-
-  /* Form */
-  .cta-form-wrap { display: flex; }
-
-  .cta-form {
-    background: white;
-    border-radius: var(--radius);
-    padding: 40px 36px;
-    width: 100%;
-  }
-
-  .form-title {
-    font-family: var(--font-heading);
-    font-size: 1.5rem; font-weight: 600;
-    color: var(--dark); margin-bottom: 6px;
-  }
-
-  .form-subtitle {
-    font-size: 0.82rem; color: var(--text-muted);
+  .cta-eyebrow {
+    display: flex; align-items: center; gap: 14px;
     margin-bottom: 28px;
   }
+  .cta-eyebrow .eyebrow-line { display: block; width: 32px; height: 1px; background: var(--gold); opacity: 0.6; }
+  .cta-eyebrow .eyebrow-text { font-size: 0.68rem; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
 
-  .form-row {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 14px;
+  .cta-heading {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 3.5vw, 3rem);
+    font-weight: 400; color: rgba(255,255,255,0.9);
+    line-height: 1.18; margin-bottom: 22px;
+  }
+  .cta-heading em { font-style: italic; color: var(--gold); font-weight: 300; }
+
+  .cta-lead { font-size: 0.9rem; color: rgba(255,255,255,0.45); line-height: 1.8; margin-bottom: 32px; font-weight: 300; }
+
+  .cta-feats { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .cta-feats li { display: flex; align-items: center; gap: 12px; font-size: 0.82rem; color: rgba(255,255,255,0.6); font-weight: 300; }
+  .cta-feats li span { color: var(--gold); opacity: 0.6; }
+
+  /* Form */
+  .cta-form-wrap {
+    padding: 72px 0;
+    display: flex; align-items: flex-start;
   }
 
-  .form-group {
-    display: flex; flex-direction: column; gap: 6px;
-    margin-bottom: 14px;
-  }
-
-  .form-group label {
-    font-size: 0.82rem; font-weight: 600; color: var(--dark);
-  }
-
-  .form-group input,
-  .form-group select {
+  .cta-form {
+    background: var(--ivory);
+    border-radius: var(--radius);
+    padding: 44px 40px;
     width: 100%;
-    padding: 12px 16px;
-    border: 1.5px solid var(--gray-200);
-    border-radius: var(--radius-sm);
-    font-family: var(--font-body);
-    font-size: 0.9rem; color: var(--text);
-    transition: border-color 0.2s;
-    background: var(--off-white);
-    outline: none;
-    appearance: none;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.25);
   }
 
-  .form-group input:focus,
-  .form-group select:focus {
-    border-color: var(--gold);
-    background: var(--white);
-  }
+  .form-h { font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; color: var(--dark); margin-bottom: 5px; }
+  .form-sub { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 28px; letter-spacing: 0.04em; font-weight: 300; }
 
-  .form-group input::placeholder { color: #bbb; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 
-  .form-submit {
-    width: 100%; justify-content: center;
-    padding: 15px; font-size: 1rem; margin-top: 4px;
+  .fg { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+  .fg label { font-size: 0.75rem; font-weight: 500; color: var(--dark); letter-spacing: 0.04em; }
+  .fg input, .fg select {
+    width: 100%; padding: 11px 14px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: var(--radius);
+    font-family: var(--font-body); font-size: 0.875rem; color: var(--text);
+    background: var(--white); outline: none;
+    transition: border-color var(--t); appearance: none;
   }
+  .fg input:focus, .fg select:focus { border-color: var(--gold); }
+  .fg input::placeholder { color: #bbb; font-weight: 300; }
 
-  .form-privacy {
-    font-size: 0.75rem; color: var(--text-muted);
-    text-align: center; margin-top: 12px; line-height: 1.5;
-  }
+  .form-submit { width: 100%; justify-content: center; padding: 15px; margin-top: 4px; }
 
-  .form-privacy a {
-    color: var(--dark); text-decoration: underline;
-    text-decoration-color: rgba(213,192,57,0.5);
+  .form-priv {
+    font-size: 0.72rem; color: var(--text-muted); text-align: center;
+    margin-top: 12px; font-weight: 300;
   }
+  .form-priv a { color: var(--text-soft); text-decoration: underline; text-decoration-color: rgba(213,192,57,0.4); }
 
   /* Responsive */
-  @media (max-width: 960px) {
-    .nosotros-grid { grid-template-columns: 1fr; gap: 48px; }
+  @media (max-width: 940px) {
+    .nos-grid { grid-template-columns: 1fr; gap: 56px; }
     .nos-visual { order: -1; }
-    .nos-img-frame { max-width: 380px; }
-    .reviews-grid { grid-template-columns: 1fr; max-width: 480px; }
-    .cta-inner { grid-template-columns: 1fr; gap: 48px; }
-    .nosotros-section { padding: 72px 0 0; }
-    .cta-section { padding: 72px 0; }
+    .nos-frame { max-width: 360px; }
+    .nos-badge { right: 0; }
+    .rev-grid { grid-template-columns: 1fr; max-width: 460px; }
+    .cta-inner-wrap { grid-template-columns: 1fr; gap: 0; }
+    .cta-text { padding: 72px 0 40px; }
+    .cta-form-wrap { padding: 0 0 72px; }
+    .nosotros { padding: 80px 0 0; }
   }
 
-  @media (max-width: 600px) {
-    .nos-valores-grid { grid-template-columns: 1fr; }
+  @media (max-width: 580px) {
+    .nos-valores { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
-    .cta-form { padding: 28px 20px; }
-    .nos-badge { right: 0; }
+    .cta-form { padding: 32px 24px; }
+    .rev-hd { flex-direction: column; align-items: flex-start; }
   }
 </style>
