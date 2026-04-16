@@ -1,0 +1,310 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import PageHero from '../components/PageHero.astro';
+import PageCTA from '../components/PageCTA.astro';
+import Footer from '../components/Footer.astro';
+
+const bonos = [
+  {
+    id: "bono-estetico",
+    eyebrow: "Estética",
+    name: "Bono Estética Esencial",
+    desc: "El punto de partida perfecto para mantener tu piel en su mejor estado. Protocolo completo de cuidado facial y corporal con acceso a nuestra gama de tratamientos estéticos.",
+    price: "150",
+    unit: "/ bono 5 sesiones",
+    savings: "Ahorra un 15%",
+    includes: [
+      "5 sesiones a elegir entre faciales y corporales",
+      "Diagnóstico de piel personalizado incluido",
+      "Protocolo de home care adaptado",
+      "Validez 6 meses desde la compra",
+    ],
+    highlight: false,
+  },
+  {
+    id: "bono-aparatologia",
+    eyebrow: "Aparatología",
+    name: "Bono Aparatología Premium",
+    desc: "Acceso a nuestra tecnología de grado médico más avanzada. El bono más solicitado para resultados corporales visibles y duraderos sin cirugía.",
+    price: "320",
+    unit: "/ bono 6 sesiones",
+    savings: "Ahorra un 20%",
+    includes: [
+      "6 sesiones de aparatología a elegir",
+      "Compatible con: Radiofrecuencia, Presoterapia, IPL y Láser",
+      "Seguimiento personalizado entre sesiones",
+      "Validez 8 meses desde la compra",
+    ],
+    highlight: true,
+  },
+  {
+    id: "bono-medico",
+    eyebrow: "Médico Estético",
+    name: "Bono Médico Estético",
+    desc: "Protocolo médico completo con valoración incluida. Diseñado para quienes buscan resultados visibles y seguros supervisados por nuestro equipo médico.",
+    price: "480",
+    unit: "/ pack personalizado",
+    savings: "Ahorra un 18%",
+    includes: [
+      "Valoración médica inicial gratuita",
+      "Protocolo de tratamiento personalizado",
+      "Incluye mesoterapia + bioestimuladores o similar",
+      "Revisión y ajuste a las 4 semanas",
+    ],
+    highlight: false,
+  },
+  {
+    id: "bono-lifting",
+    eyebrow: "Lifting & Tensado",
+    name: "Bono HIFU + Radiofrecuencia",
+    desc: "La combinación más eficaz para el lifting sin cirugía. HIFU actúa en profundidad, la radiofrecuencia mantiene y potencia el resultado superficial.",
+    price: "590",
+    unit: "/ protocolo completo",
+    savings: "Ahorra un 22%",
+    includes: [
+      "1 sesión de HIFU Ultrafocal",
+      "4 sesiones de Radiofrecuencia de mantenimiento",
+      "Protocolo de cuidado post-sesión",
+      "Validez 12 meses desde la compra",
+    ],
+    highlight: false,
+  },
+  {
+    id: "bono-detox",
+    eyebrow: "Drenaje & Bienestar",
+    name: "Bono Detox & Drenaje",
+    desc: "Recupera el equilibrio de tu cuerpo. Ideal como cura de choque estacional o como complemento postoperatorio bajo supervisión.",
+    price: "210",
+    unit: "/ bono 8 sesiones",
+    savings: "Ahorra un 17%",
+    includes: [
+      "8 sesiones de presoterapia y/o drenaje linfático",
+      "Adaptado a perfil postoperatorio si aplica",
+      "Seguimiento de evolución incluido",
+      "Validez 6 meses desde la compra",
+    ],
+    highlight: false,
+  },
+  {
+    id: "bono-laser",
+    eyebrow: "Depilación Láser",
+    name: "Bono Láser Corporal Completo",
+    desc: "El protocolo definitivo de depilación permanente. Cuerpo completo con nuestro láser de diodo de última generación, apto para todo tipo de pieles.",
+    price: "750",
+    unit: "/ 8 sesiones cuerpo completo",
+    savings: "Ahorra un 25%",
+    includes: [
+      "8 sesiones de láser diodo cuerpo completo",
+      "Incluye todas las zonas corporales",
+      "Retoques anuales incluidos el primer año",
+      "Validez 18 meses desde la compra",
+    ],
+    highlight: false,
+  },
+];
+---
+
+<Layout title="Bonos y Tarifas · Clínica Esmera">
+  <Navbar />
+  <PageHero
+    eyebrow="Bonos y Tarifas"
+    title="Invierte en"
+    titleItalic="tus resultados"
+    description="Diseñados para quienes buscan tratamientos continuados con el mejor precio. Todos los bonos incluyen seguimiento personalizado y son transferibles."
+    breadcrumb={[{ label: "Bonos", href: "/bonos" }]}
+  />
+
+  <section class="bonos-section">
+    <div class="container">
+
+      <div class="bonos-note">
+        <span class="bn-orn">✦</span>
+        <p>Todos los bonos incluyen <strong>asesoramiento personalizado gratuito</strong> antes de la compra. Si tienes dudas sobre qué bono se adapta mejor a tu caso, consúltanos sin compromiso.</p>
+      </div>
+
+      <div class="bonos-grid">
+        {bonos.map(b => (
+          <div class={`bono-card${b.highlight ? ' bono-card--highlight' : ''}`} id={b.id}>
+            <div class="bc-top">
+              <div class="bc-eyebrow">{b.eyebrow}</div>
+              {b.highlight && <span class="bc-badge">Más popular</span>}
+            </div>
+            <h2 class="bc-name">{b.name}</h2>
+            <p class="bc-desc">{b.desc}</p>
+
+            <div class="bc-price-block">
+              <div class="bc-price">
+                <span class="bcp-currency">€</span>
+                <span class="bcp-amount">{b.price}</span>
+              </div>
+              <div class="bc-unit">{b.unit}</div>
+              <div class="bc-savings">{b.savings}</div>
+            </div>
+
+            <div class="bc-divider"></div>
+
+            <ul class="bc-includes">
+              {b.includes.map(item => (
+                <li>
+                  <span class="bci-icon">✦</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <a href="/nosotros#contacto" class={`bc-cta${b.highlight ? ' bc-cta--light' : ''}`}>
+              Solicitar bono
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5.5h7M6 2.5l2.5 3L6 8.5"/></svg>
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <div class="bonos-aviso">
+        <div class="ba-col">
+          <h3 class="ba-title">¿No encuentras lo que buscas?</h3>
+          <p class="ba-text">Diseñamos bonos a medida para clientes con necesidades específicas o tratamientos combinados. Cuéntanos tu caso y te preparamos una propuesta personalizada.</p>
+        </div>
+        <a href="/nosotros#contacto" class="btn btn-outline">Consultar bono personalizado</a>
+      </div>
+
+    </div>
+  </section>
+
+  <PageCTA
+    heading="¿Tienes dudas sobre qué bono elegir?"
+    sub="Agenda una consulta gratuita y te asesoramos sin compromiso sobre el protocolo más adecuado para tus objetivos."
+  />
+  <Footer />
+</Layout>
+
+<style>
+  .bonos-section { padding: 96px 0; background: var(--ivory); }
+
+  .bonos-note {
+    display: flex; gap: 14px; align-items: flex-start;
+    background: var(--white); border: 1px solid rgba(213,192,57,0.2);
+    padding: 18px 22px; border-radius: var(--radius);
+    margin-bottom: 56px;
+  }
+  .bn-orn { color: var(--gold); opacity: 0.6; flex-shrink: 0; font-size: 0.75rem; margin-top: 2px; }
+  .bonos-note p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+  .bonos-note strong { font-weight: 500; color: var(--text-soft); }
+
+  .bonos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 56px;
+  }
+
+  .bono-card {
+    background: var(--white);
+    padding: 44px 36px;
+    display: flex;
+    flex-direction: column;
+    transition: background var(--t);
+  }
+  .bono-card:hover { background: var(--ivory-mid); }
+
+  .bono-card--highlight {
+    background: var(--dark);
+  }
+  .bono-card--highlight:hover { background: #333; }
+
+  .bc-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+
+  .bc-eyebrow {
+    font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--text-muted); font-weight: 300;
+  }
+  .bono-card--highlight .bc-eyebrow { color: rgba(255,255,255,0.35); }
+
+  .bc-badge {
+    font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+    background: var(--gold); color: var(--dark);
+    padding: 3px 8px; border-radius: 2px; font-weight: 500;
+  }
+
+  .bc-name {
+    font-family: var(--font-display); font-size: 1.25rem; font-weight: 400;
+    color: var(--dark); margin-bottom: 12px; line-height: 1.3;
+  }
+  .bono-card--highlight .bc-name { color: rgba(255,255,255,0.9); }
+
+  .bc-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; margin-bottom: 28px; }
+  .bono-card--highlight .bc-desc { color: rgba(255,255,255,0.4); }
+
+  .bc-price-block { margin-bottom: 24px; }
+  .bc-price { display: flex; align-items: flex-start; gap: 4px; line-height: 1; margin-bottom: 4px; }
+  .bcp-currency { font-size: 1rem; color: var(--gold); margin-top: 6px; font-weight: 400; }
+  .bcp-amount { font-family: var(--font-display); font-size: 3rem; font-weight: 300; color: var(--dark); line-height: 1; }
+  .bono-card--highlight .bcp-amount { color: rgba(255,255,255,0.9); }
+
+  .bc-unit { font-size: 0.75rem; color: var(--text-muted); font-weight: 300; margin-bottom: 6px; }
+  .bono-card--highlight .bc-unit { color: rgba(255,255,255,0.3); }
+
+  .bc-savings {
+    display: inline-block; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); font-weight: 400;
+  }
+
+  .bc-divider {
+    width: 100%; height: 1px;
+    background: rgba(0,0,0,0.07);
+    margin-bottom: 24px;
+  }
+  .bono-card--highlight .bc-divider { background: rgba(255,255,255,0.08); }
+
+  .bc-includes {
+    list-style: none; display: flex; flex-direction: column; gap: 10px;
+    flex: 1; margin-bottom: 32px;
+  }
+  .bc-includes li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; font-weight: 300;
+  }
+  .bono-card--highlight .bc-includes li { color: rgba(255,255,255,0.45); }
+  .bci-icon { color: var(--gold); opacity: 0.6; flex-shrink: 0; font-size: 0.55rem; margin-top: 4px; }
+
+  .bc-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--dark); border-bottom: 1px solid rgba(213,192,57,0.4);
+    padding-bottom: 2px; width: fit-content; transition: all 0.2s;
+    text-decoration: none;
+  }
+  .bc-cta:hover { color: var(--gold-warm); gap: 10px; border-color: var(--gold); }
+
+  .bc-cta--light { color: rgba(255,255,255,0.6); border-color: rgba(213,192,57,0.3); }
+  .bc-cta--light:hover { color: var(--gold); border-color: var(--gold); }
+
+  /* Aviso bottom */
+  .bonos-aviso {
+    display: flex; align-items: center; justify-content: space-between; gap: 32px;
+    background: var(--dark); color: white;
+    padding: 36px 44px; border-radius: var(--radius);
+    flex-wrap: wrap;
+  }
+  .ba-title {
+    font-family: var(--font-display); font-size: 1.25rem; font-weight: 400;
+    color: rgba(255,255,255,0.85); margin-bottom: 8px;
+  }
+  .ba-text { font-size: 0.85rem; color: rgba(255,255,255,0.4); line-height: 1.7; font-weight: 300; max-width: 500px; }
+
+  @media (max-width: 1100px) {
+    .bonos-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 700px) {
+    .bonos-grid { grid-template-columns: 1fr; }
+    .bono-card { padding: 32px 24px; }
+    .bonos-section { padding: 72px 0; }
+    .bonos-aviso { padding: 28px 24px; }
+    .ba-title { font-size: 1.1rem; }
+  }
+</style>

@@ -3,22 +3,231 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
 import Stats from '../components/Stats.astro';
-import Estetico from '../components/Estetico.astro';
-import MedicoEstetico from '../components/MedicoEstetico.astro';
-import Aparatologia from '../components/Aparatologia.astro';
-import Bonos from '../components/Bonos.astro';
-import Nosotros from '../components/Nosotros.astro';
 import Footer from '../components/Footer.astro';
+
+const categories = [
+  {
+    num: "01", href: "/estetico/",
+    title: "Estética",
+    desc: "Faciales, corporales, micropigmentación y masajes que cuidan y realzan tu belleza natural con técnicas de alta eficacia.",
+    items: ["Faciales", "Corporales", "Micropigmentación", "Masajes"],
+  },
+  {
+    num: "02", href: "/medico-estetico/",
+    title: "Medicina Estética",
+    desc: "Tratamientos médicos avanzados supervisados por especialistas. Resultados visibles, duraderos y con máxima seguridad.",
+    items: ["Toxina Botulínica", "Ácido Hialurónico", "Mesoterapia", "Bioestimuladores"],
+  },
+  {
+    num: "03", href: "/aparatologia/",
+    title: "Aparatología",
+    desc: "Tecnología certificada de grado médico: desde HIFU hasta criolipólisis. Los tratamientos más eficaces del mercado.",
+    items: ["HIFU Ultrafocal", "Radiofrecuencia", "Criolipólisis", "Presoterapia"],
+  },
+  {
+    num: "04", href: "/bonos",
+    title: "Bonos & Packs",
+    desc: "Packs de sesiones diseñados para maximizar resultados y ahorro. Desde 3 hasta 10 sesiones a medida.",
+    items: ["Bono Esencial · 3 sesiones", "Bono Intensivo · 6 sesiones", "Bono VIP · 10 sesiones"],
+  },
+];
+
+const valores = [
+  { t: "Resultados reales",      d: "Sin promesas vacías. Medimos nuestro éxito por las transformaciones verificables de cada cliente." },
+  { t: "Tecnología certificada", d: "Equipos de grado médico con marcado CE y eficacia avalada por estudios clínicos internacionales." },
+  { t: "Equipo especializado",   d: "Médicos estéticos y esteticistas tituladas en formación continua con las últimas técnicas del sector." },
+  { t: "Trato personalizado",    d: "Protocolos exclusivos adaptados a tus objetivos, tu piel y tu estilo de vida. Cada persona es única." },
+];
+
+const reviews = [
+  { ini: "M", name: "María L.", text: "Llevo tres meses con el protocolo de medicina estética y los resultados son increíbles. El equipo es muy profesional y el trato, excelente.", trat: "Medicina Estética Facial" },
+  { ini: "C", name: "Carlos M.", text: "Vine por la criolipólisis con dudas y salí encantado. Los resultados empezaron a verse desde el primer mes.", trat: "Criolipólisis" },
+  { ini: "A", name: "Ana P.", text: "La micropigmentación de cejas me cambió la cara. Quedaron naturalísimas. El proceso fue cómodo y el resultado, exactamente lo que buscaba.", trat: "Micropigmentación" },
+];
 ---
 
 <Layout>
   <Navbar />
   <Hero />
   <Stats />
-  <Estetico />
-  <MedicoEstetico />
-  <Aparatologia />
-  <Bonos />
-  <Nosotros />
+
+  <!-- Nuestros tratamientos -->
+  <section class="home-services">
+    <div class="container">
+      <div class="hs-hd">
+        <div class="eyebrow"><span>Nuestros tratamientos</span></div>
+        <h2 class="sec-title">Todo lo que necesitas<br /><em>en un solo lugar</em></h2>
+        <p class="sec-lead">Estética, medicina estética y aparatología de primer nivel bajo el mismo techo, con un equipo de más de 15 profesionales especializados.</p>
+      </div>
+      <div class="hs-grid">
+        {categories.map(c => (
+          <a href={c.href} class="hs-card">
+            <div class="hs-num">{c.num}</div>
+            <div class="hs-rule"></div>
+            <h3 class="hs-title">{c.title}</h3>
+            <p class="hs-desc">{c.desc}</p>
+            <ul class="hs-list">
+              {c.items.map(i => <li><span>—</span>{i}</li>)}
+            </ul>
+            <span class="hs-cta">
+              Ver tratamientos
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 6h8M7 3l3 3-3 3"/></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Por qué elegirnos -->
+  <section class="home-why">
+    <div class="container hw-grid">
+      <div class="hw-left">
+        <div class="eyebrow"><span>Por qué elegirnos</span></div>
+        <h2 class="sec-title">Más de una década<br /><em>a tu lado</em></h2>
+        <p class="sec-lead">Clínica Esmera nació en 2014 con una misión: hacer accesible la estética y medicina estética de primera calidad. Hoy somos referente en Madrid, con un equipo dedicado a los resultados reales.</p>
+        <a href="/nosotros" class="btn btn-ghost-dark hw-btn">Conoce nuestra historia</a>
+      </div>
+      <div class="hw-right">
+        {valores.map(v => (
+          <div class="hw-valor">
+            <span class="hwv-orn">—</span>
+            <div>
+              <p class="hwv-t">{v.t}</p>
+              <p class="hwv-d">{v.d}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Reseñas -->
+  <section class="home-reviews">
+    <div class="container">
+      <div class="hr-hd">
+        <div>
+          <div class="eyebrow"><span>Reseñas</span></div>
+          <h2 class="sec-title">Lo que dicen<br /><em>nuestros clientes</em></h2>
+        </div>
+        <div class="hr-rating">
+          <span class="hr-stars">★★★★★</span>
+          <span>4.9 de 5 · +500 reseñas</span>
+        </div>
+      </div>
+      <div class="hr-grid">
+        {reviews.map(r => (
+          <div class="hr-card">
+            <p class="hrc-stars">★★★★★</p>
+            <p class="hrc-text">"{r.text}"</p>
+            <div class="hrc-foot">
+              <div class="hrc-av">{r.ini}</div>
+              <div>
+                <p class="hrc-name">{r.name}</p>
+                <p class="hrc-trat">{r.trat}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Oferta banner -->
+  <section class="home-banner">
+    <div class="container hb-inner">
+      <div>
+        <p class="hb-tag">Oferta de bienvenida</p>
+        <h2 class="hb-h">Primera consulta gratuita<br />+ <em>40% en tu primer tratamiento</em></h2>
+      </div>
+      <a href="/nosotros#contacto" class="btn btn-gold hb-btn">Reservar ahora</a>
+    </div>
+  </section>
+
   <Footer />
 </Layout>
+
+<style>
+  /* ── Home Services ── */
+  .home-services { padding: 120px 0; background: var(--ivory); }
+  .hs-hd { margin-bottom: 64px; }
+
+  .hs-grid {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    gap: 1px; background: rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.06); border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .hs-card {
+    background: var(--white); padding: 36px 28px 32px;
+    display: flex; flex-direction: column;
+    transition: background var(--t); cursor: pointer;
+    text-decoration: none;
+  }
+  .hs-card:hover { background: var(--ivory-mid); }
+
+  .hs-num { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 0.75rem; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 14px; opacity: 0.8; }
+  .hs-rule { width: 24px; height: 1px; background: var(--gold); opacity: 0.35; margin-bottom: 18px; }
+  .hs-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; color: var(--dark); margin-bottom: 12px; }
+  .hs-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.72; margin-bottom: 20px; font-weight: 300; flex: 1; }
+  .hs-list { list-style: none; margin-bottom: 24px; display: flex; flex-direction: column; gap: 6px; }
+  .hs-list li { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--text-soft); font-weight: 400; }
+  .hs-list li span { color: var(--gold); opacity: 0.6; }
+
+  .hs-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--dark);
+    border-bottom: 1px solid rgba(213,192,57,0.4);
+    padding-bottom: 2px; width: fit-content;
+    transition: all 0.25s; margin-top: auto;
+  }
+  .hs-card:hover .hs-cta { color: var(--gold-warm); border-color: var(--gold); gap: 10px; }
+
+  /* ── Why ── */
+  .home-why { padding: 120px 0; background: var(--ivory-mid); }
+  .hw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .hw-btn { margin-top: 36px; }
+  .hw-right { display: flex; flex-direction: column; gap: 24px; padding-top: 8px; }
+  .hw-valor { display: flex; gap: 14px; align-items: flex-start; }
+  .hwv-orn { color: var(--gold); opacity: 0.5; flex-shrink: 0; margin-top: 2px; }
+  .hwv-t { font-size: 0.9rem; font-weight: 600; color: var(--dark); margin-bottom: 5px; letter-spacing: 0.01em; }
+  .hwv-d { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
+
+  /* ── Reviews ── */
+  .home-reviews { padding: 96px 0; background: var(--ivory); }
+  .hr-hd { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 48px; flex-wrap: wrap; gap: 16px; }
+  .hr-rating { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--text-muted); font-weight: 300; padding-bottom: 4px; }
+  .hr-stars { color: var(--gold); font-size: 1rem; letter-spacing: 2px; }
+  .hr-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+  .hr-card { background: var(--white); padding: 28px 24px; border: 1px solid rgba(0,0,0,0.05); border-radius: var(--radius); transition: box-shadow var(--t); }
+  .hr-card:hover { box-shadow: var(--shadow-soft); }
+  .hrc-stars { color: var(--gold); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 14px; }
+  .hrc-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 20px; font-style: italic; font-weight: 300; }
+  .hrc-foot { display: flex; align-items: center; gap: 12px; }
+  .hrc-av { width: 34px; height: 34px; border-radius: 50%; background: var(--gold); color: var(--dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; }
+  .hrc-name { font-weight: 600; font-size: 0.82rem; color: var(--dark); }
+  .hrc-trat { font-size: 0.72rem; color: var(--text-muted); font-weight: 300; }
+
+  /* ── Banner ── */
+  .home-banner { background: var(--dark); padding: 72px 0; }
+  .hb-inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+  .hb-tag { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(213,192,57,0.6); margin-bottom: 10px; font-weight: 400; }
+  .hb-h { font-family: var(--font-display); font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 400; color: rgba(255,255,255,0.9); line-height: 1.25; }
+  .hb-h em { font-style: italic; color: var(--gold); font-weight: 300; }
+  .hb-btn { flex-shrink: 0; }
+
+  /* Responsive */
+  @media (max-width: 1024px) { .hs-grid { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 860px) {
+    .hw-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hr-grid { grid-template-columns: 1fr; max-width: 440px; }
+  }
+  @media (max-width: 600px) {
+    .hs-grid { grid-template-columns: 1fr; }
+    .home-services, .home-why, .home-reviews { padding: 80px 0; }
+    .hr-hd { flex-direction: column; align-items: flex-start; }
+    .hb-inner { flex-direction: column; align-items: flex-start; }
+  }
+</style>

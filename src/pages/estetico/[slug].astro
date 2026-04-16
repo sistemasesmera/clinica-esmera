@@ -1,0 +1,219 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import PageHero from '../../components/PageHero.astro';
+import PageCTA from '../../components/PageCTA.astro';
+import Footer from '../../components/Footer.astro';
+
+const data: Record<string, any> = {
+  faciales: {
+    title: "Faciales Estéticos", titleItalic: "",
+    eyebrow: "Estética · Faciales",
+    description: "Protocolos personalizados de limpieza, hidratación y rejuvenecimiento adaptados a las necesidades específicas de tu piel para un resultado luminoso y duradero.",
+    intro: "La piel del rostro es el reflejo de nuestra salud y bienestar. En Clínica Esmera desarrollamos protocolos individualizados que combinan las técnicas más eficaces con activos de primera calidad para que cada sesión sea una experiencia de cuidado real.",
+    tratamientos: [
+      { n: "Limpieza Facial Profunda", d: "Eliminación de impurezas, comedones y células muertas con técnica manual y extractores profesionales. Piel limpia, despejada y luminosa.", dur: "60 min" },
+      { n: "Hidratación Intensiva", d: "Protocolo de infusión de activos hidratantes y antioxidantes con técnica de iontoforesis. Resultado inmediato y duradero.", dur: "75 min" },
+      { n: "Peeling Químico Estético", d: "Renovación celular progresiva con ácidos frutales, mandélico o láctico según el tipo de piel. Mejora textura, manchas y luminosidad.", dur: "45 min" },
+      { n: "Tratamiento Antiedad", d: "Combinación de técnicas de masaje facial, activos tensores y tratamientos reafirmantes para combatir los signos del envejecimiento.", dur: "90 min" },
+      { n: "Microdermoabrasión", d: "Exfoliación mecánica controlada que renueva la capa superficial de la piel. Ideal para textura irregular, cicatrices superficiales y poros dilatados.", dur: "60 min" },
+    ],
+    proceso: [
+      { p: "01", t: "Diagnóstico", d: "Analizamos el tipo de piel, sus necesidades y tus objetivos para diseñar el protocolo más adecuado." },
+      { p: "02", t: "Preparación", d: "Limpiamos e hidratamos la piel para optimizar la absorción de los activos del tratamiento." },
+      { p: "03", t: "Tratamiento", d: "Aplicamos el protocolo personalizado con técnicas manuales y dispositivos específicos." },
+      { p: "04", t: "Seguimiento", d: "Te asesoramos sobre el cuidado en casa y programamos las sesiones de mantenimiento óptimas." },
+    ],
+  },
+  corporales: {
+    title: "Corporales Estéticos", titleItalic: "",
+    eyebrow: "Estética · Corporales",
+    description: "Tratamientos reductores, modeladores y reafirmantes que cuidan tu cuerpo con técnicas de alta eficacia y activos de primera calidad.",
+    intro: "El cuidado corporal va más allá de la estética: es bienestar, confianza y salud. Nuestros tratamientos corporales combinan técnicas manuales expertas con activos especializados para resultados visibles y una experiencia de auténtico lujo.",
+    tratamientos: [
+      { n: "Masaje Modelador", d: "Técnica de draining y amasamiento profundo que activa la circulación, reduce la retención de líquidos y modela la silueta.", dur: "60 min" },
+      { n: "Tratamiento Reductor", d: "Protocolo intensivo con activos lipolíticos y técnica de ultrasonidos manuales. Resultados visibles desde la primera sesión.", dur: "75 min" },
+      { n: "Envoltura Corporal", d: "Ritual de detox con arcillas, algas o barro volcánico según el objetivo: reductora, relajante o mineralizante.", dur: "90 min" },
+      { n: "Exfoliación Integral", d: "Eliminación de células muertas con scrubs naturales y técnica de salt glow. La piel queda suave, nutrida y preparada.", dur: "60 min" },
+      { n: "Tratamiento Anticelulitis", d: "Protocolo específico con técnicas de presoterapia manual, activos drenantes y vendas frías para reducir la apariencia de la celulitis.", dur: "75 min" },
+    ],
+    proceso: [
+      { p: "01", t: "Evaluación", d: "Valoramos la zona a tratar, el tipo de tejido y definimos los objetivos del tratamiento." },
+      { p: "02", t: "Preparación", d: "Aplicamos activos preparadores que potencian la eficacia del protocolo principal." },
+      { p: "03", t: "Tratamiento", d: "Sesión completa con las técnicas seleccionadas, adaptadas a tu morfología y objetivos." },
+      { p: "04", t: "Mantenimiento", d: "Diseñamos una pauta de sesiones y rutina en casa para mantener y potenciar los resultados." },
+    ],
+  },
+  micropigmentacion: {
+    title: "Micropigmentación", titleItalic: "",
+    eyebrow: "Estética · Micropigmentación",
+    description: "Definición permanente y natural de cejas, labios y eyeliner con los mejores pigmentos del mercado y técnicas adaptadas a la anatomía de cada rostro.",
+    intro: "La micropigmentación es un arte que exige precisión, conocimiento de la anatomía facial y un sentido estético refinado. En Clínica Esmera trabajamos con los mejores pigmentos del mercado y técnicas actualizadas para resultados naturales y duraderos que realzan tu belleza sin artificios.",
+    tratamientos: [
+      { n: "Micropigmentación de Cejas", d: "Técnica pelo a pelo o sombreado para unas cejas perfectamente definidas y con apariencia 100% natural. Incluye retoque a las 4-6 semanas.", dur: "2,5 h" },
+      { n: "Micropigmentación Labial", d: "Definición y relleno de labios con pigmento. Resultados naturales que perduran 2-3 años. Incluye consulta previa de diseño.", dur: "2 h" },
+      { n: "Eyeliner Permanente", d: "Definición superior, inferior o ambas. Desde el más discreto e imperceptible hasta un eyeliner más marcado según tu estilo.", dur: "1,5 h" },
+      { n: "Sombreado y Degradado", d: "Técnica ombre brows o powdery brows para un efecto de maquillaje suave y natural. Ideal para pieles grasas o con poco pelo.", dur: "2,5 h" },
+    ],
+    proceso: [
+      { p: "01", t: "Diseño", d: "Diseñamos la forma, el arco y el color en papel antes de tocar la piel. Tu aprobación es imprescindible." },
+      { p: "02", t: "Anestesia", d: "Aplicamos anestésico tópico para garantizar una sesión completamente cómoda e indolora." },
+      { p: "03", t: "Pigmentación", d: "Realizamos el procedimiento con máxima precisión, pelo a pelo o con técnica de sombreado." },
+      { p: "04", t: "Retoque", d: "A las 4-6 semanas realizamos el retoque incluido para ajustar color y forma tras la cicatrización." },
+    ],
+  },
+  masajes: {
+    title: "Masajes", titleItalic: "",
+    eyebrow: "Estética · Masajes",
+    description: "Rituales de bienestar que combinan técnicas terapéuticas y de relajación para recuperar el equilibrio físico y mental que mereces.",
+    intro: "El masaje va más allá del placer: es una herramienta terapéutica de primera magnitud. En Clínica Esmera formamos a nuestras profesionales en las técnicas más eficaces para que cada sesión sea una experiencia transformadora.",
+    tratamientos: [
+      { n: "Drenaje Linfático Manual", d: "Técnica de Vodder para activar el sistema linfático, eliminar toxinas y reducir la retención de líquidos. Indicado pre y post operatorio.", dur: "60 min" },
+      { n: "Masaje Relajante", d: "Técnica sueca de effleurage y pétrissage para liberar tensiones musculares, reducir el estrés y recuperar el bienestar.", dur: "60 min" },
+      { n: "Masaje Deportivo", d: "Protocolo de descontracturación y activación muscular para deportistas. Pre-competición o recuperación post-esfuerzo.", dur: "75 min" },
+      { n: "Masaje con Piedras Calientes", d: "Basalto volcánico a temperatura controlada combinado con técnicas de masaje para una relajación profunda y duradera.", dur: "90 min" },
+      { n: "Reflexología Podal", d: "Estimulación de los puntos reflejos del pie que corresponden a cada órgano del cuerpo. Equilibrio y bienestar desde la planta.", dur: "45 min" },
+    ],
+    proceso: [
+      { p: "01", t: "Consulta", d: "Valoramos tu estado físico, tensiones y objetivos para seleccionar la técnica más adecuada." },
+      { p: "02", t: "Preparación", d: "Calentamos la zona a tratar con técnicas suaves para preparar el tejido muscular." },
+      { p: "03", t: "Sesión", d: "Protocolo completo con la técnica elegida, adaptado a tus necesidades y zonas de tensión." },
+      { p: "04", t: "Recomendaciones", d: "Pautas de hidratación y actividad tras la sesión para maximizar los beneficios." },
+    ],
+  },
+};
+
+export function getStaticPaths() {
+  return ["faciales","corporales","micropigmentacion","masajes"].map(slug => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const d = data[slug];
+---
+
+<Layout title={`${d.title} · Estética · Clínica Esmera`}>
+  <Navbar />
+  <PageHero
+    eyebrow={d.eyebrow}
+    title={d.title}
+    description={d.description}
+    breadcrumb={[
+      { label: "Estético", href: "/estetico/" },
+      { label: d.title, href: `/estetico/${slug}` }
+    ]}
+  />
+
+  <section class="trat-section">
+    <div class="container">
+      <div class="ts-intro">
+        <p>{d.intro}</p>
+      </div>
+
+      <!-- Tratamientos -->
+      <div class="ts-hd">
+        <div class="eyebrow"><span>Tratamientos</span></div>
+        <h2 class="sec-title">Qué <em>incluimos</em></h2>
+      </div>
+
+      <div class="ts-list">
+        {d.tratamientos.map((t: any, i: number) => (
+          <div class="ts-row">
+            <div class="tsr-num">{String(i+1).padStart(2,'0')}</div>
+            <div class="tsr-main">
+              <div class="tsr-top">
+                <h3 class="tsr-name">{t.n}</h3>
+                <span class="tsr-dur">{t.dur}</span>
+              </div>
+              <p class="tsr-desc">{t.d}</p>
+            </div>
+            <a href="/nosotros#contacto" class="tsr-cta">
+              Reservar
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5.5h7M6 2.5l2.5 3L6 8.5"/></svg>
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <!-- Proceso -->
+      <div class="ts-proceso">
+        <div class="eyebrow"><span>Cómo trabajamos</span></div>
+        <h2 class="sec-title">El <em>proceso</em></h2>
+        <div class="tp-grid">
+          {d.proceso.map((p: any) => (
+            <div class="tp-step">
+              <div class="tps-num">{p.p}</div>
+              <div class="tps-line"></div>
+              <h3 class="tps-t">{p.t}</h3>
+              <p class="tps-d">{p.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <PageCTA />
+  <Footer />
+</Layout>
+
+<style>
+  .trat-section { padding: 96px 0; background: var(--ivory); }
+
+  .ts-intro {
+    max-width: 680px; margin-bottom: 72px;
+    font-size: 1rem; color: var(--text-muted);
+    line-height: 1.82; font-weight: 300;
+  }
+
+  .ts-hd { margin-bottom: 36px; }
+
+  /* Tratamientos list */
+  .ts-list { border-top: 1px solid rgba(0,0,0,0.07); margin-bottom: 96px; }
+
+  .ts-row {
+    display: grid; grid-template-columns: 48px 1fr 100px;
+    gap: 28px; align-items: start;
+    padding: 28px 0; border-bottom: 1px solid rgba(0,0,0,0.06);
+    transition: background var(--t);
+    margin: 0 -16px; padding-left: 16px; padding-right: 16px;
+  }
+  .ts-row:hover { background: var(--ivory-mid); }
+
+  .tsr-num { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 0.75rem; color: var(--gold); opacity: 0.7; padding-top: 4px; }
+
+  .tsr-top { display: flex; align-items: baseline; gap: 16px; margin-bottom: 8px; flex-wrap: wrap; }
+  .tsr-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 400; color: var(--dark); }
+  .tsr-dur { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.1em; font-weight: 300; }
+  .tsr-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+
+  .tsr-cta {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--dark); border-bottom: 1px solid rgba(213,192,57,0.4);
+    padding-bottom: 2px; padding-top: 4px; transition: all 0.2s; width: fit-content;
+  }
+  .tsr-cta:hover { color: var(--gold-warm); gap: 9px; border-color: var(--gold); }
+
+  /* Proceso */
+  .ts-proceso { padding-top: 16px; }
+  .ts-proceso .sec-title { margin-bottom: 48px; }
+
+  .tp-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; }
+  .tp-step {}
+  .tps-num { font-family: var(--font-display); font-style: italic; font-size: 2rem; font-weight: 300; color: var(--gold); opacity: 0.6; line-height: 1; margin-bottom: 12px; }
+  .tps-line { width: 24px; height: 1px; background: var(--gold); opacity: 0.3; margin-bottom: 14px; }
+  .tps-t { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; color: var(--dark); margin-bottom: 8px; }
+  .tps-d { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
+
+  @media (max-width: 860px) {
+    .ts-row { grid-template-columns: 40px 1fr; }
+    .tsr-cta { grid-column: 2; }
+    .tp-grid { grid-template-columns: repeat(2,1fr); }
+  }
+  @media (max-width: 520px) {
+    .ts-row { grid-template-columns: 1fr; }
+    .tsr-num { display: none; }
+    .tp-grid { grid-template-columns: 1fr; }
+    .trat-section { padding: 72px 0; }
+  }
+</style>

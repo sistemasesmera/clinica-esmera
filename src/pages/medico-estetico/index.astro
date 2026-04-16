@@ -1,0 +1,120 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import PageHero from '../../components/PageHero.astro';
+import PageCTA from '../../components/PageCTA.astro';
+import Footer from '../../components/Footer.astro';
+
+const areas = [
+  { slug: "faciales",   num: "I",  title: "Faciales", desc: "Toxina botulínica, ácido hialurónico, bioestimuladores, mesoterapia y PRP para un rejuvenecimiento facial natural y duradero.", icon: "◎" },
+  { slug: "corporales", num: "II", title: "Corporales", desc: "Mesoterapia corporal, carboxiterapia, lipolíticos y bioestimuladores para remodelar y reafirmar el cuerpo sin cirugía.", icon: "◈" },
+];
+---
+
+<Layout title="Medicina Estética · Clínica Esmera">
+  <Navbar />
+  <PageHero
+    eyebrow="Medicina Estética"
+    title="Ciencia al servicio"
+    titleItalic="de tu belleza"
+    description="Tratamientos médico-estéticos supervisados por especialistas certificados. Máxima seguridad, eficacia clínica comprobada y resultados que perduran."
+    breadcrumb={[{ label: "Médico Estético", href: "/medico-estetico/" }]}
+  />
+
+  <section class="me-section">
+    <div class="container">
+      <div class="me-certif">
+        <span>Médicos certificados</span>
+        <span class="cs">·</span>
+        <span>Productos con marcado CE</span>
+        <span class="cs">·</span>
+        <span>Consulta médica incluida</span>
+      </div>
+
+      <div class="me-grid">
+        {areas.map(a => (
+          <a href={`/medico-estetico/${a.slug}`} class="me-card">
+            <div class="mec-top">
+              <span class="mec-romano">{a.num}</span>
+              <span class="mec-icon">{a.icon}</span>
+            </div>
+            <div class="mec-rule"></div>
+            <h2 class="mec-title">Médico Estético<br /><em>{a.title}</em></h2>
+            <p class="mec-desc">{a.desc}</p>
+            <span class="mec-link">
+              Ver tratamientos
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 6h8M7 3l3 3-3 3"/></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+
+      <div class="me-note">
+        <span class="mn-orn">✦</span>
+        <p>Todos los tratamientos de medicina estética incluyen valoración médica previa. Cada protocolo se diseña de forma individual según tus objetivos y tu historial de salud.</p>
+      </div>
+    </div>
+  </section>
+
+  <PageCTA heading="¿Quieres saber qué tratamiento es el indicado para ti?" sub="Agenda tu consulta médica gratuita. Nuestros especialistas analizarán tu caso y diseñarán el protocolo más adecuado." />
+  <Footer />
+</Layout>
+
+<style>
+  .me-section { padding: 96px 0; background: var(--ivory); }
+
+  .me-certif {
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    margin-bottom: 56px;
+    font-size: 0.75rem; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 300;
+  }
+  .cs { color: var(--gold); opacity: 0.4; }
+
+  .me-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.06); border-radius: var(--radius);
+    overflow: hidden; margin-bottom: 40px;
+  }
+
+  .me-card {
+    background: var(--white); padding: 52px 44px;
+    display: flex; flex-direction: column;
+    text-decoration: none; min-height: 380px;
+    transition: background var(--t);
+  }
+  .me-card:hover { background: var(--ivory-mid); }
+
+  .mec-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .mec-romano { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 0.9rem; color: var(--gold); opacity: 0.7; }
+  .mec-icon { font-size: 1.1rem; color: var(--gold); opacity: 0.4; }
+
+  .mec-rule { width: 28px; height: 1px; background: var(--gold); opacity: 0.35; margin-bottom: 20px; }
+
+  .mec-title { font-family: var(--font-display); font-size: 1.9rem; font-weight: 400; color: var(--dark); margin-bottom: 16px; line-height: 1.25; }
+  .mec-title em { font-style: italic; color: var(--text-soft); }
+
+  .mec-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.75; font-weight: 300; flex: 1; margin-bottom: 28px; }
+
+  .mec-link {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--dark); border-bottom: 1px solid rgba(213,192,57,0.4);
+    padding-bottom: 2px; width: fit-content; transition: all 0.25s;
+  }
+  .me-card:hover .mec-link { color: var(--gold-warm); border-color: var(--gold); gap: 11px; }
+
+  .me-note {
+    display: flex; gap: 16px; align-items: flex-start;
+    background: var(--ivory-mid); border: 1px solid rgba(213,192,57,0.18);
+    padding: 20px 24px; border-radius: var(--radius);
+  }
+  .mn-orn { color: var(--gold); opacity: 0.5; flex-shrink: 0; font-size: 0.8rem; margin-top: 2px; }
+  .me-note p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+
+  @media (max-width: 700px) {
+    .me-grid { grid-template-columns: 1fr; }
+    .me-card { padding: 36px 28px; }
+    .me-section { padding: 72px 0; }
+  }
+</style>

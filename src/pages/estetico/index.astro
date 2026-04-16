@@ -1,0 +1,94 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import PageHero from '../../components/PageHero.astro';
+import PageCTA from '../../components/PageCTA.astro';
+import Footer from '../../components/Footer.astro';
+
+const tratamientos = [
+  { slug: "faciales",         num: "01", title: "Faciales",         desc: "Protocolos de limpieza, hidratación, peeling y antiedad adaptados a cada tipo de piel para un rostro luminoso y saludable.", icon: "◎" },
+  { slug: "corporales",       num: "02", title: "Corporales",       desc: "Tratamientos reductores, modeladores y reafirmantes con activos de primera calidad para cuidar tu cuerpo integralmente.", icon: "◈" },
+  { slug: "micropigmentacion",num: "03", title: "Micropigmentación", desc: "Definición permanente de cejas, labios y eyeliner con pigmentos premium y técnicas que respetan la anatomía de cada rostro.", icon: "✦" },
+  { slug: "masajes",          num: "04", title: "Masajes",          desc: "Rituales de bienestar que combinan técnicas terapéuticas para recuperar el equilibrio físico y mental.", icon: "❋" },
+];
+---
+
+<Layout title="Estética · Clínica Esmera">
+  <Navbar />
+  <PageHero
+    eyebrow="Tratamientos Estéticos"
+    title="Estética que"
+    titleItalic="transforma"
+    description="Una gama completa de tratamientos diseñados para realzar tu belleza natural con técnicas probadas, activos de primera calidad y profesionales especializados."
+    breadcrumb={[{ label: "Estético", href: "/estetico/" }]}
+  />
+
+  <section class="est-section">
+    <div class="container">
+      <div class="est-grid">
+        {tratamientos.map(t => (
+          <a href={`/estetico/${t.slug}`} class="est-card">
+            <div class="ec-top">
+              <span class="ec-num">{t.num}</span>
+              <span class="ec-icon">{t.icon}</span>
+            </div>
+            <div class="ec-rule"></div>
+            <h2 class="ec-title">{t.title}</h2>
+            <p class="ec-desc">{t.desc}</p>
+            <span class="ec-link">
+              Descubrir tratamientos
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 6h8M7 3l3 3-3 3"/></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PageCTA />
+  <Footer />
+</Layout>
+
+<style>
+  .est-section { padding: 96px 0; background: var(--ivory); }
+
+  .est-grid {
+    display: grid; grid-template-columns: repeat(2,1fr);
+    gap: 1px; background: rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.06); border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .est-card {
+    background: var(--white); padding: 52px 44px;
+    display: flex; flex-direction: column;
+    text-decoration: none;
+    transition: background var(--t);
+    min-height: 340px;
+  }
+  .est-card:hover { background: var(--ivory-mid); }
+
+  .ec-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .ec-num { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 0.75rem; color: var(--gold); letter-spacing: 0.1em; opacity: 0.8; }
+  .ec-icon { font-size: 1.1rem; color: var(--gold); opacity: 0.5; }
+
+  .ec-rule { width: 28px; height: 1px; background: var(--gold); opacity: 0.35; margin-bottom: 20px; }
+
+  .ec-title { font-family: var(--font-display); font-size: 1.9rem; font-weight: 400; color: var(--dark); margin-bottom: 14px; }
+
+  .ec-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.75; font-weight: 300; flex: 1; margin-bottom: 28px; }
+
+  .ec-link {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--dark); border-bottom: 1px solid rgba(213,192,57,0.4);
+    padding-bottom: 2px; width: fit-content; transition: all 0.25s;
+  }
+  .est-card:hover .ec-link { color: var(--gold-warm); border-color: var(--gold); gap: 11px; }
+
+  @media (max-width: 700px) {
+    .est-grid { grid-template-columns: 1fr; }
+    .est-card { padding: 36px 28px; }
+    .est-section { padding: 72px 0; }
+  }
+</style>

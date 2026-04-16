@@ -1,0 +1,180 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import PageHero from '../../components/PageHero.astro';
+import PageCTA from '../../components/PageCTA.astro';
+import Footer from '../../components/Footer.astro';
+
+const data: Record<string, any> = {
+  radiofrecuencia: {
+    title: "Radiofrecuencia", eyebrow: "Aparatología · Radiofrecuencia",
+    ind: "Tensado · Antiedad · Reafirmación corporal",
+    description: "Tecnología no invasiva que estimula la producción de colágeno y elastina para tensar, rejuvenecer y reafirmar la piel de rostro y cuerpo con resultados progresivos y naturales.",
+    que: "La radiofrecuencia emite ondas electromagnéticas que calientan las capas profundas de la piel de forma controlada. Este calor activa los fibroblastos, las células responsables de producir colágeno y elastina, consiguiendo un efecto tensor y rejuvenecedor progresivo sin dañar la superficie cutánea.",
+    indicaciones: ["Piel flácida en rostro y cuello", "Líneas de expresión y arrugas", "Reafirmación corporal", "Flacidez postparto o post-pérdida de peso", "Mantenimiento antiedad general"],
+    beneficios: ["Estimulación del colágeno y la elastina", "Efecto tensor inmediato y progresivo", "Sin tiempo de recuperación", "Tratamiento completamente indoloro", "Resultados naturales y duraderos"],
+    sesiones: "Se recomiendan entre 6 y 8 sesiones semanales para tratamientos corporales, y 4 a 6 para el rostro. El mantenimiento recomendado es mensual.",
+  },
+  hifu: {
+    title: "HIFU Ultrafocal", eyebrow: "Aparatología · HIFU",
+    ind: "Lifting · Tensado · Sin cirugía",
+    description: "El tratamiento de lifting sin bisturí más avanzado y eficaz del mercado. Ultrasonidos de alta intensidad focalizados que actúan en la capa más profunda de la piel con resultados equivalentes a un lifting quirúrgico.",
+    que: "El HIFU (High Intensity Focused Ultrasound) dirige ultrasonidos de alta intensidad a puntos específicos de la dermis profunda y el SMAS —la misma capa que trabaja el cirujano en un lifting quirúrgico—. La energía térmica generada produce una contracción inmediata y estimula la neocolagénesis durante meses tras el tratamiento.",
+    indicaciones: ["Flacidez facial moderada-severa", "Descenso de la línea de mandíbula", "Flacidez de cuello y papada", "Lifting de cejas caídas", "Preventivo antiedad desde los 35 años"],
+    beneficios: ["Lifting sin cirugía ni anestesia", "Acción en la capa más profunda (SMAS)", "Resultados visibles desde la primera sesión", "Efecto máximo a los 3 meses", "Duración de 12 a 18 meses"],
+    sesiones: "Una sola sesión es suficiente para obtener resultados completos. Se puede repetir anualmente para mantenimiento.",
+  },
+  crioliposis: {
+    title: "Criolipólisis", eyebrow: "Aparatología · Criolipólisis",
+    ind: "Grasa localizada · Sin cirugía · Permanente",
+    description: "Eliminación definitiva y selectiva de grasa localizada mediante frío controlado. Sin cirugía, sin anestesia y sin tiempo de recuperación. Las células grasas se destruyen de forma permanente.",
+    que: "La criolipólisis se basa en la crioapoptosis: las células adiposas son más sensibles al frío que el resto del tejido. Al enfriar la zona tratada a temperatura controlada, las células grasas entran en proceso de apoptosis (muerte celular programada) y son eliminadas de forma natural por el sistema linfático en las semanas siguientes.",
+    indicaciones: ["Grasa abdominal resistente", "Flancos (cartucheras)", "Cara interna de muslos", "Espalda y zona bra", "Papada y zona submentoniana"],
+    beneficios: ["Reducción permanente de células grasas", "Sin cirugía ni anestesia", "Sin tiempo de recuperación", "Resultados visibles en 4-8 semanas", "Complemento ideal a dieta y ejercicio"],
+    sesiones: "Una sesión suele ser suficiente por zona. Para casos de mayor volumen se puede repetir a los 3 meses.",
+  },
+  presoterapia: {
+    title: "Presoterapia", eyebrow: "Aparatología · Presoterapia",
+    ind: "Drenaje · Retención · Celulitis",
+    description: "Drenaje linfático mecánico de precisión que elimina toxinas, reduce la retención de líquidos y mejora la circulación. La herramienta más completa para el bienestar circulatorio.",
+    que: "La presoterapia utiliza una bota o traje de compresión secuencial que aplica presión progresiva en diferentes compartimentos. Esta compresión mecánica imita y potencia el efecto del drenaje linfático manual, estimulando el retorno venoso y linfático y favoreciendo la eliminación de toxinas y líquidos retenidos.",
+    indicaciones: ["Retención de líquidos", "Celulitis y piel de naranja", "Piernas pesadas o cansadas", "Edemas linfáticos", "Mantenimiento post-tratamiento estético"],
+    beneficios: ["Drenaje linfático profundo y eficaz", "Reducción de la retención de líquidos", "Mejora de la circulación venosa", "Alivio inmediato de piernas cansadas", "Tratamiento relajante e indoloro"],
+    sesiones: "Se recomienda una pauta inicial de 10 sesiones en días alternos, seguida de mantenimiento semanal o quincenal.",
+  },
+  laser: {
+    title: "Láser Depilatorio", eyebrow: "Aparatología · Láser",
+    ind: "Depilación permanente · Todas las pieles",
+    description: "Eliminación permanente del vello con láser de diodo de última generación. Eficaz en todo tipo de pieles y zonas corporales, con tratamientos rápidos, cómodos e indoloros.",
+    que: "El láser de diodo emite una longitud de onda absorbida selectivamente por la melanina del folículo piloso. La energía lumínica se convierte en calor, destruyendo el folículo sin dañar el tejido circundante. El tratamiento actúa en la fase anágena del ciclo del cabello, por lo que son necesarias varias sesiones para tratar todos los folículos.",
+    indicaciones: ["Piernas y brazos", "Zona bikini y axilas", "Cara: labio, mentón y patillas", "Espalda, pecho y abdomen (hombre)", "Cualquier zona corporal"],
+    beneficios: ["Reducción permanente del vello del 80-90%", "Apto para piel morena y oscura", "Tratamiento rápido e indoloro", "Sin irritación ni pelos enquistados", "Resultados visibles desde la 2ª sesión"],
+    sesiones: "Se requieren entre 6 y 8 sesiones iniciales cada 4-8 semanas según la zona. Se pueden necesitar sesiones de mantenimiento anuales.",
+  },
+  ipl: {
+    title: "Luz Pulsada IPL", eyebrow: "Aparatología · IPL",
+    ind: "Manchas · Rosácea · Fotoenvejecimiento",
+    description: "Fototerapia de amplio espectro para tratar manchas, rojeces, vasos sanguíneos visibles y fotoenvejecimiento. Piel uniforme, luminosa y rejuvenecida.",
+    que: "La Luz Pulsada Intensa (IPL) emite destellos de luz de amplio espectro filtrada. Según la longitud de onda y el filtro utilizado, actúa sobre la melanina (manchas), la oxihemoglobina (rojeces y vasos) o estimula el colágeno (antiedad). Es un tratamiento versátil con mínimo tiempo de recuperación.",
+    indicaciones: ["Manchas solares y melasma", "Rosácea y cuperosis", "Vasos sanguíneos visibles", "Piel apagada y fotoenvejecida", "Depilación de vello claro o pelusilla"],
+    beneficios: ["Unificación del tono de la piel", "Reducción de rojeces y vasos", "Estimulación del colágeno", "Mínimo tiempo de recuperación", "Resultados acumulativos por sesión"],
+    sesiones: "Pauta habitual de 3 a 5 sesiones cada 3-4 semanas. Mantenimiento de 1-2 sesiones anuales según evolución.",
+  },
+  "drenaje-linfatico": {
+    title: "Drenaje Linfático", eyebrow: "Aparatología · Drenaje Linfático",
+    ind: "Post-operatorio · Edemas · Detox",
+    description: "Tecnología de presoterapia secuencial combinada con técnica manual para el drenaje más completo y eficaz disponible. Fundamental en la recuperación postoperatoria.",
+    que: "Nuestro protocolo de drenaje linfático combina la presoterapia de última generación con técnica manual de Vodder. La tecnología actúa en todo el sistema linfático de forma simultánea, mientras la técnica manual trabaja las zonas específicas que requieren mayor atención. El resultado es el drenaje más completo y eficaz posible.",
+    indicaciones: ["Recuperación post-liposucción y otras cirugías", "Linfedemas y edemas persistentes", "Retención de líquidos severa", "Detox corporal integral", "Mantenimiento del sistema linfático"],
+    beneficios: ["El drenaje más completo del mercado", "Efecto inmediato y visible", "Esencial en recuperación postoperatoria", "Reduce edemas y fibrosis post-cirugía", "Bienestar general y detox profundo"],
+    sesiones: "Post-operatorio: diario las primeras 2 semanas, luego en pauta descendente. Para mantenimiento o detox: 1-2 veces por semana.",
+  },
+};
+
+export function getStaticPaths() {
+  return ["radiofrecuencia","hifu","crioliposis","presoterapia","laser","ipl","drenaje-linfatico"].map(slug => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const d = data[slug];
+---
+
+<Layout title={`${d.title} · Aparatología · Clínica Esmera`}>
+  <Navbar />
+  <PageHero
+    eyebrow={d.eyebrow}
+    title={d.title}
+    description={d.description}
+    breadcrumb={[
+      { label: "Aparatología", href: "/aparatologia/" },
+      { label: d.title, href: `/aparatologia/${slug}` }
+    ]}
+  />
+
+  <section class="eq-section">
+    <div class="container">
+      <div class="eq-tag">{d.ind}</div>
+
+      <!-- Qué es -->
+      <div class="eq-block">
+        <div class="eyebrow"><span>El tratamiento</span></div>
+        <h2 class="sec-title">¿Cómo <em>funciona?</em></h2>
+        <p class="eq-body">{d.que}</p>
+      </div>
+
+      <div class="eq-two-col">
+        <!-- Indicaciones -->
+        <div class="eq-col">
+          <div class="eyebrow"><span>Indicaciones</span></div>
+          <h3 class="eq-col-title">Para <em>quién está</em> indicado</h3>
+          <ul class="eq-ul">
+            {d.indicaciones.map((i: string) => (
+              <li><span>—</span>{i}</li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Beneficios -->
+        <div class="eq-col">
+          <div class="eyebrow"><span>Beneficios</span></div>
+          <h3 class="eq-col-title">Qué <em>conseguirás</em></h3>
+          <ul class="eq-ul eq-ul-gold">
+            {d.beneficios.map((b: string) => (
+              <li><span>✦</span>{b}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Sesiones -->
+      <div class="eq-sesiones">
+        <span class="eqs-orn">◈</span>
+        <div>
+          <p class="eqs-title">Pauta de sesiones recomendada</p>
+          <p class="eqs-text">{d.sesiones}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <PageCTA />
+  <Footer />
+</Layout>
+
+<style>
+  .eq-section { padding: 96px 0; background: var(--ivory); }
+
+  .eq-tag {
+    display: inline-block; font-size: 0.68rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--text-muted); font-weight: 300;
+    border-bottom: 1px solid rgba(213,192,57,0.35); padding-bottom: 4px;
+    margin-bottom: 56px;
+  }
+
+  .eq-block { margin-bottom: 72px; }
+  .eq-body { font-size: 1rem; color: var(--text-muted); line-height: 1.82; font-weight: 300; max-width: 700px; }
+
+  .eq-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-bottom: 56px; }
+
+  .eq-col-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; color: var(--dark); margin-bottom: 24px; margin-top: 6px; }
+  .eq-col-title em { font-style: italic; color: var(--text-soft); }
+
+  .eq-ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .eq-ul li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.875rem; color: var(--text-soft); line-height: 1.5; font-weight: 300; }
+  .eq-ul li span { color: var(--gold); opacity: 0.6; flex-shrink: 0; margin-top: 2px; }
+  .eq-ul-gold li span { opacity: 0.8; }
+
+  .eq-sesiones {
+    display: flex; gap: 16px; align-items: flex-start;
+    background: var(--dark); color: white;
+    padding: 24px 28px; border-radius: var(--radius);
+  }
+  .eqs-orn { color: var(--gold); font-size: 1rem; opacity: 0.6; flex-shrink: 0; margin-top: 2px; }
+  .eqs-title { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 6px; font-weight: 400; }
+  .eqs-text { font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.65; font-weight: 300; }
+
+  @media (max-width: 700px) {
+    .eq-two-col { grid-template-columns: 1fr; gap: 40px; }
+    .eq-section { padding: 72px 0; }
+  }
+</style>

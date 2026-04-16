@@ -1,0 +1,409 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import PageHero from '../components/PageHero.astro';
+import Footer from '../components/Footer.astro';
+
+const valores = [
+  { n: "Rigor clínico", d: "Todos nuestros tratamientos tienen evidencia científica demostrada. No aplicamos ningún protocolo sin respaldo clínico verificado." },
+  { n: "Personalización real", d: "No existe un protocolo único. Cada cliente recibe un diagnóstico individual y un plan de tratamiento diseñado exclusivamente para su caso." },
+  { n: "Transparencia total", d: "Explicamos qué hacemos, por qué lo hacemos y qué puedes esperar. Sin promesas irreales, sin letra pequeña." },
+  { n: "Resultados medibles", d: "Trabajamos con objetivos claros y hacemos seguimiento real de la evolución de cada cliente. Los resultados son la única métrica que nos importa." },
+];
+
+const equipo = [
+  { nombre: "Dra. Elena Morales", cargo: "Directora Médica · Medicina Estética", bio: "Especialista en medicina estética facial con más de 12 años de experiencia. Formación en las mejores clínicas de Europa y miembro de la SEME." },
+  { nombre: "Laura Sánchez", cargo: "Directora de Estética · Experta en Aparatología", bio: "Estética Superior con especialización en aparatología de grado médico. Más de 8 años diseñando protocolos corporales de alta eficacia." },
+  { nombre: "Carmen Díaz", cargo: "Especialista en Micropigmentación y Estética Avanzada", bio: "Artista certificada en micropigmentación con técnicas de vanguardia. Formación continua en las últimas tendencias de belleza estética." },
+];
+
+const stats = [
+  { num: "10+", label: "Años de experiencia" },
+  { num: "4.800+", label: "Procedimientos realizados" },
+  { num: "97%", label: "Clientes satisfechos" },
+  { num: "3", label: "Especialistas certificados" },
+];
+---
+
+<Layout title="Nosotros · Clínica Esmera">
+  <Navbar />
+  <PageHero
+    eyebrow="Quiénes somos"
+    title="Clínica Esmera,"
+    titleItalic="tu clínica de confianza"
+    description="Más de una década dedicados a la excelencia estética en Madrid. Un equipo médico y estético que combina rigor científico con una atención verdaderamente personalizada."
+    breadcrumb={[{ label: "Nosotros", href: "/nosotros" }]}
+  />
+
+  <!-- Historia & valores -->
+  <section class="nos-section">
+    <div class="container">
+
+      <div class="nos-intro-grid">
+        <div class="nos-intro-text">
+          <div class="eyebrow"><span>Nuestra historia</span></div>
+          <h2 class="sec-title">Una clínica <em>diferente</em></h2>
+          <p class="nos-body">Clínica Esmera nació de la convicción de que la estética y la medicina estética merecen el mismo rigor que cualquier otra especialidad médica. Llevamos más de 10 años en Madrid ofreciendo tratamientos de alto rendimiento a personas que buscan resultados reales, no promesas vacías.</p>
+          <p class="nos-body">Nuestro nombre lo dice todo: esmerar. Dedicamos tiempo, conocimiento y atención a cada cliente porque sabemos que detrás de cada consulta hay una persona con objetivos propios, una historia particular y una confianza que no nos tomamos a la ligera.</p>
+        </div>
+        <div class="nos-stats-panel">
+          {stats.map(s => (
+            <div class="nsp-item">
+              <div class="nsp-num">{s.num}</div>
+              <div class="nsp-label">{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Valores -->
+  <section class="valores-section">
+    <div class="container">
+      <div class="eyebrow"><span>Lo que nos define</span></div>
+      <h2 class="sec-title">Nuestros <em>valores</em></h2>
+      <div class="val-grid">
+        {valores.map((v, i) => (
+          <div class="val-card">
+            <div class="vc-num">{String(i + 1).padStart(2, '0')}</div>
+            <div class="vc-line"></div>
+            <h3 class="vc-title">{v.n}</h3>
+            <p class="vc-desc">{v.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipo -->
+  <section class="equipo-section">
+    <div class="container">
+      <div class="eyebrow"><span>Nuestro equipo</span></div>
+      <h2 class="sec-title">Las personas <em>detrás</em></h2>
+      <div class="eq-grid">
+        {equipo.map(p => (
+          <div class="eq-card">
+            <div class="eqc-avatar">
+              <div class="eqca-initials">{p.nombre.split(' ').map((n: string) => n[0]).slice(0, 2).join('')}</div>
+            </div>
+            <div class="eqc-body">
+              <h3 class="eqc-name">{p.nombre}</h3>
+              <p class="eqc-cargo">{p.cargo}</p>
+              <p class="eqc-bio">{p.bio}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Reseñas -->
+  <section class="reviews-section">
+    <div class="container">
+      <div class="eyebrow"><span>Lo que dicen nuestras clientas</span></div>
+      <h2 class="sec-title">Resultados <em>reales</em></h2>
+      <div class="rev-grid">
+        <div class="rev-card">
+          <div class="rc-stars">★★★★★</div>
+          <p class="rc-text">"Llevo dos años viniendo a Clínica Esmera y el cambio en mi piel es espectacular. El tratamiento de HIFU me lo recomendó la Dra. Morales y estoy encantada con los resultados. Totalmente profesional y sin agobios."</p>
+          <div class="rc-author">
+            <div class="rca-avatar">M</div>
+            <div>
+              <div class="rca-name">María G.</div>
+              <div class="rca-tratamiento">HIFU Ultrafocal · Clienta desde 2022</div>
+            </div>
+          </div>
+        </div>
+        <div class="rev-card">
+          <div class="rc-stars">★★★★★</div>
+          <p class="rc-text">"Me hice el láser corporal completo y el resultado es exactamente lo que buscaba. El equipo es muy profesional, explican todo con detalle y te hacen sentir cómoda en todo momento. Sin duda volvería."</p>
+          <div class="rc-author">
+            <div class="rca-avatar">S</div>
+            <div>
+              <div class="rca-name">Sara P.</div>
+              <div class="rca-tratamiento">Láser Depilatorio · Clienta desde 2023</div>
+            </div>
+          </div>
+        </div>
+        <div class="rev-card">
+          <div class="rc-stars">★★★★★</div>
+          <p class="rc-text">"Después de buscar mucho, di con Clínica Esmera para la micropigmentación de cejas. Carmen es una artista. El resultado es completamente natural, exactamente lo que quería. Repetiré sin dudarlo."</p>
+          <div class="rc-author">
+            <div class="rca-avatar">A</div>
+            <div>
+              <div class="rca-name">Ana R.</div>
+              <div class="rca-tratamiento">Micropigmentación · Clienta desde 2024</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section class="contacto-section" id="contacto">
+    <div class="container">
+      <div class="cont-grid">
+        <div class="cont-info">
+          <div class="eyebrow"><span>Contacto</span></div>
+          <h2 class="sec-title cont-title">Pide tu <em>cita</em></h2>
+          <p class="cont-lead">Rellena el formulario y nos ponemos en contacto contigo en menos de 24 horas para confirmar tu cita o resolver cualquier duda.</p>
+
+          <div class="cont-datos">
+            <div class="cd-item">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="var(--gold)" opacity="0.7"><path d="M7 0C4.24 0 2 2.24 2 5c0 3.87 5 9 5 9s5-5.13 5-9c0-2.76-2.24-5-5-5zm0 7.5c-1.38 0-2.5-1.12-2.5-2.5S5.62 2.5 7 2.5 9.5 3.62 9.5 5 8.38 7.5 7 7.5z"/></svg>
+              <div>
+                <p class="cd-label">Dirección</p>
+                <p class="cd-val">Paseo Santa María de la Cabeza, 10 · Madrid</p>
+              </div>
+            </div>
+            <div class="cd-item">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="var(--gold)" opacity="0.7"><path d="M11.45 9.07l-1.44-1.44a1.4 1.4 0 00-1.98 0l-.64.64a7.8 7.8 0 01-2.66-2.66l.64-.64a1.4 1.4 0 000-1.98L3.93.55A1.4 1.4 0 001.94.55L.69 1.8A2.8 2.8 0 00.06 3.95c.68 3.4 6.59 9.31 9.99 9.99a2.8 2.8 0 002.15-.63l1.25-1.25a1.4 1.4 0 00-.41-1.98l-1.59.99z"/></svg>
+              <div>
+                <p class="cd-label">Teléfono / WhatsApp</p>
+                <p class="cd-val">+34 600 000 000</p>
+              </div>
+            </div>
+            <div class="cd-item">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="var(--gold)" opacity="0.7"><path d="M12.25 2.5h-10.5A1.75 1.75 0 000 4.25v5.5C0 10.21.79 11 1.75 11h10.5A1.75 1.75 0 0014 9.75v-5.5A1.75 1.75 0 0012.25 2.5zm-5.25 6L1.75 5.25l.98-.84L7 7.73l4.27-3.32.98.84L7 8.5z"/></svg>
+              <div>
+                <p class="cd-label">Email</p>
+                <p class="cd-val">info@clinicaesmera.com</p>
+              </div>
+            </div>
+            <div class="cd-item">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="var(--gold)" opacity="0.7"><path d="M7 0C3.13 0 0 3.13 0 7s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zm.7 10.5H6.3V6.3h1.4v4.2zm0-5.6H6.3V3.5h1.4v1.4z"/></svg>
+              <div>
+                <p class="cd-label">Horario</p>
+                <p class="cd-val">Lun – Sáb: 10:00 – 19:00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form class="cont-form" name="contacto" method="POST">
+          <div class="cf-row">
+            <div class="cf-field">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+            </div>
+            <div class="cf-field">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="+34 600 000 000" required />
+            </div>
+          </div>
+          <div class="cf-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+          </div>
+          <div class="cf-field">
+            <label for="tratamiento">Tratamiento de interés</label>
+            <select id="tratamiento" name="tratamiento">
+              <option value="" disabled selected>Selecciona una opción</option>
+              <optgroup label="Estética">
+                <option>Faciales Estéticos</option>
+                <option>Corporales Estéticos</option>
+                <option>Micropigmentación</option>
+                <option>Masajes</option>
+              </optgroup>
+              <optgroup label="Aparatología">
+                <option>Radiofrecuencia</option>
+                <option>HIFU Ultrafocal</option>
+                <option>Criolipólisis</option>
+                <option>Presoterapia / Drenaje Linfático</option>
+                <option>Láser Depilatorio</option>
+                <option>Luz Pulsada IPL</option>
+              </optgroup>
+              <optgroup label="Médico Estético">
+                <option>Medicina Estética Facial</option>
+                <option>Medicina Estética Corporal</option>
+              </optgroup>
+              <option>Bonos y tarifas</option>
+              <option>Otro / No sé</option>
+            </select>
+          </div>
+          <div class="cf-field">
+            <label for="mensaje">Mensaje (opcional)</label>
+            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos tu caso o cualquier pregunta que tengas…"></textarea>
+          </div>
+          <div class="cf-check">
+            <input type="checkbox" id="privacidad" name="privacidad" required />
+            <label for="privacidad">He leído y acepto la <a href="#">política de privacidad</a></label>
+          </div>
+          <button type="submit" class="btn btn-gold cf-submit">
+            Enviar solicitud
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Intro */
+  .nos-section { padding: 96px 0; background: var(--ivory); }
+
+  .nos-intro-grid {
+    display: grid; grid-template-columns: 1fr 340px;
+    gap: 80px; align-items: start;
+  }
+
+  .nos-body {
+    font-size: 1rem; color: var(--text-muted); line-height: 1.85;
+    font-weight: 300; margin-bottom: 20px; max-width: 560px;
+  }
+
+  .nos-stats-panel {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: rgba(0,0,0,0.07);
+    border: 1px solid rgba(0,0,0,0.07); border-radius: var(--radius); overflow: hidden;
+    position: sticky; top: 100px;
+  }
+  .nsp-item {
+    background: var(--white); padding: 28px 24px;
+    transition: background var(--t);
+  }
+  .nsp-item:hover { background: var(--ivory-mid); }
+  .nsp-num {
+    font-family: var(--font-display); font-size: 2.4rem; font-weight: 300;
+    color: var(--dark); line-height: 1; margin-bottom: 6px;
+  }
+  .nsp-label { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.06em; font-weight: 300; line-height: 1.4; }
+
+  /* Valores */
+  .valores-section { padding: 80px 0; background: var(--white); }
+
+  .val-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; margin-top: 48px; }
+
+  .val-card {}
+  .vc-num { font-family: var(--font-display); font-style: italic; font-size: 2rem; font-weight: 300; color: var(--gold); opacity: 0.5; line-height: 1; margin-bottom: 12px; }
+  .vc-line { width: 24px; height: 1px; background: var(--gold); opacity: 0.3; margin-bottom: 14px; }
+  .vc-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 400; color: var(--dark); margin-bottom: 10px; }
+  .vc-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+
+  /* Equipo */
+  .equipo-section { padding: 80px 0; background: var(--ivory); }
+
+  .eq-grid { display: flex; flex-direction: column; gap: 1px; background: rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.06); border-radius: var(--radius); overflow: hidden; margin-top: 48px; }
+
+  .eq-card {
+    display: grid; grid-template-columns: 80px 1fr;
+    gap: 32px; align-items: center;
+    background: var(--white); padding: 32px 36px;
+    transition: background var(--t);
+  }
+  .eq-card:hover { background: var(--ivory-mid); }
+
+  .eqc-avatar {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: var(--dark); display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .eqca-initials { font-family: var(--font-display); font-style: italic; font-size: 1.3rem; font-weight: 300; color: var(--gold); }
+
+  .eqc-name { font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; color: var(--dark); margin-bottom: 4px; }
+  .eqc-cargo { font-size: 0.7rem; letter-spacing: 0.1em; color: var(--gold); text-transform: uppercase; font-weight: 400; margin-bottom: 10px; opacity: 0.8; }
+  .eqc-bio { font-size: 0.83rem; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
+
+  /* Reseñas */
+  .reviews-section { padding: 80px 0; background: var(--white); }
+
+  .rev-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 48px; }
+
+  .rev-card {
+    background: var(--ivory); border: 1px solid rgba(0,0,0,0.06);
+    border-radius: var(--radius); padding: 32px 28px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .rc-stars { color: var(--gold); font-size: 0.75rem; letter-spacing: 2px; }
+  .rc-text { font-size: 0.87rem; color: var(--text-muted); line-height: 1.75; font-weight: 300; font-style: italic; flex: 1; }
+  .rc-author { display: flex; align-items: center; gap: 12px; }
+  .rca-avatar {
+    width: 36px; height: 36px; background: var(--dark); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-style: italic; color: var(--gold); font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+  .rca-name { font-size: 0.85rem; font-weight: 500; color: var(--dark); margin-bottom: 2px; }
+  .rca-tratamiento { font-size: 0.7rem; color: var(--text-muted); font-weight: 300; }
+
+  /* Contacto */
+  .contacto-section { padding: 96px 0; background: var(--ivory); }
+
+  .cont-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
+
+  .cont-title { margin-bottom: 20px !important; }
+  .cont-lead { font-size: 0.92rem; color: var(--text-muted); line-height: 1.8; font-weight: 300; margin-bottom: 40px; }
+
+  .cont-datos { display: flex; flex-direction: column; gap: 20px; }
+  .cd-item { display: flex; align-items: flex-start; gap: 12px; }
+  .cd-item svg { flex-shrink: 0; margin-top: 2px; }
+  .cd-label { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 3px; font-weight: 400; }
+  .cd-val { font-size: 0.87rem; color: var(--text-soft); font-weight: 300; }
+
+  /* Form */
+  .cont-form {
+    background: var(--white); border: 1px solid rgba(0,0,0,0.07);
+    border-radius: var(--radius); padding: 48px 40px;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+
+  .cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .cf-field { display: flex; flex-direction: column; gap: 7px; }
+
+  .cf-field label {
+    font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--text-muted); font-weight: 400;
+  }
+  .cf-field input,
+  .cf-field select,
+  .cf-field textarea {
+    background: var(--ivory); border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 3px; padding: 12px 14px;
+    font-family: var(--font-body); font-size: 0.88rem;
+    color: var(--dark); font-weight: 300;
+    transition: border-color 0.2s;
+    outline: none;
+    width: 100%; box-sizing: border-box;
+  }
+  .cf-field input:focus,
+  .cf-field select:focus,
+  .cf-field textarea:focus {
+    border-color: rgba(213,192,57,0.5);
+    background: var(--white);
+  }
+  .cf-field input::placeholder,
+  .cf-field textarea::placeholder { color: rgba(0,0,0,0.25); }
+  .cf-field textarea { resize: vertical; min-height: 100px; }
+  .cf-field select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+
+  .cf-check { display: flex; align-items: flex-start; gap: 10px; }
+  .cf-check input[type="checkbox"] { width: 14px; height: 14px; margin-top: 2px; flex-shrink: 0; accent-color: var(--gold); cursor: pointer; }
+  .cf-check label { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; font-weight: 300; cursor: pointer; }
+  .cf-check label a { color: var(--text-soft); border-bottom: 1px solid rgba(0,0,0,0.15); }
+
+  .cf-submit { width: 100%; justify-content: center; padding: 14px 24px; font-size: 0.78rem; gap: 8px; cursor: pointer; border: none; }
+
+  @media (max-width: 1024px) {
+    .nos-intro-grid { grid-template-columns: 1fr; }
+    .nos-stats-panel { position: static; grid-template-columns: repeat(4,1fr); }
+    .cont-grid { grid-template-columns: 1fr; gap: 48px; }
+    .val-grid { grid-template-columns: repeat(2,1fr); }
+  }
+  @media (max-width: 700px) {
+    .nos-section, .valores-section, .equipo-section, .reviews-section, .contacto-section { padding: 72px 0; }
+    .nos-stats-panel { grid-template-columns: 1fr 1fr; }
+    .val-grid { grid-template-columns: 1fr; }
+    .rev-grid { grid-template-columns: 1fr; }
+    .eq-card { grid-template-columns: 1fr; }
+    .eqc-avatar { display: none; }
+    .cont-form { padding: 28px 20px; }
+    .cf-row { grid-template-columns: 1fr; }
+  }
+</style>

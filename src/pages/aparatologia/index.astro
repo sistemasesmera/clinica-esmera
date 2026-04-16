@@ -1,0 +1,93 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import PageHero from '../../components/PageHero.astro';
+import PageCTA from '../../components/PageCTA.astro';
+import Footer from '../../components/Footer.astro';
+
+const equipos = [
+  { slug:"radiofrecuencia",  num:"01", name:"Radiofrecuencia",    ind:"Tensado · Antiedad · Reafirmación",  desc:"Estimula el colágeno y la elastina para tensar y rejuvenecer la piel de forma no invasiva." },
+  { slug:"hifu",             num:"02", name:"HIFU Ultrafocal",     ind:"Lifting · Cuello · Sin cirugía",       desc:"El lifting sin bisturí más eficaz del mercado. Ultrasonidos que actúan en capas profundas." },
+  { slug:"crioliposis",      num:"03", name:"Criolipólisis",       ind:"Grasa localizada · Permanente",        desc:"Eliminación definitiva de grasa localizada mediante frío controlado. Sin cirugía ni anestesia." },
+  { slug:"presoterapia",     num:"04", name:"Presoterapia",        ind:"Retención · Celulitis · Circulación",  desc:"Drenaje linfático mecánico de precisión para eliminar toxinas y mejorar la circulación." },
+  { slug:"laser",            num:"05", name:"Láser Depilatorio",   ind:"Depilación · Todo tipo de piel",       desc:"Reducción permanente del vello con láser de diodo de última generación. Apto para todas las pieles." },
+  { slug:"ipl",              num:"06", name:"Luz Pulsada IPL",     ind:"Manchas · Rojeces · Vascular",         desc:"Fototerapia para manchas, rosácea, vasos sanguíneos visibles y fotoenvejecimiento." },
+  { slug:"drenaje-linfatico",num:"07", name:"Drenaje Linfático",   ind:"Post-operatorio · Edemas · Detox",     desc:"Presoterapia secuencial combinada con técnica manual para el drenaje más completo del mercado." },
+];
+---
+
+<Layout title="Aparatología · Clínica Esmera">
+  <Navbar />
+  <PageHero
+    eyebrow="Aparatología Avanzada"
+    title="Tecnología de"
+    titleItalic="vanguardia"
+    description="Equipos certificados de grado médico que combinamos con el conocimiento de nuestros especialistas para ofrecerte los tratamientos más eficaces del mercado."
+    breadcrumb={[{ label: "Aparatología", href: "/aparatologia/" }]}
+  />
+
+  <section class="ap-section">
+    <div class="container">
+      <div class="ap-list">
+        {equipos.map(e => (
+          <a href={`/aparatologia/${e.slug}`} class="ap-row">
+            <div class="apr-num">{e.num}</div>
+            <div class="apr-main">
+              <div class="apr-top">
+                <h3 class="apr-name">{e.name}</h3>
+                <span class="apr-ind">{e.ind}</span>
+              </div>
+              <p class="apr-desc">{e.desc}</p>
+            </div>
+            <span class="apr-cta">
+              Ver más
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5.5h7M6 2.5l2.5 3L6 8.5"/></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PageCTA heading="¿No sabes qué tecnología necesitas?" sub="Realizamos una valoración personalizada y te recomendamos la tecnología más eficaz para tu caso concreto." />
+  <Footer />
+</Layout>
+
+<style>
+  .ap-section { padding: 96px 0; background: var(--ivory); }
+
+  .ap-list { border-top: 1px solid rgba(0,0,0,0.07); }
+
+  .ap-row {
+    display: grid; grid-template-columns: 56px 1fr 80px;
+    gap: 28px; align-items: center;
+    padding: 28px 16px; margin: 0 -16px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    text-decoration: none;
+    transition: background var(--t);
+  }
+  .ap-row:hover { background: var(--ivory-mid); }
+
+  .apr-num { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 0.75rem; color: var(--gold); opacity: 0.7; letter-spacing: 0.1em; }
+
+  .apr-top { display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px; flex-wrap: wrap; }
+  .apr-name { font-family: var(--font-display); font-size: 1.25rem; font-weight: 400; color: var(--dark); }
+  .apr-ind { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); font-weight: 300; }
+  .apr-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
+
+  .apr-cta {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--dark); border-bottom: 1px solid rgba(213,192,57,0.4);
+    padding-bottom: 2px; white-space: nowrap; transition: all 0.2s;
+    width: fit-content;
+  }
+  .ap-row:hover .apr-cta { color: var(--gold-warm); border-color: var(--gold); gap: 9px; }
+
+  @media (max-width: 700px) {
+    .ap-row { grid-template-columns: 1fr; gap: 8px; }
+    .apr-num { display: none; }
+    .apr-cta { margin-top: 8px; }
+    .ap-section { padding: 72px 0; }
+  }
+</style>

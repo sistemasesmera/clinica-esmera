@@ -2,13 +2,12 @@
 ---
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
-    <a href="#inicio" class="nav-logo">
-      <span class="logo-word">Clínica</span>
-      <span class="logo-accent">Esmera</span>
+    <a href="/" class="nav-logo">
+      <img src="/logo.svg" alt="Clínica Esmera" class="logo-img" />
     </a>
 
     <ul class="nav-links" id="navLinks">
-      <li><a href="#inicio" class="nl">Inicio</a></li>
+      <li><a href="/" class="nl">Inicio</a></li>
 
       <li class="has-drop">
         <button class="nl drop-toggle" aria-expanded="false">
@@ -16,10 +15,14 @@
           <svg class="chev" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 3.5l3 3 3-3"/></svg>
         </button>
         <ul class="dropdown">
-          <li><a href="#estetico">Faciales</a></li>
-          <li><a href="#estetico">Corporales</a></li>
-          <li><a href="#estetico">Micropigmentación</a></li>
-          <li><a href="#estetico">Masajes</a></li>
+          <div class="dropdown-box">
+            <li><a href="/estetico/">Ver todo</a></li>
+            <li class="drop-sep"></li>
+            <li><a href="/estetico/faciales">Faciales</a></li>
+            <li><a href="/estetico/corporales">Corporales</a></li>
+            <li><a href="/estetico/micropigmentacion">Micropigmentación</a></li>
+            <li><a href="/estetico/masajes">Masajes</a></li>
+          </div>
         </ul>
       </li>
 
@@ -29,8 +32,12 @@
           <svg class="chev" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 3.5l3 3 3-3"/></svg>
         </button>
         <ul class="dropdown">
-          <li><a href="#medico-estetico">Faciales</a></li>
-          <li><a href="#medico-estetico">Corporales</a></li>
+          <div class="dropdown-box">
+            <li><a href="/medico-estetico/">Ver todo</a></li>
+            <li class="drop-sep"></li>
+            <li><a href="/medico-estetico/faciales">Faciales</a></li>
+            <li><a href="/medico-estetico/corporales">Corporales</a></li>
+          </div>
         </ul>
       </li>
 
@@ -39,26 +46,30 @@
           Aparatología
           <svg class="chev" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 3.5l3 3 3-3"/></svg>
         </button>
-        <ul class="dropdown">
-          <li><a href="#aparatologia">Radiofrecuencia</a></li>
-          <li><a href="#aparatologia">HIFU Ultrafocal</a></li>
-          <li><a href="#aparatologia">Criolipólisis</a></li>
-          <li><a href="#aparatologia">Presoterapia</a></li>
-          <li><a href="#aparatologia">Láser Depilatorio</a></li>
-          <li><a href="#aparatologia">Luz Pulsada IPL</a></li>
-          <li><a href="#aparatologia">Drenaje Linfático</a></li>
+        <ul class="dropdown dropdown-wide">
+          <div class="dropdown-box">
+            <li><a href="/aparatologia/">Ver todo</a></li>
+            <li class="drop-sep"></li>
+            <li><a href="/aparatologia/radiofrecuencia">Radiofrecuencia</a></li>
+            <li><a href="/aparatologia/hifu">HIFU Ultrafocal</a></li>
+            <li><a href="/aparatologia/crioliposis">Criolipólisis</a></li>
+            <li><a href="/aparatologia/presoterapia">Presoterapia</a></li>
+            <li><a href="/aparatologia/laser">Láser Depilatorio</a></li>
+            <li><a href="/aparatologia/ipl">Luz Pulsada IPL</a></li>
+            <li><a href="/aparatologia/drenaje-linfatico">Drenaje Linfático</a></li>
+          </div>
         </ul>
       </li>
 
-      <li><a href="#bonos" class="nl">Bonos</a></li>
-      <li><a href="#nosotros" class="nl">Nosotros</a></li>
+      <li><a href="/bonos" class="nl">Bonos</a></li>
+      <li><a href="/nosotros" class="nl">Nosotros</a></li>
 
       <li class="mobile-cta">
-        <a href="#contacto" class="btn btn-gold">Pide Cita</a>
+        <a href="/nosotros#contacto" class="btn btn-gold">Pide Cita</a>
       </li>
     </ul>
 
-    <a href="#contacto" class="cta-desktop btn btn-gold">Pide Cita</a>
+    <a href="/nosotros#contacto" class="cta-desktop btn btn-gold">Pide Cita</a>
 
     <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -74,39 +85,30 @@
     backdrop-filter: blur(16px);
     transition: box-shadow var(--t);
   }
-
   .navbar::after {
     content: '';
     position: absolute; bottom: 0; left: 0; right: 0;
     height: 1px;
     background: linear-gradient(90deg, transparent 0%, rgba(213,192,57,0.35) 30%, rgba(213,192,57,0.35) 70%, transparent 100%);
   }
-
   .navbar.scrolled { box-shadow: 0 4px 32px rgba(44,44,44,0.07); }
 
   .nav-inner {
     max-width: 1180px; margin: 0 auto;
     padding: 0 32px; height: 72px;
-    display: flex; align-items: center; gap: 0;
+    display: flex; align-items: center;
   }
 
   /* Logo */
   .nav-logo {
-    display: flex; align-items: baseline; gap: 5px;
+    display: flex; align-items: center;
     flex-shrink: 0; margin-right: 48px;
   }
-  .logo-word {
-    font-family: var(--font-body);
-    font-weight: 300; font-size: 0.82rem;
-    letter-spacing: 0.15em; color: var(--stone);
-    text-transform: uppercase;
+  .logo-img {
+    height: 52px; width: auto; display: block;
+    transition: opacity 0.25s;
   }
-  .logo-accent {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 1.55rem; font-weight: 400;
-    color: var(--dark); letter-spacing: 0.04em;
-  }
+  .nav-logo:hover .logo-img { opacity: 0.85; }
 
   /* Links */
   .nav-links {
@@ -118,8 +120,7 @@
     display: flex; align-items: center; gap: 5px;
     padding: 8px 14px;
     font-size: 0.78rem; font-weight: 400;
-    letter-spacing: 0.06em;
-    color: var(--text-soft);
+    letter-spacing: 0.06em; color: var(--text-soft);
     background: none; border: none;
     font-family: var(--font-body);
     cursor: pointer; white-space: nowrap;
@@ -137,28 +138,40 @@
   .nl:hover::after { transform: scaleX(1); }
 
   .chev { transition: transform 0.25s var(--ease); flex-shrink: 0; }
-
-  /* Dropdown */
-  .has-drop { position: relative; }
-  .has-drop:hover .chev,
   .has-drop[data-open] .chev { transform: rotate(180deg); }
 
+  /* ── Dropdown ──
+     padding-top crea el espacio visual pero mantiene el área
+     de hover continua — no hay gap entre botón y menú. */
+  .has-drop { position: relative; }
+
   .dropdown {
-    position: absolute; top: calc(100% + 8px);
-    left: 50%; transform: translateX(-50%) translateY(6px);
+    position: absolute;
+    top: 100%;                  /* pegado al botón, sin gap */
+    padding-top: 10px;          /* espacio visual, hover continuo */
+    left: 50%;
+    transform: translateX(-50%);
     min-width: 210px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
+    transform: translateX(-50%) translateY(-4px);
+  }
+  .dropdown-wide { min-width: 230px; }
+
+  /* Caja visible dentro del padding */
+  .dropdown-box {
     background: var(--ivory);
     border: 1px solid rgba(213,192,57,0.18);
     border-radius: var(--radius);
-    list-style: none; padding: 10px 8px;
-    opacity: 0; pointer-events: none;
-    transition: all 0.22s var(--ease);
     box-shadow: var(--shadow-mid);
+    padding: 8px;
+    list-style: none;
   }
 
-  .has-drop:hover .dropdown,
   .has-drop[data-open] .dropdown {
-    opacity: 1; pointer-events: all;
+    opacity: 1;
+    pointer-events: all;
     transform: translateX(-50%) translateY(0);
   }
 
@@ -166,20 +179,25 @@
     display: block; padding: 9px 16px;
     font-size: 0.8rem; color: var(--text-soft);
     font-weight: 400; letter-spacing: 0.04em;
-    transition: all 0.2s; border-radius: 2px;
+    transition: all 0.18s; border-radius: 2px;
   }
   .dropdown li a:hover { color: var(--dark); background: var(--ivory-mid); }
 
+  .drop-sep {
+    height: 1px;
+    background: rgba(213,192,57,0.15);
+    margin: 4px 8px;
+  }
+
   /* CTA */
   .cta-desktop { flex-shrink: 0; margin-left: 20px; }
-
   .mobile-cta { display: none; padding: 12px 0; }
 
   /* Hamburger */
   .hamburger {
     display: none; flex-direction: column; gap: 5px;
-    background: none; border: none; cursor: pointer; padding: 6px;
-    margin-left: 10px;
+    background: none; border: none; cursor: pointer;
+    padding: 6px; margin-left: auto;
   }
   .hamburger span {
     display: block; width: 22px; height: 1.5px;
@@ -199,7 +217,7 @@
       position: fixed; top: 72px; left: 0; right: 0;
       background: var(--ivory);
       flex-direction: column; align-items: stretch;
-      padding: 16px 20px 28px;
+      padding: 12px 20px 28px;
       border-bottom: 1px solid rgba(213,192,57,0.2);
       max-height: calc(100vh - 72px); overflow-y: auto;
       transform: translateY(-8px); opacity: 0;
@@ -209,52 +227,110 @@
     }
     .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: all; }
 
-    .nl { padding: 13px 8px; font-size: 0.88rem; justify-content: space-between; }
+    .nl {
+      padding: 13px 8px; font-size: 0.9rem;
+      justify-content: space-between; width: 100%;
+    }
     .nl::after { display: none; }
 
+    /* Mobile dropdown: expandible */
     .dropdown {
-      position: static; transform: none; opacity: 1;
-      pointer-events: none; box-shadow: none;
-      background: var(--ivory-mid); border-radius: 2px;
-      border: none; margin: 4px 0 8px;
+      position: static; transform: none;
+      opacity: 1; pointer-events: none;
+      padding-top: 0; transition: none;
+    }
+    .dropdown-box {
+      background: var(--ivory-mid);
+      border: none; border-radius: 2px;
+      box-shadow: none;
       max-height: 0; overflow: hidden;
       transition: max-height 0.3s ease, padding 0.3s;
-      padding: 0 8px;
+      padding: 0;
     }
-    .has-drop[data-open] .dropdown { pointer-events: all; max-height: 400px; padding: 8px; }
-    .dropdown li a { font-size: 0.85rem; padding: 10px 16px; }
+    .has-drop[data-open] .dropdown { pointer-events: all; }
+    .has-drop[data-open] .dropdown-box { max-height: 400px; padding: 6px 0; }
+    .dropdown li a { padding: 10px 20px; font-size: 0.875rem; }
+    .drop-sep { margin: 3px 12px; }
   }
 </style>
 
 <script>
+  // ── Scroll shadow ──
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar?.classList.toggle('scrolled', window.scrollY > 60);
   });
 
+  // ── Hamburger ──
   const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
+  const navLinks  = document.getElementById('navLinks');
   hamburger?.addEventListener('click', () => {
     const open = hamburger.getAttribute('aria-expanded') === 'true';
     hamburger.setAttribute('aria-expanded', String(!open));
     navLinks?.classList.toggle('open', !open);
   });
 
+  // ── Dropdowns ──
+  // En desktop: hover con pequeño delay para evitar cierres accidentales.
+  // En mobile: toggle por click.
+  const DELAY = 120; // ms de tolerancia al cruzar el gap visual
+  let timers = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
+
   document.querySelectorAll<HTMLElement>('.has-drop').forEach(item => {
+
+    // — Desktop hover —
+    item.addEventListener('mouseenter', () => {
+      if (window.innerWidth <= 960) return;
+      const t = timers.get(item);
+      if (t) clearTimeout(t);
+      // Cierra otros
+      document.querySelectorAll<HTMLElement>('.has-drop[data-open]').forEach(el => {
+        if (el !== item) {
+          el.removeAttribute('data-open');
+          el.querySelector<HTMLButtonElement>('.drop-toggle')?.setAttribute('aria-expanded', 'false');
+        }
+      });
+      item.setAttribute('data-open', '');
+      item.querySelector<HTMLButtonElement>('.drop-toggle')?.setAttribute('aria-expanded', 'true');
+    });
+
+    item.addEventListener('mouseleave', () => {
+      if (window.innerWidth <= 960) return;
+      const t = setTimeout(() => {
+        item.removeAttribute('data-open');
+        item.querySelector<HTMLButtonElement>('.drop-toggle')?.setAttribute('aria-expanded', 'false');
+      }, DELAY);
+      timers.set(item, t);
+    });
+
+    // — Mobile click —
     item.querySelector<HTMLButtonElement>('.drop-toggle')?.addEventListener('click', () => {
-      if (window.innerWidth <= 960) {
-        document.querySelectorAll<HTMLElement>('.has-drop[data-open]').forEach(el => {
-          if (el !== item) el.removeAttribute('data-open');
-        });
-        item.toggleAttribute('data-open');
-      }
+      if (window.innerWidth > 960) return;
+      const isOpen = item.hasAttribute('data-open');
+      document.querySelectorAll<HTMLElement>('.has-drop[data-open]').forEach(el => {
+        if (el !== item) {
+          el.removeAttribute('data-open');
+          el.querySelector<HTMLButtonElement>('.drop-toggle')?.setAttribute('aria-expanded', 'false');
+        }
+      });
+      item.toggleAttribute('data-open', !isOpen);
+      item.querySelector<HTMLButtonElement>('.drop-toggle')?.setAttribute('aria-expanded', String(!isOpen));
     });
   });
 
+  // Cierra menu al navegar
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
       hamburger?.setAttribute('aria-expanded', 'false');
       navLinks?.classList.remove('open');
+      document.querySelectorAll<HTMLElement>('.has-drop[data-open]').forEach(el => el.removeAttribute('data-open'));
     });
+  });
+
+  // Cierra dropdowns al hacer click fuera
+  document.addEventListener('click', (e) => {
+    if (!(e.target as Element).closest('.has-drop')) {
+      document.querySelectorAll<HTMLElement>('.has-drop[data-open]').forEach(el => el.removeAttribute('data-open'));
+    }
   });
 </script>

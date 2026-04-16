@@ -1,0 +1,123 @@
+---
+interface BreadcrumbItem { label: string; href: string; }
+interface Props {
+  eyebrow?: string;
+  title: string;
+  titleItalic?: string;
+  description?: string;
+  breadcrumb?: BreadcrumbItem[];
+}
+const { eyebrow, title, titleItalic, description, breadcrumb = [] } = Astro.props;
+---
+
+<section class="page-hero">
+  <div class="ph-inner container">
+    {breadcrumb.length > 0 && (
+      <nav class="breadcrumb" aria-label="Ruta de navegación">
+        <a href="/">Inicio</a>
+        {breadcrumb.map((item, i) => (
+          <>
+            <span class="bc-sep">›</span>
+            {i < breadcrumb.length - 1
+              ? <a href={item.href}>{item.label}</a>
+              : <span class="bc-current">{item.label}</span>
+            }
+          </>
+        ))}
+      </nav>
+    )}
+
+    {eyebrow && (
+      <div class="ph-eyebrow">
+        <span class="ey-line"></span>
+        <span>{eyebrow}</span>
+      </div>
+    )}
+
+    <h1 class="ph-title">
+      {title}{titleItalic && <><br /><em>{titleItalic}</em></>}
+    </h1>
+
+    {description && <p class="ph-desc">{description}</p>}
+  </div>
+
+  <div class="ph-deco" aria-hidden="true">
+    <div class="ph-glow"></div>
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    background: var(--dark-rich);
+    padding: 148px 0 72px;
+    position: relative; overflow: hidden;
+  }
+
+  .ph-deco { position: absolute; inset: 0; pointer-events: none; }
+  .ph-glow {
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(213,192,57,0.08), transparent 65%);
+    top: -150px; right: -80px;
+    filter: blur(60px);
+  }
+
+  .ph-inner { position: relative; z-index: 1; }
+
+  /* Breadcrumb */
+  .breadcrumb {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 32px;
+    font-size: 0.72rem; letter-spacing: 0.1em;
+    flex-wrap: wrap;
+  }
+  .breadcrumb a {
+    color: rgba(255,255,255,0.3);
+    transition: color 0.2s;
+    font-weight: 400;
+  }
+  .breadcrumb a:hover { color: rgba(255,255,255,0.65); }
+  .bc-sep { color: rgba(213,192,57,0.3); }
+  .bc-current { color: rgba(255,255,255,0.55); font-weight: 400; }
+
+  /* Eyebrow */
+  .ph-eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 18px;
+  }
+  .ey-line {
+    display: block; width: 28px; height: 1px;
+    background: var(--gold); opacity: 0.6;
+  }
+  .ph-eyebrow span:last-child {
+    font-size: 0.68rem; font-weight: 400;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* Title */
+  .ph-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    font-weight: 400;
+    color: rgba(255,255,255,0.92);
+    line-height: 1.18;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+    max-width: 680px;
+  }
+  .ph-title em { font-style: italic; color: var(--gold); font-weight: 300; }
+
+  /* Description */
+  .ph-desc {
+    font-size: 1rem; color: rgba(255,255,255,0.5);
+    line-height: 1.78; font-weight: 300;
+    max-width: 560px;
+  }
+
+  @media (max-width: 640px) {
+    .page-hero { padding: 120px 0 56px; }
+    .ph-title { font-size: 2.2rem; }
+  }
+</style>
