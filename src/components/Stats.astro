@@ -1,18 +1,25 @@
 ---
 const stats = [
-  { num: "+5.000", label: "Procedimientos realizados" },
-  { num: "+10",    label: "Años de experiencia" },
-  { num: "98%",   label: "Clientes satisfechos" },
-  { num: "+500",  label: "Reseñas verificadas" },
+  { target: 5000, prefix: "+", suffix: "",  decimals: 0, display: "5.000", label: "Procedimientos realizados" },
+  { target: 10,   prefix: "+", suffix: "",  decimals: 0, display: "10",    label: "Años de experiencia" },
+  { target: 98,   prefix: "",  suffix: "%", decimals: 0, display: "98",    label: "Clientes satisfechos" },
+  { target: 500,  prefix: "+", suffix: "",  decimals: 0, display: "500",   label: "Reseñas verificadas" },
 ];
 ---
 
-<section class="stats">
+<section class="stats" id="stats-section">
   <div class="stats-inner">
     {stats.map((s, i) => (
       <>
         <div class="stat">
-          <div class="stat-num">{s.num}</div>
+          <div
+            class="stat-num"
+            data-target={s.target}
+            data-prefix={s.prefix}
+            data-suffix={s.suffix}
+          >
+            {s.prefix}{s.display}{s.suffix}
+          </div>
           <div class="stat-lbl">{s.label}</div>
         </div>
         {i < stats.length - 1 && <div class="stat-sep" aria-hidden="true" />}
@@ -20,6 +27,50 @@ const stats = [
     ))}
   </div>
 </section>
+
+<script>
+  function easeOutQuart(t: number): number {
+    return 1 - Math.pow(1 - t, 4);
+  }
+
+  function formatNumber(n: number): string {
+    // Format with dot as thousands separator (Spanish locale)
+    return Math.floor(n).toLocaleString('es-ES');
+  }
+
+  function animateCounter(el: HTMLElement) {
+    const target = parseInt(el.dataset.target ?? '0', 10);
+    const prefix = el.dataset.prefix ?? '';
+    const suffix = el.dataset.suffix ?? '';
+    const duration = 1800;
+    const start = performance.now();
+
+    function tick(now: number) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const value = easeOutQuart(progress) * target;
+      el.textContent = prefix + formatNumber(value) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          document.querySelectorAll<HTMLElement>('.stat-num[data-target]').forEach(animateCounter);
+          observer.disconnect();
+        }
+      });
+    },
+    { threshold: 0.4 }
+  );
+
+  const section = document.getElementById('stats-section');
+  if (section) observer.observe(section);
+</script>
 
 <style>
   .stats {
