@@ -276,11 +276,11 @@ const ofertas = [
     filter: blur(100px);
     opacity: 0.12;
   }
-  .bg-r1 { width: 600px; height: 600px; background: var(--gold); top: -200px; right: -100px; }
-  .bg-r2 { width: 400px; height: 400px; background: var(--gold-warm); bottom: -150px; left: 5%; opacity: 0.07; }
-  .bg-r3 { width: 700px; height: 700px; background: var(--gold); top: -250px; left: -150px; opacity: 0.09; }
-  .bg-r4 { width: 500px; height: 500px; background: var(--gold); bottom: -100px; right: -80px; opacity: 0.10; }
-  .bg-r5 { width: 300px; height: 300px; background: var(--gold-warm); top: -80px; left: 30%; opacity: 0.06; }
+  .bg-r1 { width: 600px; height: 600px; background: var(--gold); top: -200px; right: -100px; opacity: 0.05; }
+  .bg-r2 { width: 400px; height: 400px; background: var(--gold-warm); bottom: -150px; left: 5%; opacity: 0.04; }
+  .bg-r3 { width: 700px; height: 700px; background: var(--gold); top: -250px; left: -150px; opacity: 0.05; }
+  .bg-r4 { width: 500px; height: 500px; background: var(--gold); bottom: -100px; right: -80px; opacity: 0.05; }
+  .bg-r5 { width: 300px; height: 300px; background: var(--gold-warm); top: -80px; left: 30%; opacity: 0.03; }
 
   /* Shared wrap */
   .slide-wrap {
@@ -317,7 +317,7 @@ const ofertas = [
     line-height: 1.15;
     letter-spacing: -0.03em;
   }
-  .hero-title em { font-style: italic; color: var(--gold-warm); font-weight: 500; }
+  .hero-title em { font-style: italic; color: var(--dark); font-weight: 500; }
 
   /* Shared footnote */
   .hero-footnote {
@@ -520,16 +520,15 @@ const ofertas = [
     font-size: 0.63rem;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--gold-warm);
+    color: var(--text-soft);
     font-weight: 600;
     margin-bottom: 40px;
   }
   .s3b-star {
     font-size: 1.5rem;
     line-height: 1;
-    color: var(--gold-warm);
-    opacity: 0.9;
-    filter: drop-shadow(0 1px 4px rgba(197,180,50,0.4));
+    color: var(--text-soft);
+    opacity: 0.8;
   }
 
   .s3-content {
@@ -583,7 +582,7 @@ const ofertas = [
   .spcb-price { font-family: var(--font-display); font-size: 1.6rem; font-weight: 200; color: rgba(44, 44, 44, 0.3); text-decoration: line-through; }
   .spc-arrow { font-size: 1.2rem; color: var(--gold-warm); opacity: 0.6; }
   .spc-now { display: flex; flex-direction: column; gap: 4px; }
-  .spcn-label { font-size: 0.62rem; color: var(--gold-warm); letter-spacing: 0.08em; font-weight: 500; }
+  .spcn-label { font-size: 0.62rem; color: var(--text-muted); letter-spacing: 0.08em; font-weight: 500; }
   .spcn-price { font-family: var(--font-display); font-size: 3rem; font-weight: 200; color: var(--dark); line-height: 1; }
   .spcn-price em { font-style: normal; color: var(--gold-warm); font-weight: 700; }
   .spc-saving {
@@ -591,26 +590,26 @@ const ofertas = [
     font-size: 0.65rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--gold-warm);
+    color: var(--text-soft);
     margin-bottom: 24px;
     font-weight: 500;
   }
   .spc-divider { width: 100%; height: 1px; background: rgba(197, 180, 50, 0.2); margin-bottom: 20px; }
   .spc-includes { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
   .spc-includes li { display: flex; align-items: center; gap: 10px; font-size: 0.82rem; color: var(--text-soft); font-weight: 300; }
-  .spc-includes li span { color: var(--gold-warm); font-size: 0.55rem; }
+  .spc-includes li span { color: var(--text-muted); font-size: 0.55rem; }
   .spc-link {
     font-size: 0.7rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--gold-warm);
-    border-bottom: 1px solid rgba(197, 180, 50, 0.35);
+    color: var(--text-soft);
+    border-bottom: 1px solid rgba(44, 44, 44, 0.2);
     padding-bottom: 2px;
     text-decoration: none;
     transition: all 0.2s;
     display: inline-block;
   }
-  .spc-link:hover { color: var(--dark); border-color: var(--dark); }
+  .spc-link:hover { color: var(--dark); border-color: rgba(44,44,44,0.5); }
 
   /* ─── CONTROLS ─── */
 
