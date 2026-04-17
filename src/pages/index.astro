@@ -33,10 +33,26 @@ const categories = [
 ];
 
 const valores = [
-  { t: "Resultados reales",      d: "Sin promesas vacías. Medimos nuestro éxito por las transformaciones verificables de cada cliente." },
-  { t: "Tecnología certificada", d: "Equipos de grado médico con marcado CE y eficacia avalada por estudios clínicos internacionales." },
-  { t: "Equipo especializado",   d: "Médicos estéticos y esteticistas tituladas en formación continua con las últimas técnicas del sector." },
-  { t: "Trato personalizado",    d: "Protocolos exclusivos adaptados a tus objetivos, tu piel y tu estilo de vida. Cada persona es única." },
+  {
+    t: "Resultados reales",
+    d: "Sin promesas vacías. Medimos nuestro éxito por las transformaciones verificables de cada cliente.",
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>`,
+  },
+  {
+    t: "Tecnología certificada",
+    d: "Equipos de grado médico con marcado CE y eficacia avalada por estudios clínicos internacionales.",
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>`,
+  },
+  {
+    t: "Equipo especializado",
+    d: "Médicos estéticos y esteticistas tituladas en formación continua con las últimas técnicas del sector.",
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+  },
+  {
+    t: "Trato personalizado",
+    d: "Protocolos exclusivos adaptados a tus objetivos, tu piel y tu estilo de vida. Cada persona es única.",
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
+  },
 ];
 
 const reviews = [
@@ -130,7 +146,7 @@ const reviews = [
       <div class="hw-right">
         {valores.map(v => (
           <div class="hw-valor">
-            <span class="hwv-orn">—</span>
+            <div class="hwv-icon" set:html={v.svg}></div>
             <div>
               <p class="hwv-t">{v.t}</p>
               <p class="hwv-d">{v.d}</p>
@@ -183,7 +199,75 @@ const reviews = [
     </div>
   </section>
 
+  <!-- Newsletter -->
+  <section class="home-newsletter">
+    <div class="container hn-inner">
+
+      <div class="hn-text">
+        <div class="eyebrow"><span>Newsletter</span></div>
+        <h2 class="hn-title">Consejos, ofertas<br /><em>y novedades</em></h2>
+        <p class="hn-lead">Sé la primera en conocer nuestras promociones exclusivas, nuevos tratamientos y consejos de nuestros especialistas. Sin spam.</p>
+      </div>
+
+      <div class="hn-right">
+        <form class="hn-form" id="newsletterForm" novalidate>
+          <div class="hn-row">
+            <input
+              type="email"
+              id="newsletterEmail"
+              class="hn-input"
+              placeholder="Tu correo electrónico"
+              autocomplete="email"
+              required
+            />
+            <button type="submit" class="btn btn-gold hn-btn">Suscribirme</button>
+          </div>
+          <p class="hn-error-msg" id="newsletterError">Introduce un email válido.</p>
+          <p class="hn-privacy">Sin spam · Cancela cuando quieras · Solo contenido de valor</p>
+        </form>
+
+        <div class="hn-success" id="newsletterSuccess">
+          <div class="hn-success-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <p class="hn-success-title">¡Ya eres parte de la comunidad!</p>
+          <p class="hn-success-sub">Pronto recibirás nuestras novedades en tu bandeja de entrada.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <Footer />
+<script>
+  const form    = document.getElementById('newsletterForm')    as HTMLFormElement | null;
+  const input   = document.getElementById('newsletterEmail')   as HTMLInputElement | null;
+  const errorEl = document.getElementById('newsletterError')   as HTMLElement | null;
+  const success = document.getElementById('newsletterSuccess') as HTMLElement | null;
+
+  const isValidEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+  input?.addEventListener('input', () => {
+    input.classList.remove('is-error');
+    errorEl?.classList.remove('is-visible');
+  });
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = input?.value.trim() ?? '';
+
+    if (!isValidEmail(email)) {
+      input?.classList.add('is-error');
+      errorEl?.classList.add('is-visible');
+      input?.focus();
+      return;
+    }
+
+    form.style.display = 'none';
+    success?.classList.add('is-visible');
+  });
+</script>
+
 </Layout>
 
 <style>
@@ -229,8 +313,20 @@ const reviews = [
   .hw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
   .hw-btn { margin-top: 36px; }
   .hw-right { display: flex; flex-direction: column; gap: 24px; padding-top: 8px; }
-  .hw-valor { display: flex; gap: 14px; align-items: flex-start; }
-  .hwv-orn { color: var(--gold); opacity: 0.5; flex-shrink: 0; margin-top: 2px; }
+  .hw-valor { display: flex; gap: 16px; align-items: flex-start; }
+  .hwv-icon {
+    width: 42px; height: 42px; flex-shrink: 0;
+    background: rgba(197,180,50,0.10);
+    border: 1px solid rgba(197,180,50,0.22);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold-warm);
+    transition: background 0.25s, border-color 0.25s;
+  }
+  .hw-valor:hover .hwv-icon {
+    background: rgba(197,180,50,0.18);
+    border-color: rgba(197,180,50,0.45);
+  }
   .hwv-t { font-size: 0.9rem; font-weight: 600; color: var(--dark); margin-bottom: 5px; letter-spacing: 0.01em; }
   .hwv-d { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
 
@@ -334,6 +430,112 @@ const reviews = [
     .hw-grid { grid-template-columns: 1fr; gap: 48px; }
     .hr-grid { grid-template-columns: 1fr; max-width: 440px; }
   }
+  /* ── Newsletter ── */
+  .home-newsletter {
+    background: var(--ivory-deep);
+    padding: 96px 0;
+    position: relative;
+  }
+  .home-newsletter::before {
+    content: '';
+    position: absolute; top: 0; left: 8%; right: 8%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(197,180,50,0.4), transparent);
+  }
+
+  .hn-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 72px;
+    align-items: center;
+  }
+
+  .hn-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+    font-weight: 400;
+    color: var(--dark);
+    line-height: 1.22;
+    margin-bottom: 16px;
+  }
+  .hn-title em { font-style: italic; color: var(--gold-warm); font-weight: 300; }
+  .hn-lead { font-size: 0.9rem; color: var(--text-soft); line-height: 1.8; font-weight: 300; }
+
+  .hn-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .hn-input {
+    flex: 1;
+    padding: 14px 18px;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    color: var(--dark);
+    background: rgba(255,255,255,0.85);
+    border: 1.5px solid rgba(44,44,44,0.14);
+    border-radius: var(--radius);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    min-width: 0;
+  }
+  .hn-input::placeholder { color: var(--text-muted); }
+  .hn-input:focus { border-color: rgba(197,180,50,0.6); box-shadow: 0 0 0 3px rgba(197,180,50,0.10); }
+  .hn-input.is-error { border-color: #d94f4f; box-shadow: 0 0 0 3px rgba(217,79,79,0.10); }
+
+  .hn-btn { padding: 14px 28px; white-space: nowrap; flex-shrink: 0; }
+
+  .hn-error-msg {
+    font-size: 0.76rem;
+    color: #c0392b;
+    margin-bottom: 10px;
+    display: none;
+  }
+  .hn-error-msg.is-visible { display: block; }
+
+  .hn-privacy {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+
+  /* Success state */
+  .hn-success {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    animation: fade-in-up 0.4s var(--ease) forwards;
+  }
+  .hn-success.is-visible { display: flex; }
+  .hn-success-icon {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: rgba(197,180,50,0.12);
+    border: 1.5px solid rgba(197,180,50,0.3);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold-warm);
+    margin-bottom: 8px;
+  }
+  .hn-success-title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--dark);
+  }
+  .hn-success-sub {
+    font-size: 0.85rem;
+    color: var(--text-soft);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
   @media (max-width: 600px) {
     .hs-grid { grid-template-columns: 1fr; }
     .home-services, .home-why, .home-reviews { padding: 80px 0; }
@@ -344,5 +546,9 @@ const reviews = [
     .hval-actions .btn { width: 100%; justify-content: center; }
     .hval-trust { gap: 14px 24px; }
     .hval-br { display: none; }
+    .home-newsletter { padding: 72px 0; }
+    .hn-inner { grid-template-columns: 1fr; gap: 36px; }
+    .hn-row { flex-direction: column; }
+    .hn-btn { width: 100%; justify-content: center; }
   }
 </style>
