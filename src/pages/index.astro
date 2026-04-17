@@ -51,6 +51,45 @@ const reviews = [
   <Hero />
   <Stats />
 
+  <!-- Valoración gratuita -->
+  <section class="home-val">
+    <div class="container hval-inner">
+
+      <div class="hval-badge">
+        <span class="hval-dot"></span>
+        Disponible ahora · Sin lista de espera
+      </div>
+
+      <h2 class="hval-title">
+        Tu primera valoración médica,<br /><em>completamente gratuita</em>
+      </h2>
+
+      <p class="hval-lead">
+        Un especialista analiza tu piel, estudia tus objetivos y te diseña un protocolo personalizado.<br class="hval-br" />
+        Sin pagar nada. Sin ningún tipo de obligación.
+      </p>
+
+      <div class="hval-actions">
+        <a href="/nosotros#contacto" class="btn btn-gold">Reservar mi valoración</a>
+        <a
+          href="https://wa.me/34661310256?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20mi%20valoraci%C3%B3n%20m%C3%A9dica%20gratuita"
+          class="btn btn-ghost-dark"
+          target="_blank" rel="noopener"
+        >
+          Consultar por WhatsApp
+        </a>
+      </div>
+
+      <ul class="hval-trust">
+        <li><span class="hval-check">✓</span> Sin coste</li>
+        <li><span class="hval-check">✓</span> Sin obligación de compra</li>
+        <li><span class="hval-check">✓</span> Especialista médico</li>
+        <li><span class="hval-check">✓</span> Protocolo 100% personalizado</li>
+      </ul>
+
+    </div>
+  </section>
+
   <!-- Nuestros tratamientos -->
   <section class="home-services">
     <div class="container">
@@ -167,7 +206,7 @@ const reviews = [
   }
   .hs-card:hover { background: var(--ivory-mid); }
 
-  .hs-num { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 0.75rem; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 14px; opacity: 0.8; }
+  .hs-num { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 2.2rem; color: var(--gold); letter-spacing: 0.04em; margin-bottom: 14px; opacity: 0.6; line-height: 1; }
   .hs-rule { width: 24px; height: 1px; background: var(--gold); opacity: 0.35; margin-bottom: 18px; }
   .hs-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; color: var(--dark); margin-bottom: 12px; }
   .hs-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.72; margin-bottom: 20px; font-weight: 300; flex: 1; }
@@ -218,6 +257,77 @@ const reviews = [
   .hb-h em { font-style: italic; color: var(--gold); font-weight: 300; }
   .hb-btn { flex-shrink: 0; }
 
+  /* ── Valoración gratuita ── */
+  .home-val {
+    background: var(--ivory-deep);
+    padding: 96px 0;
+    position: relative;
+    text-align: center;
+  }
+  .home-val::before {
+    content: '';
+    position: absolute; top: 0; left: 8%; right: 8%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(197,180,50,0.4), transparent);
+  }
+  .home-val::after {
+    content: '';
+    position: absolute; bottom: 0; left: 8%; right: 8%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(197,180,50,0.4), transparent);
+  }
+
+  .hval-inner { display: flex; flex-direction: column; align-items: center; }
+
+  .hval-badge {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--text-muted); font-weight: 400;
+    margin-bottom: 28px;
+  }
+  .hval-dot {
+    display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--gold-warm);
+    animation: pulse-dot 2s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.75); }
+  }
+
+  .hval-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 400;
+    color: var(--dark);
+    line-height: 1.22;
+    margin-bottom: 24px;
+  }
+  .hval-title em { font-style: italic; color: var(--gold-warm); font-weight: 300; }
+
+  .hval-lead {
+    font-size: 1rem; color: var(--text-soft); line-height: 1.8;
+    font-weight: 300; max-width: 560px; margin-bottom: 40px;
+  }
+  .hval-br { display: block; }
+
+  .hval-actions {
+    display: flex; gap: 14px; flex-wrap: wrap;
+    justify-content: center; margin-bottom: 36px;
+  }
+
+  .hval-trust {
+    list-style: none;
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 20px 36px;
+  }
+  .hval-trust li {
+    display: flex; align-items: center; gap: 7px;
+    font-size: 0.78rem; color: var(--text-muted); font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+  .hval-check { color: var(--gold-warm); font-weight: 600; }
+
   /* Responsive */
   @media (max-width: 1024px) { .hs-grid { grid-template-columns: repeat(2,1fr); } }
   @media (max-width: 860px) {
@@ -229,5 +339,10 @@ const reviews = [
     .home-services, .home-why, .home-reviews { padding: 80px 0; }
     .hr-hd { flex-direction: column; align-items: flex-start; }
     .hb-inner { flex-direction: column; align-items: flex-start; }
+    .home-val { padding: 72px 0; }
+    .hval-actions { flex-direction: column; width: 100%; }
+    .hval-actions .btn { width: 100%; justify-content: center; }
+    .hval-trust { gap: 14px 24px; }
+    .hval-br { display: none; }
   }
 </style>

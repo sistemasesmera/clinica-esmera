@@ -183,22 +183,22 @@ const ofertas = [
 
   </div><!-- /carousel -->
 
-  <!-- Controls -->
-  <div class="carousel-controls" aria-label="Navegación del carrusel">
-    <button class="cc-arrow cc-prev" id="heroPrev" aria-label="Slide anterior">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M13 4l-6 6 6 6"/></svg>
-    </button>
+  <!-- Flecha izquierda -->
+  <button class="cc-arrow cc-prev" id="heroPrev" aria-label="Slide anterior">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M13 4l-6 6 6 6"/></svg>
+  </button>
 
-    <div class="cc-dots" role="tablist" aria-label="Slides">
-      <button class="cc-dot" data-dot="0" role="tab" aria-label="Ir al slide 1" aria-selected="true"></button>
-      <button class="cc-dot" data-dot="1" role="tab" aria-label="Ir al slide 2" aria-selected="false"></button>
-      <button class="cc-dot" data-dot="2" role="tab" aria-label="Ir al slide 3" aria-selected="false"></button>
-    </div>
-
-    <button class="cc-arrow cc-next" id="heroNext" aria-label="Slide siguiente">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M7 4l6 6-6 6"/></svg>
-    </button>
+  <!-- Puntos indicadores -->
+  <div class="cc-dots" role="tablist" aria-label="Slides">
+    <button class="cc-dot" data-dot="0" role="tab" aria-label="Ir al slide 1" aria-selected="true"></button>
+    <button class="cc-dot" data-dot="1" role="tab" aria-label="Ir al slide 2" aria-selected="false"></button>
+    <button class="cc-dot" data-dot="2" role="tab" aria-label="Ir al slide 3" aria-selected="false"></button>
   </div>
+
+  <!-- Flecha derecha -->
+  <button class="cc-arrow cc-next" id="heroNext" aria-label="Slide siguiente">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M7 4l6 6-6 6"/></svg>
+  </button>
 
   <!-- Scroll indicator (slide 1 only) -->
   <div class="hero-scroll" aria-hidden="true" id="heroScroll">
@@ -614,23 +614,17 @@ const ofertas = [
   .spc-link:hover { color: var(--dark); border-color: var(--dark); }
 
   /* ─── CONTROLS ─── */
-  .carousel-controls {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    z-index: 10;
-  }
 
+  /* Flechas laterales */
   .cc-arrow {
-    width: 40px;
-    height: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
     border: 1.5px solid rgba(44, 44, 44, 0.18);
-    border-radius: 2px;
-    background: rgba(255, 255, 255, 0.65);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.70);
     color: rgba(44, 44, 44, 0.55);
     display: flex;
     align-items: center;
@@ -638,22 +632,39 @@ const ofertas = [
     cursor: pointer;
     transition: all 0.2s;
     backdrop-filter: blur(8px);
-    box-shadow: 0 2px 12px rgba(44, 44, 44, 0.08);
+    box-shadow: 0 2px 12px rgba(44, 44, 44, 0.10);
+    z-index: 10;
   }
-  .cc-arrow:hover { background: rgba(213, 192, 57, 0.18); border-color: rgba(197, 180, 50, 0.55); color: var(--gold-warm); }
+  .cc-prev { left: 24px; }
+  .cc-next { right: 24px; }
+  .cc-arrow:hover { background: rgba(255,255,255,0.95); border-color: rgba(197, 180, 50, 0.6); color: var(--gold-warm); box-shadow: 0 4px 20px rgba(44,44,44,0.14); }
 
-  .cc-dots { display: flex; gap: 8px; }
+  /* Puntos indicadores centrados abajo */
+  .cc-dots {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+  }
   .cc-dot {
-    width: 24px;
-    height: 2px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
     background: rgba(44, 44, 44, 0.22);
     border: none;
     cursor: pointer;
-    border-radius: 2px;
     transition: all 0.3s;
     padding: 0;
   }
-  .cc-dot.is-active { background: var(--gold-warm); width: 40px; }
+  .cc-dot.is-active {
+    background: var(--gold-warm);
+    width: 9px;
+    transform: scale(1.35);
+    box-shadow: 0 0 6px rgba(197,180,50,0.5);
+  }
 
   /* ─── SCROLL INDICATOR ─── */
   .hero-scroll {
@@ -708,7 +719,10 @@ const ofertas = [
     .s3-price-card { padding: 24px 20px; }
     .spcn-price { font-size: 2.6rem; }
     .hero-scroll { display: none; }
-    .carousel-controls { bottom: 24px; gap: 14px; }
+    .cc-prev { left: 12px; }
+    .cc-next { right: 12px; }
+    .cc-arrow { width: 36px; height: 36px; }
+    .cc-dots { bottom: 20px; }
     .s2-photo-wrap { max-width: 260px; }
     .s3-content { gap: 24px; }
     .s3-badge { margin-bottom: 28px; }

@@ -1,6 +1,21 @@
 ---
 ---
 <footer class="footer">
+
+  <!-- Mapa -->
+  <div class="footer-map">
+    <iframe
+      src="https://maps.google.com/maps?q=Paseo+Santa+Mar%C3%ADa+de+la+Cabeza%2C+10%2C+28045+Madrid&t=&z=16&ie=UTF8&iwloc=&output=embed"
+      width="100%"
+      height="300"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Ubicación Clínica Esmera"
+    ></iframe>
+  </div>
+
   <div class="footer-top">
     <div class="container ft-grid">
 
@@ -98,6 +113,20 @@
 
 <style>
   .footer { background: var(--dark-rich); }
+
+  .footer-map {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    display: block;
+    filter: grayscale(20%) contrast(1.05) brightness(0.92);
+  }
+  .footer-map iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+  }
 
   .footer-top {
     padding: 80px 0 64px;
