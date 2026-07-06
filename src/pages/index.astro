@@ -73,7 +73,7 @@ const reviews = [
 
       <div class="hval-badge">
         <span class="hval-dot"></span>
-        Disponible ahora · Sin lista de espera
+        Atención médica sin esperas · Gestión prioritaria
       </div>
 
       <h2 class="hval-title">
@@ -81,9 +81,18 @@ const reviews = [
       </h2>
 
       <p class="hval-lead">
-        Un especialista analiza tu piel, estudia tus objetivos y te diseña un protocolo personalizado.<br class="hval-br" />
+        Un especialista analiza tu piel, estudia tus objetivos y te diseña un protocolo personalizado.
+      </p>
+      <p class="hval-lead hval-lead--sub">
         Sin pagar nada. Sin ningún tipo de obligación.
       </p>
+
+      <ul class="hval-trust">
+        <li><span class="hval-check">✓</span> Sin coste</li>
+        <li><span class="hval-check">✓</span> Sin obligación de compra</li>
+        <li><span class="hval-check">✓</span> Especialista médico</li>
+        <li><span class="hval-check">✓</span> Protocolo 100% personalizado</li>
+      </ul>
 
       <div class="hval-actions">
         <a href="/nosotros#contacto" class="btn btn-gold">Reservar mi valoración</a>
@@ -95,13 +104,6 @@ const reviews = [
           Consultar por WhatsApp
         </a>
       </div>
-
-      <ul class="hval-trust">
-        <li><span class="hval-check">✓</span> Sin coste</li>
-        <li><span class="hval-check">✓</span> Sin obligación de compra</li>
-        <li><span class="hval-check">✓</span> Especialista médico</li>
-        <li><span class="hval-check">✓</span> Protocolo 100% personalizado</li>
-      </ul>
 
     </div>
   </section>
@@ -193,7 +195,7 @@ const reviews = [
     <div class="container hb-inner">
       <div>
         <p class="hb-tag">Oferta de bienvenida</p>
-        <h2 class="hb-h">Primera consulta gratuita<br />+ <em>40% en tu primer tratamiento</em></h2>
+        <h2 class="hb-h">Primera consulta gratuita<br />+ <em>10% en tu primer tratamiento</em></h2>
       </div>
       <a href="/nosotros#contacto" class="btn btn-gold hb-btn">Reservar ahora</a>
     </div>
@@ -328,7 +330,7 @@ const reviews = [
     border-color: rgba(197,180,50,0.45);
   }
   .hwv-t { font-size: 0.88rem; font-weight: 700; color: var(--dark); margin-bottom: 5px; letter-spacing: 0.02em; }
-  .hwv-d { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
+  .hwv-d { font-size: 0.82rem; color: var(--text-soft); line-height: 1.65; font-weight: 300; }
 
   /* ── Reviews ── */
   .home-reviews { padding: 96px 0; background: var(--ivory); }
@@ -348,10 +350,11 @@ const reviews = [
   /* ── Banner ── */
   .home-banner { background: var(--dark); padding: 72px 0; }
   .hb-inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
-  .hb-tag { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(213,192,57,0.6); margin-bottom: 10px; font-weight: 400; }
+  .hb-tag { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(250,249,245,0.55); margin-bottom: 10px; font-weight: 400; }
   .hb-h { font-family: var(--font-display); font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 200; color: rgba(255,255,255,0.9); line-height: 1.25; letter-spacing: -0.02em; }
-  .hb-h em { font-style: italic; color: var(--gold); font-weight: 600; }
-  .hb-btn { flex-shrink: 0; }
+  .hb-h em { font-style: italic; color: var(--ivory); font-weight: 500; }
+  .hb-btn { flex-shrink: 0; background: var(--ivory); color: var(--dark); border-color: var(--ivory); }
+  .hb-btn:hover { background: var(--ivory-mid); border-color: var(--ivory-mid); color: var(--dark); }
 
   /* ── Valoración gratuita ── */
   .home-val {
@@ -404,25 +407,28 @@ const reviews = [
 
   .hval-lead {
     font-size: 1rem; color: var(--text-soft); line-height: 1.8;
-    font-weight: 300; max-width: 560px; margin-bottom: 40px;
+    font-weight: 300; max-width: 560px; margin-bottom: 12px;
   }
-  .hval-br { display: block; }
-
-  .hval-actions {
-    display: flex; gap: 14px; flex-wrap: wrap;
-    justify-content: center; margin-bottom: 36px;
+  .hval-lead--sub {
+    margin-bottom: 36px;
   }
 
   .hval-trust {
     list-style: none;
-    display: flex; flex-wrap: wrap; justify-content: center; gap: 20px 36px;
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 16px 32px;
+    margin-bottom: 36px;
   }
   .hval-trust li {
-    display: flex; align-items: center; gap: 7px;
-    font-size: 0.78rem; color: var(--text-muted); font-weight: 400;
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.92rem; color: var(--text-soft); font-weight: 400;
     letter-spacing: 0.02em;
   }
   .hval-check { color: var(--dark); font-weight: 600; }
+
+  .hval-actions {
+    display: flex; gap: 14px; flex-wrap: wrap;
+    justify-content: center;
+  }
 
   /* Responsive */
   @media (max-width: 1024px) { .hs-grid { grid-template-columns: repeat(2,1fr); } }
