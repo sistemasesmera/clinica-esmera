@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(npx astro *)",
-      "Bash(powershell -Command ' *)"
+      "Bash(powershell -Command ' *)",
+      "Bash(git *)"
     ]
   }
 }

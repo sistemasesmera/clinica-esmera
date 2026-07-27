@@ -73,7 +73,7 @@ const reviews = [
 
       <div class="hval-badge">
         <span class="hval-dot"></span>
-        Atención médica sin esperas · Gestión prioritaria
+        Gestión prioritaria
       </div>
 
       <h2 class="hval-title">
@@ -81,17 +81,13 @@ const reviews = [
       </h2>
 
       <p class="hval-lead">
-        Un especialista analiza tu piel, estudia tus objetivos y te diseña un protocolo personalizado.
-      </p>
-      <p class="hval-lead hval-lead--sub">
-        Sin pagar nada. Sin ningún tipo de obligación.
+        Un médico estético evaluará tu piel, resolverá todas tus dudas y elaborará un plan de tratamiento personalizado según tus necesidades.
       </p>
 
-      <ul class="hval-trust">
-        <li><span class="hval-check">✓</span> Sin coste</li>
-        <li><span class="hval-check">✓</span> Sin obligación de compra</li>
-        <li><span class="hval-check">✓</span> Especialista médico</li>
+<ul class="hval-trust">
+        <li><span class="hval-check">✓</span> Presupuesto claro y sin compromiso</li>
         <li><span class="hval-check">✓</span> Protocolo 100% personalizado</li>
+        <li><span class="hval-check">✓</span> Resolvemos todas tus dudas</li>
       </ul>
 
       <div class="hval-actions">
@@ -105,6 +101,13 @@ const reviews = [
         </a>
       </div>
 
+    </div>
+  </section>
+
+  <!-- Banner en construcción -->
+  <section class="home-banner-wip">
+    <div class="banner-wip-inner">
+      <span class="banner-wip-text">BANNER EN CONSTRUCCIÓN</span>
     </div>
   </section>
 
@@ -136,26 +139,10 @@ const reviews = [
     </div>
   </section>
 
-  <!-- Por qué elegirnos -->
-  <section class="home-why">
-    <div class="container hw-grid">
-      <div class="hw-left">
-        <div class="eyebrow"><span>Por qué elegirnos</span></div>
-        <h2 class="sec-title">Más de una década<br /><em>a tu lado</em></h2>
-        <p class="sec-lead">Clínica Esmera nació en 2014 con una misión: hacer accesible la estética y medicina estética de primera calidad. Hoy somos referente en Madrid, con un equipo dedicado a los resultados reales.</p>
-        <a href="/nosotros" class="btn btn-ghost-dark hw-btn">Conoce nuestra historia</a>
-      </div>
-      <div class="hw-right">
-        {valores.map(v => (
-          <div class="hw-valor">
-            <div class="hwv-icon" set:html={v.svg}></div>
-            <div>
-              <p class="hwv-t">{v.t}</p>
-              <p class="hwv-d">{v.d}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+  <!-- Banner en construcción 2 -->
+  <section class="home-banner-wip">
+    <div class="banner-wip-inner">
+      <span class="banner-wip-text">BANNER EN CONSTRUCCIÓN</span>
     </div>
   </section>
 
@@ -273,6 +260,35 @@ const reviews = [
 </Layout>
 
 <style>
+  /* ── Banner WIP ── */
+  .home-banner-wip {
+    width: 100%;
+    background: repeating-linear-gradient(
+      -45deg,
+      #f0c000 0px,
+      #f0c000 20px,
+      #1a1a1a 20px,
+      #1a1a1a 40px
+    );
+    padding: 48px 0;
+  }
+  .banner-wip-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .banner-wip-text {
+    background: #1a1a1a;
+    color: #f0c000;
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    border: 3px solid #f0c000;
+  }
+
   /* ── Home Services ── */
   .home-services { padding: 120px 0; background: var(--ivory); }
   .hs-hd { margin-bottom: 64px; }
