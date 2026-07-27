@@ -55,6 +55,35 @@ const valores = [
   },
 ];
 
+const featured = [
+  {
+    title: "Hidratación Profunda",
+    desc: "Tratamiento intensivo que restaura la luminosidad y elasticidad de tu piel desde la primera sesión.",
+    price: "Desde 89€",
+    href: "/estetico/",
+    beforeImg: "https://picsum.photos/id/1005/600/600?grayscale",
+    afterImg:  "https://picsum.photos/id/1005/600/600",
+  },
+  {
+    title: "Lifting Facial",
+    desc: "Efecto tensor inmediato sin cirugía. Piel más firme y definida con resultados visibles al instante.",
+    price: "Desde 149€",
+    href: "/medico-estetico/",
+  },
+  {
+    title: "Eliminación de Manchas",
+    desc: "Tecnología de última generación para unificar el tono y recuperar la luminosidad de tu piel.",
+    price: "Desde 120€",
+    href: "/estetico/",
+  },
+  {
+    title: "Tratamiento Antiedad",
+    desc: "Protocolo personalizado que combina activos de alta concentración para revertir los signos del tiempo.",
+    price: "Desde 199€",
+    href: "/medico-estetico/",
+  },
+];
+
 const reviews = [
   { ini: "M", name: "María L.", text: "Llevo tres meses con el protocolo de medicina estética y los resultados son increíbles. El equipo es muy profesional y el trato, excelente.", trat: "Medicina Estética Facial" },
   { ini: "C", name: "Carlos M.", text: "Vine por la criolipólisis con dudas y salí encantado. Los resultados empezaron a verse desde el primer mes.", trat: "Criolipólisis" },
@@ -108,6 +137,49 @@ const reviews = [
   <section class="home-banner-wip">
     <div class="banner-wip-inner">
       <span class="banner-wip-text">BANNER EN CONSTRUCCIÓN</span>
+    </div>
+  </section>
+
+  <!-- Tratamientos destacados con antes/después -->
+  <section class="home-featured">
+    <div class="container">
+      <div class="hf-grid">
+        {featured.map((item) => (
+          <div class="hf-card">
+            <div class="ba-slider" data-ba-slider>
+              <div class="ba-layer ba-after">
+                {item.afterImg
+                  ? <img src={item.afterImg} alt="Después" class="ba-img ba-img--after" />
+                  : <div class="ba-placeholder ba-placeholder--after"></div>
+                }
+                <span class="ba-tag ba-tag--after">Después</span>
+              </div>
+              <div class="ba-layer ba-before">
+                {item.beforeImg
+                  ? <img src={item.beforeImg} alt="Antes" class="ba-img ba-img--before" />
+                  : <div class="ba-placeholder ba-placeholder--before"></div>
+                }
+                <span class="ba-tag ba-tag--before">Antes</span>
+              </div>
+              <div class="ba-handle" data-ba-handle>
+                <div class="ba-handle-line"></div>
+                <div class="ba-handle-btn">
+                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                    <path d="M8 11H3m0 0 2.5-2.5M3 11l2.5 2.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M14 11h5m0 0-2.5-2.5M19 11l-2.5 2.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="hf-body">
+              <h3 class="hf-title">{item.title}</h3>
+              <p class="hf-desc">{item.desc}</p>
+              <p class="hf-price">{item.price}</p>
+              <a href={item.href} class="btn btn-gold hf-btn">Sí quiero</a>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -229,6 +301,33 @@ const reviews = [
 
   <Footer />
 <script>
+  // Before/After sliders
+  document.querySelectorAll<HTMLElement>('[data-ba-slider]').forEach((slider) => {
+    const before = slider.querySelector<HTMLElement>('.ba-before');
+    const handle = slider.querySelector<HTMLElement>('[data-ba-handle]');
+    if (!before || !handle) return;
+
+    let dragging = false;
+
+    const setPos = (x: number) => {
+      const rect = slider.getBoundingClientRect();
+      let pct = ((x - rect.left) / rect.width) * 100;
+      pct = Math.min(Math.max(pct, 2), 98);
+      before.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+      handle.style.left = `${pct}%`;
+    };
+
+    handle.addEventListener('mousedown', (e) => { dragging = true; e.preventDefault(); });
+    slider.addEventListener('mousedown', (e) => { dragging = true; setPos(e.clientX); });
+    window.addEventListener('mousemove', (e) => { if (dragging) setPos(e.clientX); });
+    window.addEventListener('mouseup', () => { dragging = false; });
+
+    slider.addEventListener('touchstart', (e) => { dragging = true; setPos(e.touches[0].clientX); }, { passive: true });
+    window.addEventListener('touchmove', (e) => { if (dragging) setPos(e.touches[0].clientX); }, { passive: true });
+    window.addEventListener('touchend', () => { dragging = false; });
+  });
+</script>
+<script>
   const form    = document.getElementById('newsletterForm')    as HTMLFormElement | null;
   const input   = document.getElementById('newsletterEmail')   as HTMLInputElement | null;
   const errorEl = document.getElementById('newsletterError')   as HTMLElement | null;
@@ -260,6 +359,145 @@ const reviews = [
 </Layout>
 
 <style>
+  /* ── Featured antes/después ── */
+  .home-featured { padding: 100px 0; background: var(--ivory-mid); }
+  .hf-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+  .hf-card {
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Before/After slider */
+  .ba-slider {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    cursor: ew-resize;
+    user-select: none;
+  }
+  .ba-layer {
+    position: absolute;
+    inset: 0;
+  }
+  .ba-placeholder {
+    width: 100%;
+    height: 100%;
+  }
+  .ba-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .ba-img--before {
+    filter: contrast(1.05);
+  }
+  .ba-placeholder--after {
+    background: linear-gradient(160deg, #e8d5c0 0%, #c9a882 50%, #a87c52 100%);
+  }
+  .ba-placeholder--before {
+    background: linear-gradient(160deg, #b0a898 0%, #8c8278 50%, #6b5f56 100%);
+    filter: grayscale(60%);
+  }
+  .ba-before {
+    clip-path: inset(0 50% 0 0);
+  }
+  .ba-tag {
+    position: absolute;
+    bottom: 10px;
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(0,0,0,0.45);
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+  .ba-tag--after { right: 10px; }
+  .ba-tag--before { left: 10px; }
+  .ba-handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    pointer-events: none;
+  }
+  .ba-handle-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #fff;
+    box-shadow: 0 0 6px rgba(0,0,0,0.4);
+  }
+  .ba-handle-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+    position: relative;
+    z-index: 1;
+    pointer-events: all;
+    cursor: ew-resize;
+  }
+
+  .hf-body {
+    padding: 24px 20px 28px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 10px;
+  }
+  .hf-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+  }
+  .hf-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    flex: 1;
+  }
+  .hf-price {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gold-warm);
+    letter-spacing: -0.01em;
+  }
+  .hf-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 0.7rem;
+  }
+
+  @media (max-width: 1024px) { .hf-grid { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 600px)  { .hf-grid { grid-template-columns: 1fr; } }
+
   /* ── Banner WIP ── */
   .home-banner-wip {
     width: 100%;
