@@ -24,14 +24,17 @@ const ofertas = [
             <span class="eyebrow-line"></span>
           </div>
           <h1 class="hero-title">
-            Ofertas<br />exclusivas<br />de <em>este mes</em>
+            <span class="s1-title-white">Ofertas</span><br /><span class="s1-title-grad">exclusivas</span><br /><span class="s1-title-white">de este mes</span>
           </h1>
-          <p class="s1-sub">Plazas limitadas. Reserva antes de que se agoten.</p>
+          <span class="eyebrow-line s1-line-bottom"></span>
+          <p class="s1-sub">Plazas limitadas.<br />Reserva antes de que se agoten.</p>
           <a href="/bonos" class="btn btn-gold s1-cta">
             Ver Ofertas
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2.5 7h9M8 3.5l3.5 3.5-3.5 3.5"/></svg>
           </a>
         </div>
+
+        <div class="s1-center" aria-hidden="true"></div>
 
         <div class="s1-right">
           <div class="price-card">
@@ -76,12 +79,6 @@ const ofertas = [
         <div class="s2-photo-fallback">
           <div class="spf-inner">
             <span class="spf-city">· Madrid ·</span>
-          </div>
-        </div>
-        <div class="s2-photo-tag">
-          <div class="spt-item">
-            <svg width="13" height="13" viewBox="0 0 13 13" fill="#19C771"><path d="M6.5 0C2.91 0 0 2.91 0 6.5S2.91 13 6.5 13 13 10.09 13 6.5 10.09 0 6.5 0zm-1.3 9.4L2.08 6.3l.9-.9 2.22 2.2 4.82-4.82.9.9-5.72 5.72z"/></svg>
-            <span>Centro Médico Autorizado</span>
           </div>
         </div>
       </div>
@@ -227,9 +224,7 @@ const ofertas = [
   /* Simulated background images per slide */
   .slide-1 {
     background-color: var(--ivory);
-    background-image:
-      linear-gradient(rgba(237, 228, 210, 0.38), rgba(237, 228, 210, 0.38)),
-      url('/Promociones del mes.png');
+    background-image: url('/Promociones del mes.png');
     background-size: cover;
     background-position: center;
   }
@@ -342,13 +337,29 @@ const ofertas = [
     background: rgba(44, 44, 44, 0.06);
   }
 
+  .s1-title-white {
+    color: #fff;
+  }
+  .s1-line-bottom {
+    display: block;
+    margin: 16px 0;
+    background: #fff;
+  }
+  .s1-title-grad {
+    background: linear-gradient(90deg, var(--gold-warm), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   /* ─── SLIDE 1 ─── */
   .s1-wrap {
     display: grid;
-    grid-template-columns: 1fr 1.1fr;
-    gap: 72px;
+    grid-template-columns: 1fr 420px 1fr;
+    gap: 48px;
     align-items: center;
   }
+  .s1-center { /* empty column — background image face shows through */ }
   .s1-left { display: flex; flex-direction: column; align-items: flex-start; }
   .s1-left .eyebrow-line { background: #fff; }
   .s1-left .s1-sub { color: #fff; }
