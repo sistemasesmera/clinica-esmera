@@ -226,36 +226,6 @@ const reviews = [
     <img src="/banner-1.png" alt="Banner promocional" class="banner-img" />
   </section>
 
-  <!-- Reseñas -->
-  <section class="home-reviews">
-    <div class="container">
-      <div class="hr-hd">
-        <div>
-          <div class="eyebrow"><span>Reseñas</span></div>
-          <h2 class="sec-title">Lo que dicen<br /><em>nuestros clientes</em></h2>
-        </div>
-        <div class="hr-rating">
-          <span class="hr-stars">★★★★★</span>
-          <span>4.9 de 5 · +500 reseñas</span>
-        </div>
-      </div>
-      <div class="hr-grid">
-        {reviews.map(r => (
-          <div class="hr-card">
-            <p class="hrc-stars">★★★★★</p>
-            <p class="hrc-text">"{r.text}"</p>
-            <div class="hrc-foot">
-              <div class="hrc-av">{r.ini}</div>
-              <div>
-                <p class="hrc-name">{r.name}</p>
-                <p class="hrc-trat">{r.trat}</p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
 
   <!-- Oferta banner -->
   <section class="home-banner">
