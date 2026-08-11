@@ -133,11 +133,9 @@ const reviews = [
     </div>
   </section>
 
-  <!-- Banner en construcción -->
-  <section class="home-banner-wip">
-    <div class="banner-wip-inner">
-      <span class="banner-wip-text">BANNER EN CONSTRUCCIÓN</span>
-    </div>
+  <!-- Banner 1 -->
+  <section class="home-banner-img">
+    <img src="/banner-1.png" alt="Banner promocional" class="banner-img" />
   </section>
 
   <!-- Tratamientos destacados con antes/después -->
@@ -211,11 +209,9 @@ const reviews = [
     </div>
   </section>
 
-  <!-- Banner en construcción 2 -->
-  <section class="home-banner-wip">
-    <div class="banner-wip-inner">
-      <span class="banner-wip-text">BANNER EN CONSTRUCCIÓN</span>
-    </div>
+  <!-- Banner 2 -->
+  <section class="home-banner-img">
+    <img src="/banner-2.png" alt="Banner promocional" class="banner-img" />
   </section>
 
   <!-- Reseñas -->
@@ -498,33 +494,15 @@ const reviews = [
   @media (max-width: 1024px) { .hf-grid { grid-template-columns: repeat(2,1fr); } }
   @media (max-width: 600px)  { .hf-grid { grid-template-columns: 1fr; } }
 
-  /* ── Banner WIP ── */
-  .home-banner-wip {
+  /* ── Banner imagen ── */
+  .home-banner-img {
     width: 100%;
-    background: repeating-linear-gradient(
-      -45deg,
-      #f0c000 0px,
-      #f0c000 20px,
-      #1a1a1a 20px,
-      #1a1a1a 40px
-    );
-    padding: 48px 0;
+    line-height: 0;
   }
-  .banner-wip-inner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .banner-wip-text {
-    background: #1a1a1a;
-    color: #f0c000;
-    font-family: var(--font-body);
-    font-size: clamp(1rem, 2.5vw, 1.5rem);
-    font-weight: 700;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    padding: 16px 40px;
-    border: 3px solid #f0c000;
+  .banner-img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   /* ── Home Services ── */
