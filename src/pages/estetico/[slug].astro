@@ -10,7 +10,6 @@ const data: Record<string, any> = {
     title: "Faciales Estéticos", titleItalic: "",
     eyebrow: "Estética · Faciales",
     description: "Protocolos personalizados de limpieza, hidratación y rejuvenecimiento adaptados a las necesidades específicas de tu piel para un resultado luminoso y duradero.",
-    intro: "La piel del rostro es el reflejo de nuestra salud y bienestar. En Clínica Esmera desarrollamos protocolos individualizados que combinan las técnicas más eficaces con activos de primera calidad para que cada sesión sea una experiencia de cuidado real.",
     tratamientos: [
       { n: "Limpieza Facial Profunda", d: "Eliminación de impurezas, comedones y células muertas con técnica manual y extractores profesionales. Piel limpia, despejada y luminosa.", dur: "60 min" },
       { n: "Hidratación Intensiva", d: "Protocolo de infusión de activos hidratantes y antioxidantes con técnica de iontoforesis. Resultado inmediato y duradero.", dur: "75 min" },
@@ -29,7 +28,6 @@ const data: Record<string, any> = {
     title: "Corporales Estéticos", titleItalic: "",
     eyebrow: "Estética · Corporales",
     description: "Tratamientos reductores, modeladores y reafirmantes que cuidan tu cuerpo con técnicas de alta eficacia y activos de primera calidad.",
-    intro: "El cuidado corporal va más allá de la estética: es bienestar, confianza y salud. Nuestros tratamientos corporales combinan técnicas manuales expertas con activos especializados para resultados visibles y una experiencia de auténtico lujo.",
     tratamientos: [
       { n: "Masaje Modelador", d: "Técnica de draining y amasamiento profundo que activa la circulación, reduce la retención de líquidos y modela la silueta.", dur: "60 min" },
       { n: "Tratamiento Reductor", d: "Protocolo intensivo con activos lipolíticos y técnica de ultrasonidos manuales. Resultados visibles desde la primera sesión.", dur: "75 min" },
@@ -48,7 +46,6 @@ const data: Record<string, any> = {
     title: "Micropigmentación", titleItalic: "",
     eyebrow: "Estética · Micropigmentación",
     description: "Definición permanente y natural de cejas, labios y eyeliner con los mejores pigmentos del mercado y técnicas adaptadas a la anatomía de cada rostro.",
-    intro: "La micropigmentación es un arte que exige precisión, conocimiento de la anatomía facial y un sentido estético refinado. En Clínica Esmera trabajamos con los mejores pigmentos del mercado y técnicas actualizadas para resultados naturales y duraderos que realzan tu belleza sin artificios.",
     tratamientos: [
       { n: "Micropigmentación de Cejas", d: "Técnica pelo a pelo o sombreado para unas cejas perfectamente definidas y con apariencia 100% natural. Incluye retoque a las 4-6 semanas.", dur: "2,5 h" },
       { n: "Micropigmentación Labial", d: "Definición y relleno de labios con pigmento. Resultados naturales que perduran 2-3 años. Incluye consulta previa de diseño.", dur: "2 h" },
@@ -66,7 +63,6 @@ const data: Record<string, any> = {
     title: "Masajes", titleItalic: "",
     eyebrow: "Estética · Masajes",
     description: "Rituales de bienestar que combinan técnicas terapéuticas y de relajación para recuperar el equilibrio físico y mental que mereces.",
-    intro: "El masaje va más allá del placer: es una herramienta terapéutica de primera magnitud. En Clínica Esmera formamos a nuestras profesionales en las técnicas más eficaces para que cada sesión sea una experiencia transformadora.",
     tratamientos: [
       { n: "Drenaje Linfático Manual", d: "Técnica de Vodder para activar el sistema linfático, eliminar toxinas y reducir la retención de líquidos. Indicado pre y post operatorio.", dur: "60 min" },
       { n: "Masaje Relajante", d: "Técnica sueca de effleurage y pétrissage para liberar tensiones musculares, reducir el estrés y recuperar el bienestar.", dur: "60 min" },
@@ -105,49 +101,28 @@ const d = data[slug];
 
   <section class="trat-section">
     <div class="container">
-      <div class="ts-intro">
-        <p>{d.intro}</p>
-      </div>
-
-      <!-- Tratamientos -->
       <div class="ts-hd">
         <div class="eyebrow"><span>Tratamientos</span></div>
         <h2 class="sec-title">Qué <em>incluimos</em></h2>
       </div>
 
-      <div class="ts-list">
+      <div class="tc-grid">
         {d.tratamientos.map((t: any, i: number) => (
-          <div class="ts-row">
-            <div class="tsr-num">{String(i+1).padStart(2,'0')}</div>
-            <div class="tsr-main">
-              <div class="tsr-top">
-                <h3 class="tsr-name">{t.n}</h3>
-                <span class="tsr-dur">{t.dur}</span>
-              </div>
-              <p class="tsr-desc">{t.d}</p>
+          <div class="tc-card">
+            <div class="tc-card-top">
+              <span class="tc-num">{String(i+1).padStart(2,'0')}</span>
+              <h3 class="tc-name">{t.n}</h3>
+              {t.dur && <span class="tc-dur">{t.dur}</span>}
             </div>
-            <a href="/nosotros#contacto" class="tsr-cta">
-              Reservar
-              <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5.5h7M6 2.5l2.5 3L6 8.5"/></svg>
-            </a>
+            <div class="tc-card-body">
+              <p class="tc-desc">{t.d}</p>
+              <a href="/nosotros#contacto" class="tc-cta">
+                Reservar cita
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 6h8M7 3l3 3-3 3"/></svg>
+              </a>
+            </div>
           </div>
         ))}
-      </div>
-
-      <!-- Proceso -->
-      <div class="ts-proceso">
-        <div class="eyebrow"><span>Cómo trabajamos</span></div>
-        <h2 class="sec-title">El <em>proceso</em></h2>
-        <div class="tp-grid">
-          {d.proceso.map((p: any) => (
-            <div class="tp-step">
-              <div class="tps-num">{p.p}</div>
-              <div class="tps-line"></div>
-              <h3 class="tps-t">{p.t}</h3>
-              <p class="tps-d">{p.d}</p>
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   </section>
@@ -157,63 +132,105 @@ const d = data[slug];
 </Layout>
 
 <style>
-  .trat-section { padding: 96px 0; background: var(--ivory); }
+  .trat-section { padding: 72px 0; background: var(--ivory); }
+  .ts-hd { margin-bottom: 40px; }
 
-  .ts-intro {
-    max-width: 680px; margin-bottom: 72px;
-    font-size: 1rem; color: var(--text-muted);
-    line-height: 1.82; font-weight: 300;
+  /* ── Tarjetas de tratamiento ── */
+  .tc-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 
-  .ts-hd { margin-bottom: 36px; }
-
-  /* Tratamientos list */
-  .ts-list { border-top: 1px solid rgba(0,0,0,0.07); margin-bottom: 96px; }
-
-  .ts-row {
-    display: grid; grid-template-columns: 48px 1fr 100px;
-    gap: 28px; align-items: start;
-    padding: 28px 0; border-bottom: 1px solid rgba(0,0,0,0.06);
-    transition: background var(--t);
-    margin: 0 -16px; padding-left: 16px; padding-right: 16px;
+  .tc-card {
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s, transform 0.3s;
   }
-  .ts-row:hover { background: var(--ivory-mid); }
-
-  .tsr-num { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 0.75rem; color: var(--gold); opacity: 0.7; padding-top: 4px; }
-
-  .tsr-top { display: flex; align-items: baseline; gap: 16px; margin-bottom: 8px; flex-wrap: wrap; }
-  .tsr-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 400; color: var(--dark); }
-  .tsr-dur { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.1em; font-weight: 300; }
-  .tsr-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
-
-  .tsr-cta {
-    display: inline-flex; align-items: center; gap: 5px;
-    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--dark); border-bottom: 1px solid rgba(212,175,55,0.4);
-    padding-bottom: 2px; padding-top: 4px; transition: all 0.2s; width: fit-content;
+  .tc-card:hover {
+    box-shadow: 0 10px 36px rgba(44,44,44,0.10);
+    transform: translateY(-3px);
   }
-  .tsr-cta:hover { color: var(--gold-warm); gap: 9px; border-color: var(--gold); }
 
-  /* Proceso */
-  .ts-proceso { padding-top: 16px; }
-  .ts-proceso .sec-title { margin-bottom: 48px; }
-
-  .tp-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; }
-  .tp-step {}
-  .tps-num { font-family: var(--font-display); font-style: italic; font-size: 2rem; font-weight: 300; color: var(--gold); opacity: 0.6; line-height: 1; margin-bottom: 12px; }
-  .tps-line { width: 24px; height: 1px; background: var(--gold); opacity: 0.3; margin-bottom: 14px; }
-  .tps-t { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; color: var(--dark); margin-bottom: 8px; }
-  .tps-d { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
-
-  @media (max-width: 860px) {
-    .ts-row { grid-template-columns: 40px 1fr; }
-    .tsr-cta { grid-column: 2; }
-    .tp-grid { grid-template-columns: repeat(2,1fr); }
+  .tc-card-top {
+    background: linear-gradient(140deg, var(--ivory-deep) 0%, var(--ivory-mid) 100%);
+    padding: 28px 28px 22px;
+    border-bottom: 1px solid rgba(212,175,55,0.18);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
-  @media (max-width: 520px) {
-    .ts-row { grid-template-columns: 1fr; }
-    .tsr-num { display: none; }
-    .tp-grid { grid-template-columns: 1fr; }
-    .trat-section { padding: 72px 0; }
+
+  .tc-num {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    color: var(--gold-warm);
+    text-transform: uppercase;
+  }
+
+  .tc-name {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+
+  .tc-dur {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 500;
+    background: rgba(212,175,55,0.12);
+    border: 1px solid rgba(212,175,55,0.25);
+    padding: 4px 10px;
+    border-radius: 20px;
+    width: fit-content;
+  }
+
+  .tc-card-body {
+    padding: 22px 28px 26px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .tc-desc {
+    font-size: 0.88rem;
+    color: var(--text-soft);
+    line-height: 1.75;
+    font-weight: 400;
+    flex: 1;
+    margin-bottom: 20px;
+  }
+
+  .tc-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dark);
+    border-bottom: 1.5px solid rgba(212,175,55,0.5);
+    padding-bottom: 3px;
+    width: fit-content;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .tc-cta:hover { color: var(--gold-warm); border-color: var(--gold-warm); gap: 11px; }
+
+  @media (max-width: 700px) {
+    .tc-grid { grid-template-columns: 1fr; }
+    .trat-section { padding: 56px 0; }
   }
 </style>

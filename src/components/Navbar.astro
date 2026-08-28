@@ -14,14 +14,18 @@
           Estético
           <svg class="chev" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 3.5l3 3 3-3"/></svg>
         </button>
-        <ul class="dropdown">
+        <ul class="dropdown dropdown-wide">
           <div class="dropdown-box">
             <li><a href="/estetico/">Ver todo</a></li>
             <li class="drop-sep"></li>
             <li><a href="/estetico/faciales">Faciales</a></li>
-            <li><a href="/estetico/corporales">Corporales</a></li>
+            <li class="drop-sep"></li>
+            <li class="drop-group-label">Corporal</li>
+            <li><a href="/estetico/masajes" class="drop-sub">Masajes</a></li>
+            <li><a href="/aparatologia/" class="drop-sub">Aparatología</a></li>
+            <li><a href="/estetico/corporales" class="drop-sub">Maderoterapia</a></li>
+            <li class="drop-sep"></li>
             <li><a href="/estetico/micropigmentacion">Micropigmentación</a></li>
-            <li><a href="/estetico/masajes">Masajes</a></li>
           </div>
         </ul>
       </li>
@@ -37,26 +41,6 @@
             <li class="drop-sep"></li>
             <li><a href="/medico-estetico/faciales">Faciales</a></li>
             <li><a href="/medico-estetico/corporales">Corporales</a></li>
-          </div>
-        </ul>
-      </li>
-
-      <li class="has-drop">
-        <button class="nl drop-toggle" aria-expanded="false">
-          Aparatología
-          <svg class="chev" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 3.5l3 3 3-3"/></svg>
-        </button>
-        <ul class="dropdown dropdown-wide">
-          <div class="dropdown-box">
-            <li><a href="/aparatologia/">Ver todo</a></li>
-            <li class="drop-sep"></li>
-            <li><a href="/aparatologia/radiofrecuencia">Radiofrecuencia</a></li>
-            <li><a href="/aparatologia/hifu">HIFU Ultrafocal</a></li>
-            <li><a href="/aparatologia/crioliposis">Criolipólisis</a></li>
-            <li><a href="/aparatologia/presoterapia">Presoterapia</a></li>
-            <li><a href="/aparatologia/laser">Láser Depilatorio</a></li>
-            <li><a href="/aparatologia/ipl">Luz Pulsada IPL</a></li>
-            <li><a href="/aparatologia/drenaje-linfatico">Drenaje Linfático</a></li>
           </div>
         </ul>
       </li>
@@ -189,6 +173,29 @@
     margin: 4px 8px;
   }
 
+  .drop-group-label {
+    padding: 6px 16px 2px;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-warm);
+    list-style: none;
+  }
+
+  .dropdown li a.drop-sub {
+    padding-left: 24px;
+    font-size: 0.78rem;
+    color: var(--text-soft);
+  }
+  .dropdown li a.drop-sub::before {
+    content: '—';
+    margin-right: 6px;
+    font-size: 0.6rem;
+    color: var(--gold);
+    opacity: 0.6;
+  }
+
   /* CTA */
   .cta-desktop { flex-shrink: 0; margin-left: 20px; }
   .mobile-cta { display: none; padding: 12px 0; }
@@ -248,7 +255,7 @@
       padding: 0;
     }
     .has-drop[data-open] .dropdown { pointer-events: all; }
-    .has-drop[data-open] .dropdown-box { max-height: 400px; padding: 6px 0; }
+    .has-drop[data-open] .dropdown-box { max-height: 520px; padding: 6px 0; }
     .dropdown li a { padding: 10px 20px; font-size: 0.875rem; }
     .drop-sep { margin: 3px 12px; }
   }

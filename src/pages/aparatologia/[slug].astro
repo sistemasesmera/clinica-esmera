@@ -60,6 +60,15 @@ const data: Record<string, any> = {
     beneficios: ["Unificación del tono de la piel", "Reducción de rojeces y vasos", "Estimulación del colágeno", "Mínimo tiempo de recuperación", "Resultados acumulativos por sesión"],
     sesiones: "Pauta habitual de 3 a 5 sesiones cada 3-4 semanas. Mantenimiento de 1-2 sesiones anuales según evolución.",
   },
+  "laser-co2": {
+    title: "Láser CO2", eyebrow: "Aparatología · Láser CO2",
+    ind: "Rejuvenecimiento · Cicatrices · Manchas",
+    description: "Láser fraccionado de CO2 de última generación para la renovación cutánea más completa. Mejora arrugas, cicatrices, manchas y textura irregular con resultados duraderos desde la primera sesión.",
+    que: "El láser CO2 fraccionado emite pulsos de luz infrarroja que crean microcanales controlados en la piel. Este proceso activa la regeneración natural, estimulando la producción de colágeno y elastina de forma intensa. La versión fraccionada trata solo una fracción de la piel por sesión, reduciendo el tiempo de recuperación y manteniendo la máxima eficacia clínica.",
+    indicaciones: ["Arrugas finas y líneas de expresión", "Cicatrices de acné", "Manchas y fotoenvejecimiento", "Poros dilatados y textura irregular", "Flacidez leve de párpados y contorno"],
+    beneficios: ["Renovación cutánea profunda y duradera", "Estimulación intensa de colágeno y elastina", "Mejora visible desde la primera sesión", "Efecto máximo a los 3 meses", "Resultados duran entre 12 y 24 meses"],
+    sesiones: "Una sesión anual suele ser suficiente para renovación completa. Para cicatrices de acné o manchas profundas se recomiendan 2-3 sesiones separadas 4-6 semanas.",
+  },
   "drenaje-linfatico": {
     title: "Drenaje Linfático", eyebrow: "Aparatología · Drenaje Linfático",
     ind: "Post-operatorio · Edemas · Detox",
@@ -72,7 +81,7 @@ const data: Record<string, any> = {
 };
 
 export function getStaticPaths() {
-  return ["radiofrecuencia","hifu","crioliposis","presoterapia","laser","ipl","drenaje-linfatico"].map(slug => ({ params: { slug } }));
+  return ["radiofrecuencia","hifu","crioliposis","presoterapia","laser","ipl","laser-co2","drenaje-linfatico"].map(slug => ({ params: { slug } }));
 }
 
 const { slug } = Astro.params;

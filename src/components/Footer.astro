@@ -1,20 +1,24 @@
 ---
+interface Props { showMap?: boolean; }
+const { showMap = false } = Astro.props;
 ---
 <footer class="footer">
 
-  <!-- Mapa -->
-  <div class="footer-map">
-    <iframe
-      src="https://maps.google.com/maps?q=Paseo+Santa+Mar%C3%ADa+de+la+Cabeza%2C+10%2C+28045+Madrid&t=&z=16&ie=UTF8&iwloc=&output=embed"
-      width="100%"
-      height="300"
-      style="border:0;"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      title="Ubicación Clínica Esmera"
-    ></iframe>
-  </div>
+  <!-- Mapa (solo homepage) -->
+  {showMap && (
+    <div class="footer-map">
+      <iframe
+        src="https://maps.google.com/maps?q=Paseo+Santa+Mar%C3%ADa+de+la+Cabeza%2C+10%2C+28045+Madrid&t=&z=16&ie=UTF8&iwloc=&output=embed"
+        width="100%"
+        height="300"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Ubicación Clínica Esmera"
+      ></iframe>
+    </div>
+  )}
 
   <div class="footer-top">
     <div class="container ft-grid">

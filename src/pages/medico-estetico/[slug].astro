@@ -70,44 +70,26 @@ const d = data[slug];
 
   <section class="me-trat">
     <div class="container">
-      <p class="met-intro">{d.intro}</p>
-
       <div class="eyebrow"><span>Tratamientos médicos</span></div>
-      <h2 class="sec-title" style="margin-bottom:36px">Qué <em>ofrecemos</em></h2>
+      <h2 class="sec-title" style="margin-bottom:40px">Qué <em>ofrecemos</em></h2>
 
-      <div class="met-list">
+      <div class="tc-grid">
         {d.tratamientos.map((t: any, i: number) => (
-          <div class="met-row">
-            <div class="metr-num">{String(i+1).padStart(2,'0')}</div>
-            <div class="metr-body">
-              <div class="metr-top">
-                <h3 class="metr-name">{t.n}</h3>
-                <span class="metr-dur">{t.dur}</span>
-              </div>
-              <p class="metr-desc">{t.d}</p>
+          <div class="tc-card">
+            <div class="tc-card-top">
+              <span class="tc-num">{String(i+1).padStart(2,'0')}</span>
+              <h3 class="tc-name">{t.n}</h3>
+              {t.dur && <span class="tc-dur">{t.dur}</span>}
             </div>
-            <a href="/nosotros#contacto" class="metr-cta">
-              Consultar
-              <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5.5h7M6 2.5l2.5 3L6 8.5"/></svg>
-            </a>
+            <div class="tc-card-body">
+              <p class="tc-desc">{t.d}</p>
+              <a href="/nosotros#contacto" class="tc-cta">
+                Consultar
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 6h8M7 3l3 3-3 3"/></svg>
+              </a>
+            </div>
           </div>
         ))}
-      </div>
-
-      <!-- Proceso -->
-      <div class="met-proceso">
-        <div class="eyebrow"><span>Protocolo médico</span></div>
-        <h2 class="sec-title" style="margin-bottom:40px">El <em>proceso</em></h2>
-        <div class="mp-grid">
-          {d.proceso.map((p: any) => (
-            <div class="mp-step">
-              <div class="mps-n">{p.p}</div>
-              <div class="mps-l"></div>
-              <h3 class="mps-t">{p.t}</h3>
-              <p class="mps-d">{p.d}</p>
-            </div>
-          ))}
-        </div>
       </div>
 
       <div class="met-aviso">
@@ -122,56 +104,113 @@ const d = data[slug];
 </Layout>
 
 <style>
-  .me-trat { padding: 96px 0; background: var(--ivory); }
-  .met-intro { font-size: 1rem; color: var(--text-muted); line-height: 1.82; font-weight: 300; max-width: 680px; margin-bottom: 72px; }
+  .me-trat { padding: 72px 0; background: var(--ivory); }
 
-  .met-list { border-top: 1px solid rgba(0,0,0,0.07); margin-bottom: 96px; }
-  .met-row {
-    display: grid; grid-template-columns: 48px 1fr 100px;
-    gap: 28px; align-items: start;
-    padding: 28px 16px; margin: 0 -16px;
-    border-bottom: 1px solid rgba(0,0,0,0.06);
-    transition: background var(--t);
+  /* ── Tarjetas de tratamiento ── */
+  .tc-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
   }
-  .met-row:hover { background: var(--ivory-mid); }
 
-  .metr-num { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 0.75rem; color: var(--gold); opacity: 0.7; padding-top: 4px; }
-  .metr-top { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; flex-wrap: wrap; }
-  .metr-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 400; color: var(--dark); }
-  .metr-dur { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.1em; font-weight: 300; }
-  .metr-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
-  .metr-cta {
-    display: inline-flex; align-items: center; gap: 5px;
-    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--dark); border-bottom: 1px solid rgba(212,175,55,0.4);
-    padding-bottom: 2px; padding-top: 4px; transition: all 0.2s; width: fit-content;
+  .tc-card {
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s, transform 0.3s;
   }
-  .metr-cta:hover { color: var(--gold-warm); gap: 9px; }
+  .tc-card:hover {
+    box-shadow: 0 10px 36px rgba(44,44,44,0.10);
+    transform: translateY(-3px);
+  }
 
-  .met-proceso { margin-bottom: 56px; }
-  .mp-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; }
-  .mps-n { font-family: var(--font-display); font-style: italic; font-size: 2rem; font-weight: 300; color: var(--gold); opacity: 0.6; line-height: 1; margin-bottom: 12px; }
-  .mps-l { width: 24px; height: 1px; background: var(--gold); opacity: 0.3; margin-bottom: 14px; }
-  .mps-t { font-family: var(--font-display); font-size: 1.05rem; font-weight: 400; color: var(--dark); margin-bottom: 8px; }
-  .mps-d { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
+  .tc-card-top {
+    background: linear-gradient(140deg, var(--ivory-deep) 0%, var(--ivory-mid) 100%);
+    padding: 28px 28px 22px;
+    border-bottom: 1px solid rgba(212,175,55,0.18);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .tc-num {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    color: var(--gold-warm);
+    text-transform: uppercase;
+  }
+
+  .tc-name {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+
+  .tc-dur {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 500;
+    background: rgba(212,175,55,0.12);
+    border: 1px solid rgba(212,175,55,0.25);
+    padding: 4px 10px;
+    border-radius: 20px;
+    width: fit-content;
+  }
+
+  .tc-card-body {
+    padding: 22px 28px 26px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .tc-desc {
+    font-size: 0.88rem;
+    color: var(--text-soft);
+    line-height: 1.75;
+    font-weight: 400;
+    flex: 1;
+    margin-bottom: 20px;
+  }
+
+  .tc-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dark);
+    border-bottom: 1.5px solid rgba(212,175,55,0.5);
+    padding-bottom: 3px;
+    width: fit-content;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .tc-cta:hover { color: var(--gold-warm); border-color: var(--gold-warm); gap: 11px; }
 
   .met-aviso {
     display: flex; gap: 14px; align-items: flex-start;
-    background: var(--ivory-mid); border: 1px solid rgba(212,175,55,0.18);
+    background: var(--ivory-mid); border: 1px solid rgba(212,175,55,0.22);
     padding: 18px 22px; border-radius: var(--radius);
   }
-  .met-aviso span { color: var(--gold); opacity: 0.5; flex-shrink: 0; margin-top: 1px; }
-  .met-aviso p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+  .met-aviso span { color: var(--gold-warm); flex-shrink: 0; margin-top: 1px; }
+  .met-aviso p { font-size: 0.88rem; color: var(--text-soft); line-height: 1.7; font-weight: 400; }
 
-  @media (max-width: 860px) {
-    .met-row { grid-template-columns: 40px 1fr; }
-    .metr-cta { grid-column: 2; }
-    .mp-grid { grid-template-columns: repeat(2,1fr); }
-  }
-  @media (max-width: 520px) {
-    .met-row { grid-template-columns: 1fr; }
-    .metr-num { display: none; }
-    .mp-grid { grid-template-columns: 1fr; }
-    .me-trat { padding: 72px 0; }
+  @media (max-width: 700px) {
+    .tc-grid { grid-template-columns: 1fr; }
+    .me-trat { padding: 56px 0; }
   }
 </style>
