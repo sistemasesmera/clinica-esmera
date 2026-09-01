@@ -11,24 +11,28 @@ const categories = [
     title: "Estética",
     desc: "Faciales, corporales, micropigmentación y masajes que cuidan y realzan tu belleza natural con técnicas de alta eficacia.",
     items: ["Faciales", "Corporales", "Micropigmentación", "Masajes"],
+    img: "/antes-despues/Acné II.png",
   },
   {
     num: "02", href: "/medico-estetico/",
     title: "Medicina Estética",
     desc: "Tratamientos médicos avanzados supervisados por especialistas. Resultados visibles, duraderos y con máxima seguridad.",
     items: ["Toxina Botulínica", "Ácido Hialurónico", "Mesoterapia", "Bioestimuladores"],
+    img: "/antes-despues/Labios II.png",
   },
   {
     num: "03", href: "/aparatologia/",
     title: "Aparatología",
     desc: "Tecnología certificada de grado médico: desde HIFU hasta criolipólisis. Los tratamientos más eficaces del mercado.",
     items: ["HIFU Ultrafocal", "Radiofrecuencia", "Criolipólisis", "Presoterapia"],
+    img: "/Tratamiento del mes.png",
   },
   {
     num: "04", href: "/bonos",
     title: "Bonos",
     desc: "Packs de sesiones diseñados para maximizar resultados y ahorro. Desde 3 hasta 10 sesiones a medida.",
     items: ["Bono Esencial · 3 sesiones", "Bono Intensivo · 6 sesiones", "Bono VIP · 10 sesiones"],
+    img: "/Realza tu belleza natural.png",
   },
 ];
 
@@ -105,11 +109,6 @@ const reviews = [
   <!-- Valoración gratuita -->
   <section class="home-val">
     <div class="container hval-inner">
-
-      <div class="hval-badge">
-        <span class="hval-dot"></span>
-        Gestión prioritaria
-      </div>
 
       <h2 class="hval-title">
         Tu primera valoración médica,<br /><em>completamente gratuita</em>
@@ -204,7 +203,9 @@ const reviews = [
       <div class="hs-grid">
         {categories.map(c => (
           <a href={c.href} class="hs-card">
-            <div class="hs-num">{c.num}</div>
+            <div class="hs-img-wrap">
+              <img src={c.img} alt={c.title} class="hs-img" />
+            </div>
             <div class="hs-rule"></div>
             <h3 class="hs-title">{c.title}</h3>
             <p class="hs-desc">{c.desc}</p>
@@ -227,23 +228,6 @@ const reviews = [
   </section>
 
 
-  <!-- Primera valoración médica -->
-  <section class="home-valmed">
-    <div class="hvm-rings" aria-hidden="true">
-      <div class="hvm-ring hvm-ring-1"></div>
-      <div class="hvm-ring hvm-ring-2"></div>
-      <div class="hvm-ring hvm-ring-3"></div>
-    </div>
-    <div class="container hvm-inner">
-      <span class="hvm-eyebrow">Sin compromiso · Sin espera</span>
-      <div class="hvm-rule"></div>
-      <h2 class="hvm-title">Primera valoración<br /><em>médica gratuita</em></h2>
-      <div class="hvm-rule"></div>
-      <p class="hvm-sub">Un especialista evaluará tu piel, resolverá tus dudas y te propondrá el protocolo más adecuado para ti. Completamente gratuito.</p>
-      <a href="/nosotros#contacto" class="btn btn-gold hvm-btn">Solicitar mi valoración</a>
-      <p class="hvm-footnote">Clínica Esmera · Madrid</p>
-    </div>
-  </section>
 
   <!-- Newsletter -->
   <section class="home-newsletter">
@@ -487,11 +471,24 @@ const reviews = [
   .home-banner-img {
     width: 100%;
     line-height: 0;
+    overflow: hidden;
   }
   .banner-img {
     width: 100%;
     height: auto;
     display: block;
+  }
+
+  @media (max-width: 640px) {
+    .home-banner-img {
+      height: 140px;
+    }
+    .banner-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
   }
 
   /* ── Home Services ── */
@@ -512,6 +509,25 @@ const reviews = [
     text-decoration: none;
   }
   .hs-card:hover { background: var(--ivory-mid); }
+
+  .hs-img-wrap {
+    aspect-ratio: 16 / 7;
+    overflow: hidden;
+    margin-top: -36px;
+    margin-left: -28px;
+    margin-right: -28px;
+    width: calc(100% + 56px);
+    margin-bottom: 24px;
+  }
+  .hs-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.5s var(--ease);
+  }
+  .hs-card:hover .hs-img { transform: scale(1.04); }
 
   .hs-num { font-family: var(--font-display); font-style: italic; font-weight: 200; font-size: 2.4rem; color: var(--dark); letter-spacing: -0.02em; margin-bottom: 14px; opacity: 0.25; line-height: 1; }
   .hs-rule { width: 24px; height: 1px; background: var(--dark); opacity: 0.15; margin-bottom: 18px; }
@@ -570,11 +586,25 @@ const reviews = [
 
   /* ── Primera valoración médica ── */
   .home-valmed {
-    background: var(--ivory-deep);
+    background: #ffffff;
     padding: 80px 0;
     position: relative;
     overflow: hidden;
     text-align: center;
+  }
+  .home-valmed::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image: url('/Realza tu belleza natural.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.18;
+    pointer-events: none;
+    z-index: 0;
   }
 
   .hvm-rings {
@@ -608,7 +638,7 @@ const reviews = [
     text-transform: uppercase;
     color: var(--gold-warm);
     font-weight: 500;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
   }
 
   .hvm-rule {
@@ -634,7 +664,7 @@ const reviews = [
     line-height: 1.85;
     font-weight: 300;
     max-width: 440px;
-    margin: 28px auto 36px;
+    margin: 12px auto 36px;
   }
 
   .hvm-btn { min-width: 240px; justify-content: center; margin-bottom: 28px; }
@@ -656,7 +686,7 @@ const reviews = [
 
   /* ── Valoración gratuita ── */
   .home-val {
-    background: var(--ivory-deep);
+    background: #ffffff;
     padding: 72px 0;
     position: relative;
     text-align: center;
