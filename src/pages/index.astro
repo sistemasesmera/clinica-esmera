@@ -149,6 +149,30 @@ const reviews = [
     </a>
   </section>
 
+  <!-- Tarjetas de regalo -->
+  <section class="home-tarjeta">
+    <div class="container tr-inner">
+      <div class="tr-text">
+        <h2 class="tr-title">
+          TARJETAS DE<br />
+          <span class="tr-script">REGALO</span>
+        </h2>
+        <p class="tr-desc">Sorprende a quien más quieres con un tratamiento que realza su belleza y bienestar.</p>
+        <a
+          href="https://wa.me/34661310256?text=Hola%2C%20me%20gustar%C3%ADa%20obtener%20una%20tarjeta%20de%20regalo"
+          target="_blank" rel="noopener"
+          class="btn btn-gold tr-btn"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          OBTÉN LA TUYA
+        </a>
+      </div>
+      <div class="tr-img-wrap">
+        <img src="/tarjeta-regalo-mockup.png" alt="Tarjeta de regalo Clínica Esmera" class="tr-img" />
+      </div>
+    </div>
+  </section>
+
   <!-- Tratamientos destacados con antes/después -->
   <section class="home-featured">
     <div class="container">
@@ -466,6 +490,81 @@ const reviews = [
 
   @media (max-width: 1024px) { .hf-grid { grid-template-columns: repeat(2,1fr); } }
   @media (max-width: 600px)  { .hf-grid { grid-template-columns: 1fr; } }
+
+  /* ── Tarjetas de regalo ── */
+  .home-tarjeta {
+    background: #fff;
+    padding: 16px 0 48px;
+  }
+  .tr-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .tr-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .tr-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+  .tr-script {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    color: var(--gold);
+    display: block;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+  }
+  .tr-desc {
+    font-size: 1rem;
+    color: var(--text-soft);
+    line-height: 1.75;
+    font-weight: 400;
+    max-width: 400px;
+  }
+  .tr-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 32px;
+  }
+  .tr-img-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .tr-img {
+    width: 100%;
+    max-width: 540px;
+    height: auto;
+    display: block;
+  }
+
+  @media (max-width: 860px) {
+    .tr-inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .tr-img-wrap { order: -1; }
+    .tr-img { max-width: 400px; margin: 0 auto; }
+    .tr-text { align-items: center; text-align: center; }
+    .tr-desc { max-width: 100%; }
+  }
+
+  @media (max-width: 480px) {
+    .home-tarjeta { padding: 56px 0; }
+    .tr-img { max-width: 100%; }
+  }
 
   /* ── Banner imagen ── */
   .home-banner-img {
